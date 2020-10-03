@@ -57,6 +57,20 @@ assets/react-frontend
 ### Installed plugins(if that's what it's called)
 - `react-router` is inside `index.js`, feel free to refactor it
 
+### Settings that should be hard-coded vs used as environmental variables
+
+- Hard coded
+    - Things that wouldn't change if we gonna deploy it on a different server
+
+- Environmental variables
+    - Things that cound change of we gonna deploy it on another server
+
+To add more environmental variables settings to the app please do as following
+1. Add the variable to your current `.env` at the project root (of course it will not be pushed to git)
+2. Add the setting to `assets/react-frontend/config.js`
+3. Verify that it's working (you need to reload the command)
+4. Add it to `.env.example` so other people can understand
+
 ## Commands
 Assuming everyone has `node` and `npm` installed
 
