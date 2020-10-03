@@ -1,8 +1,22 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import Home from './pages/home';
+
 const App = () => {
   return (
-    <h1>Sample React and Sails App</h1>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 

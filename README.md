@@ -33,7 +33,29 @@ Note:  Generators are usually run using the globally-installed `sails` CLI (comm
 - The app is under heavy configuration, but basically what I believe is that `account management` and `REST` features are built in with it, stay tuned for more documentation
 
 ## Frontend
-- The whole react app is deeply embedded in `assets/react-frontend`, you guys can start implementing it right away
+
+### Structure
+
+The frontend app root is located at `assets/react-frontend` with the following structure
+
+```
+assets/react-frontend
+|
+|- config.js     # Convert environmental variables to javascript object attributes
+|- public        # Contains the root html
+|- assets        # Contains images and importable stuff
+|- src           # The main source files location
+   |
+   |- components # Reusable components(like Navbar)
+   |- pages      # One page
+   |- styles     # css or less or other styling files
+   |- index.js   # main entrance 
+
+
+```
+
+### Installed plugins(if that's what it's called)
+- `react-router` is inside `index.js`, feel free to refactor it
 
 ## Commands
 Assuming everyone has `node` and `npm` installed
@@ -43,10 +65,24 @@ Assuming everyone has `node` and `npm` installed
 npm install
 ```
 
-2. Run locally
-```
-npm start
-```
+2. Setting environment variables
+    - Copy `.env.example` to `.env`
+    - Modify any settings that need to be changed to suit your local environment
+
+3. Run locally
+
+    - 3.1. Frontend only 
+        ```
+        npm run open:client
+        ```
+    - 3.2. Backend only 
+        ```
+        npm run lift
+        ```
+    - 3.3. Both 
+        ```
+        npm start
+        ```
 Frontend app should be available at `localhost:8080` while backend app should be available at `localhost:1337` at the moment
 
 ## Deployment

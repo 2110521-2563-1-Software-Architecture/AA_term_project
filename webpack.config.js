@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -18,12 +19,19 @@ module.exports = {
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
-      }
+      },
+      {
+        use: ['file-loader'],
+        test: /\.(png|svg|jpg|gif)$/,
+      },
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'assets/react-frontend/public/index.html'
-    })
+    }),
+    new Dotenv({
+      systemvars: true,
+    }),
   ]
 }
