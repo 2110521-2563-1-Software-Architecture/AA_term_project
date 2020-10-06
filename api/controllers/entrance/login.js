@@ -8,7 +8,7 @@ module.exports = {
 
 
   extendedDescription:
-`This action attempts to look up the user record in the database with the
+    `This action attempts to look up the user record in the database with the
 specified email address.  Then, if such a user exists, it uses
 bcrypt to compare the hashed password from the database with the provided
 password attempt.`,
@@ -28,14 +28,6 @@ password attempt.`,
       required: true
     },
 
-    rememberMe: {
-      description: 'Whether to extend the lifetime of the user\'s session.',
-      extendedDescription:
-`Note that this is NOT SUPPORTED when using virtual requests (e.g. sending
-requests over WebSockets instead of HTTP).`,
-      type: 'boolean'
-    }
-
   },
 
 
@@ -44,7 +36,7 @@ requests over WebSockets instead of HTTP).`,
     success: {
       description: 'The requesting user agent has been successfully logged in.',
       extendedDescription:
-`Under the covers, this stores the id of the logged-in user in the session
+        `Under the covers, this stores the id of the logged-in user in the session
 as the \`userId\` key.  The next time this user agent sends a request, assuming
 it includes a cookie (like a web browser), Sails will automatically make this
 user id available as req.session.userId in the corresponding action.  (Also note
@@ -69,7 +61,7 @@ and exposed as \`req.me\`.)`
   },
 
 
-  fn: async function ({emailAddress, password, rememberMe}) {
+  fn: async function ({ emailAddress, password }) {
 
     // Look up by the email address.
     // (note that we lowercase it to ensure the lookup is always case-insensitive,
@@ -79,34 +71,18 @@ and exposed as \`req.me\`.)`
     });
 
     // If there was no matching user, respond thru the "badCombo" exit.
-    if(!userRecord) {
+    if (!userRecord) {
       throw 'badCombo';
     }
 
     // If the password doesn't match, then also exit thru "badCombo".
     await sails.helpers.passwords.checkPassword(password, userRecord.password)
-    .intercept('incorrect', 'badCombo');
+      .intercept('incorrect', 'badCombo');
 
-    // If "Remember Me" was enabled, then keep the session alive for
-    // a longer amount of time.  (This causes an updated "Set Cookie"
-    // response header to be sent as the result of this request -- thus
-    // we must be dealing with a traditional HTTP request in order for
-    // this to work.)
-    if (rememberMe) {
-      if (this.req.isSocket) {
-        sails.log.warn(
-          'Received `rememberMe: true` from a virtual request, but it was ignored\n'+
-          'because a browser\'s session cookie cannot be reset over sockets.\n'+
-          'Please use a traditional HTTP request instead.'
-        );
-      } else {
-        this.req.session.cookie.maxAge = sails.config.custom.rememberMeCookieMaxAge;
-      }
-    }//ﬁ
-
-    // Modify the active session instance.
-    // (This will be persisted when the response is sent.)
-    this.req.session.userId = userRecord.id;
+    return {
+      emailAddress: userRecord.emailAddress,
+      token: sails.services.tokenauth.generateToken({ userId: userRecord.id })
+    };
 
   }
 

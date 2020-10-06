@@ -8,19 +8,26 @@
  *   https://sailsjs.com/docs/concepts/policies
  *   https://sailsjs.com/docs/concepts/policies/access-control-and-permissions
  */
-module.exports = async function (req, res, proceed) {
+module.exports = function (req, res, next) {
 
-  // If `req.me` is set, then we know that this request originated
-  // from a logged-in user.  So we can safely proceed to the next policy--
-  // or, if this is the last policy, the relevant action.
-  // > For more about where `req.me` comes from, check out this app's
-  // > custom hook (`api/hooks/custom/index.js`).
-  if (req.me) {
-    return proceed();
+  // get token from header an validate it
+  var token = req.headers["x-token"];
+
+  function send401() {
+    res.send(401, { err: 'E_LOGIN_REQUIRED', message: 'Login required' });
   }
 
-  //--•
-  // Otherwise, this request did not come from a logged-in user.
-  return res.unauthorized();
+  // validate we have all params
+  if (!token) return send401();
 
+  // validate token and set req.User if we have a valid token
+  sails.services.tokenauth.verifyToken(token, function (err, data) {
+    if (err) return send401();
+
+    User.findOne({ id: data.userId }, function (err, User) {
+      if (err) send401();
+      req.User = User;
+      next();
+    });
+  });
 };
