@@ -4,10 +4,12 @@ var config = require('../../config')
 
 class Home extends React.Component {
     render() {
-        return <div>
+        return(
+        <div>
             <h1>Hello, This is a test, backend at {config.backendLocation}</h1>
             <img src={ContainerImage} />
-        </div>;
+        </div>
+        )
     }
 }
 
