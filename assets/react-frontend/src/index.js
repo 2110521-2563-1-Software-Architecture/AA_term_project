@@ -1,20 +1,30 @@
-import React from 'react';
-// import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './styles.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import $ from "jquery";
+import Popper from "popper.js";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import Login from "./components/login.js";
-import SignUp from "./components/signup.js";
-import Home from "./pages/home.js"
-import Navbar from "./pages/nav-bar"
-function App() {
-  return (<Router>
-         <Navbar/>
-          <Switch>
-            <Route path='/' component={Home} />
-          </Switch>
-    </Router>
+import Home from './pages/home';
+import RegisterCard from './components/RegisterCard';
+import RegisterPage from "./pages/RegisterPage";
+
+const App = () => {
+  return (
+    <div> <RegisterCard /></div>
+    /*<Router>
+      <Switch>
+        <Route path="/">
+          <register />
+        </Route>
+      </Switch>
+    </Router>*/
   );
-}
+};
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
