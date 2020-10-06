@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GuestLoginForm from "../components/guest-login";
 import UserForm from "../components/user-nav";
 import SkipForm from "../components/skip-nav";
-import { Link } from "react-router-dom";
+import LogoImage from '../../assets/logo.png';
 
 
 const Navbar = () => {
@@ -24,12 +24,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to={"/register"}>positronX.io</Link>
-          {selectState(state)}
-        </div>
-    </nav>
+    <div className="nav-background">
+      <div className="nav-wrapper">
+        <img className="nav-img" src={LogoImage}/>{/* This is logo */}
+        {selectState(state)}
+      </div>
+    </div>
 
   );
 };

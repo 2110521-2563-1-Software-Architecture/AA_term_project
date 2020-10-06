@@ -1,55 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
-h1,h2,h3,h4,h5,h6,label,span {
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+:root {
+  --nav-bg-color: #2F4F4F;
+  --nav-bnt-color: #FFD942;
 }
 
-body, html, .App, #root, .auth-wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-.navbar-light {
-  background-color: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-}
-
-.auth-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: left;
-}
-
-.auth-inner {
-  width: 450px;
-  margin: auto;
-  background: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
-  border-radius: 15px;
-  transition: all .3s;
-}
-
-.auth-wrapper .form-control:focus {
-  border-color: #167bff;
-  box-shadow: none;
-}
-
-.auth-wrapper h3 {
+.App {
+  font-family: sans-serif;
   text-align: center;
-  margin: 0;
-  line-height: 1;
-  padding-bottom: 20px;
 }
 
-.custom-control-label {
-  font-weight: 400;
+.nav-img{
+  height: 40px;
+  font-family: sans-serif;
+  margin-left: 10;
 }
 
 .nav-background {
-  background-color: brown;
+  background-color:  var(--nav-bg-color);
   height: 64px;
 }
 
@@ -58,7 +26,8 @@ body, html, .App, #root, .auth-wrapper {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 5rem;
+  margin: 0 2rem;
+
 }
 
 .nav-sign-form {
@@ -66,7 +35,7 @@ body, html, .App, #root, .auth-wrapper {
   flex-direction: row;
   justify-content: space-evenly;
   width: 500px;
-  height: 39;
+  height: 40;
 }
 
 .nav-input-form {
@@ -83,7 +52,9 @@ body, html, .App, #root, .auth-wrapper {
 
 .nav-label {
   margin-bottom: 0px;
-  font-size: 20px;
+  margin-top: 0px;
+  padding-top: 8px;
+  font-size: 14px;
   color: white;
 }
 
@@ -101,16 +72,18 @@ body, html, .App, #root, .auth-wrapper {
 .sign-up-btn {
   width: 80px;
   height: 36px;
-  margin-top: 8px;
+  margin-top: 16px;
+  font-size: 16px;
   cursor: pointer;
-  background-color: orange;
+  background-color: var(--nav-bnt-color);
   border-radius: 5px;
 }
 
 .login-label {
-  margin-top: 18px;
-  font-size: 20px;
-  color: black;
+  margin-top: 22px;
+  font-size: 18px;
+  font-family: sans-serif;
+  color:  var(--nav-bnt-color);
   cursor: pointer;
   margin-left: -10px;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-
+import "../styles.css";
 const GuestLoginForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ const GuestLoginForm = (props) => {
     <div className="nav-sign-form">
       <div className="nav-input-form">
         <div className="nav-form">
-          <h6 className="nav-label">email</h6>
+          <h6 className="nav-label">Username</h6>
           <input
             className="nav-input"
             type="text"
@@ -30,7 +30,7 @@ const GuestLoginForm = (props) => {
           />
         </div>
         <div className="nav-form">
-          <h6 className="nav-label">password</h6>
+          <h6 className="nav-label">Password</h6>
           <input
             className="nav-input"
             type="password"
@@ -47,7 +47,7 @@ const GuestLoginForm = (props) => {
       >
         sign in
       </h5>
-      <button onClick={() => props.onSet("skip")} className="sign-up-btn">
+      <button onClick={() => props.onSet("sign-up")} className="sign-up-btn">
         sign up
       </button>
     </div>

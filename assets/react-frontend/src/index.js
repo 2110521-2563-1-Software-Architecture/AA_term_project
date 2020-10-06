@@ -5,15 +5,21 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-//import "bootstrap/dist/css/bootstrap.min.css";
-//import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import Home from './pages/home';
+import Navbar from './pages/nav-bar';
 import RegisterCard from './components/RegisterCard';
 
 const App = () => {
   return (
+    <Router>
+    <Navbar/>
     <div><RegisterCard /></div>
+    <Switch>
+      <Route>
+
+      </Route>
+    </Switch>
+    </Router>
   );
 };
 
