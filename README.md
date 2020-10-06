@@ -29,8 +29,22 @@ Note:  Generators are usually run using the globally-installed `sails` CLI (comm
 # Basics info for collaborators
 - At the current moment, environmental variables are not embedded into the app yet, so stay tuned
 
+
+## Endpoints
+All of these use `application/json` as content-type along with `x-token` header containing the jwt
+
+| Method      | Url         | body params      | Description |
+| ----------- | ----------- | ----------- | ----------- |
+| POST      | api/v1/entrance/signup       |fullName, emailAddress, password| create new user, return email and the token to be included in auth required requests | 
+| PUT   | api/v1/entrance/login        | emailAddress, password| login, return email and the token to be included in auth required requests
+| GET | api/vi/account/me | - | Return email address of the token, use to test the login procedure
+
 ## Backend
-- The app is under heavy configuration, but basically what I believe is that `account management` and `REST` features are built in with it, stay tuned for more documentation
+- Make sure you have mongodb running on port 27017 on local without password set. Else change the database url in config/datastores
+
+### Configuring new route
+- Add action via `api/controllers` then use them at `config/routes.js`
+- Add modesl via `api/models`
 
 ## Frontend
 
