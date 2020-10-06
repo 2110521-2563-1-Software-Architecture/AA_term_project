@@ -7,14 +7,18 @@ import {
 } from 'react-router-dom';
 
 import Home from './pages/home';
+import Register  from './pages/register';
+import Navbar from './pages/nav-bar';
+
 
 const App = () => {
   return (
     <Router>
+      <Navbar/>
       <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/" component = {Home}/>
+        <Route path="/register" component = {Register} />
+
       </Switch>
     </Router>
   );
