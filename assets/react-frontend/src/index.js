@@ -9,11 +9,11 @@ import {
 //import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import Home from './pages/home';
-import RegisterCard from './components/RegisterCard';
+import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
   return (
-    <div><RegisterCard /></div>
+    <div><RegisterPage /></div>
   );
 };
 
