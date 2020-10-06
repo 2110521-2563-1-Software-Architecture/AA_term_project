@@ -17,13 +17,14 @@ class RegisterCard extends React.Component {
 
   render() {
     return (
+    <div className="decorate" align="center" style={{ paddingTop: 70 }}>
       <div className="Card " style={{ width: 750 }}>
-        <div className="Card " style={{ width: 750 }}>
+        <div className="Card " style={{ width: 750}}>
           <br />
         </div>
         <div
           className="Card box"
-          style={{ width: 750, border: "thick solid black" }}
+          style={{ width: 500, border: "thick solid black" }}
         >
           <br />
           <div className="row">
@@ -37,47 +38,12 @@ class RegisterCard extends React.Component {
             className="needs-validation"
             onSubmit={(event) => this.onSubmit(event)}
           >
+            
             <div className="row">
               <div className="col-md-2"></div>
               <div className="col-md-4">
-                <br />
+                <div align="left" style={{ width: 250, fontFamily: "Courier New"}}>Username</div>
                 <label className="text-dark">
-                  First Name
-                  <br />
-                  <input
-                    type="text"
-                    style={{ width: 250 }}
-                    name="firstName"
-                    required
-                    onChange={(e) => {
-                      this.setState({ firstName: e.target.value });
-                    }}
-                  />
-                </label>
-              </div>
-              <div className="col-md-4">
-                <br />
-                <label className="text-dark">
-                  Last Name
-                  <br />
-                  <input
-                    type="text"
-                    style={{ width: 250 }}
-                    name="lastName"
-                    required
-                    onChange={(e) => {
-                      this.setState({ lastName: e.target.value });
-                    }}
-                  />
-                </label>
-              </div>
-              <div className="col-md-2"></div>
-            </div>
-            <div className="row">
-              <div className="col-md-2"></div>
-              <div className="col-md-4">
-                <label className="text-dark">
-                  User Name
                   <input
                     type="text"
                     style={{ width: 250 }}
@@ -89,9 +55,10 @@ class RegisterCard extends React.Component {
                   />
                 </label>
               </div>
+              <br />
               <div className="col-md-4">
+              <div align="left" style={{ width: 250, fontFamily: "Courier New"}} >Password</div>
                 <label className="text-dark">
-                  password
                   <input
                     type="password"
                     style={{ width: 250 }}
@@ -105,40 +72,7 @@ class RegisterCard extends React.Component {
               </div>
               <div className="col-md-2"></div>
             </div>
-            <div className="row">
-              <div className="col-md-2"></div>
-              <div className="col-md-4">
-                <label className="text-dark">
-                  Email
-                  <input
-                    placeholder="user1@gmail.com"
-                    type="email"
-                    style={{ width: 250 }}
-                    name="Email"
-                    required
-                    onChange={(e) => {
-                      this.setState({ Email: e.target.value });
-                    }}
-                  />
-                </label>
-              </div>
-              <div className="col-md-4">
-                <label className="text-dark">
-                  Phone Number
-                  <input
-                    placeholder="0920257845"
-                    type="tel"
-                    style={{ width: 250 }}
-                    name="phoneNumber"
-                    required
-                    onChange={(e) => {
-                      this.setState({ phoneNumber: e.target.value });
-                    }}
-                  />
-                </label>
-              </div>
-              <div className="col-md-2"></div>
-            </div>
+            
             <div className="row">
               <div className="col-md-5"></div>
               <div className="col-md-2">
@@ -147,8 +81,9 @@ class RegisterCard extends React.Component {
                   type="submit"
                   id="submit"
                   className="btn btn-outline-dark"
+                  style={{ fontFamily: "Courier New" }}
                 >
-                  Register
+                  sign up
                 </button>
               </div>
               <div className="col-md-5"></div>
@@ -157,6 +92,7 @@ class RegisterCard extends React.Component {
           <br />
         </div>
       </div>
+    </div>
     );
   }
  /*onSubmit = async (event) => {
