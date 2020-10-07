@@ -8,12 +8,12 @@ import {
 
 import Navbar from './pages/nav-bar';
 import RegisterCard from './components/RegisterCard';
-
+import RegisterPage from './pages/RegisterPage';
 const App = () => {
   return (
     <Router>
     <Navbar/>
-    <div><RegisterCard /></div>
+    <div><RegisterPage/></div>
     <Switch>
       <Route>
 

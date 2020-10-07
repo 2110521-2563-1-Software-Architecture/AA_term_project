@@ -1,17 +1,14 @@
 import React from "react";
 //import history from "../history";
 //import Util from "../api/Util";
+import Logo from '../../assets/logo.png'
 
 class RegisterCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
       userName: "",
       password: "",
-      Email: "",
-      phoneNumber: "",
     };
   }
 
@@ -20,6 +17,7 @@ class RegisterCard extends React.Component {
     <div className="decorate" align="center" style={{ paddingTop: 70 }}>
       <div className="Card " style={{ width: 750 }}>
         <div className="Card " style={{ width: 750}}>
+          <img src={Logo} style={{ width: 160}}/>
           <br />
         </div>
         <div
@@ -38,7 +36,7 @@ class RegisterCard extends React.Component {
             className="needs-validation"
             onSubmit={(event) => this.onSubmit(event)}
           >
-            
+
             <div className="row">
               <div className="col-md-2"></div>
               <div className="col-md-4">
@@ -72,7 +70,7 @@ class RegisterCard extends React.Component {
               </div>
               <div className="col-md-2"></div>
             </div>
-            
+
             <div className="row">
               <div className="col-md-5"></div>
               <div className="col-md-2">
@@ -99,12 +97,8 @@ class RegisterCard extends React.Component {
     //event.preventDefault();
     history.push("/login");
      let data = await Util.register(
-      this.state.firstName,
-      this.state.lastName,
       this.state.userName,
       this.state.password,
-      this.state.Email,
-      this.state.phoneNumber
     );
     console.log(data);
     if (data.errmsg) {
