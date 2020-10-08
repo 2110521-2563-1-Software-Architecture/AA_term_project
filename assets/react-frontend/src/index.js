@@ -5,15 +5,21 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import Navbar from './pages/nav-bar';
-import RegisterCard from './components/RegisterCard';
 import RegisterPage from './pages/RegisterPage';
+import ShortenForm from './components/shorten-form';
+import ShortenLinkPage from './pages/shorten-link-page';
+import RegisterCard from './components/RegisterCard';
+import SkipPage from './pages/skip-page';
 const App = () => {
   return (
     <Router>
     <Navbar/>
-    <div><RegisterPage/></div>
+    <ShortenLinkPage/>
+    {/* <RegisterPage/>
+    <SkipPage/> */}
     <Switch>
       <Route>
 
