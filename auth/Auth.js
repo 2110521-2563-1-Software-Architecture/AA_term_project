@@ -55,7 +55,7 @@ passport.use('register', new localStrategy({
 }));
 
 passport.use('jwt-user', new JWTstrategy({
-  secretOrKey: process.env.JWT_SECRET,
+  secretOrKey: settings.JWT_SECRET,
   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT')//from user param
 }, async (token, done) => {
   try {
