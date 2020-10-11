@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../style.css";
+import "../styles.css";
 
 const SkipForm = (props) => {
   const [count, setCount] = useState(5);

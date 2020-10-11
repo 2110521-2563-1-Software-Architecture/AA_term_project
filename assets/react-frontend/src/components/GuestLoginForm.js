@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../style.css";
+import "../styles.css";
 
 const GuestLoginForm = (props) => {
   const [email, setEmail] = useState("");
