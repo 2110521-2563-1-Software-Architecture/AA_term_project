@@ -44,7 +44,8 @@
     "start": "npm-run-all --parallel backend-dev frontend-dev",
     "backend-dev": "nodemon index.js --config nodemon.json",
     "frontend-dev": "webpack-dev-server --config webpack.config.js --hot --inline",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "heroku-prebuild": "npm install --dev"
   },
   "main": "index.js",
   "repository": {
