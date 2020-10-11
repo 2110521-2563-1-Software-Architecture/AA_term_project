@@ -88,4 +88,4 @@ Frontend app should be available at `localhost:8080` while backend app should be
 
 ## Deployment
 
-Will be added later
+Things from master branch will be automatically deployed to https://softarch-project-aa.herokuapp.com/
