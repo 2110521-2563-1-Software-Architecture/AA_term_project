@@ -6,7 +6,7 @@ module.exports = {
     entry: './assets/react-frontend/src/index.js'
   },
   output: {
-    path: __dirname + '/.tmp/public',
+    path: __dirname + '/build',
     filename: 'bundle.js'
   },
   module: {
