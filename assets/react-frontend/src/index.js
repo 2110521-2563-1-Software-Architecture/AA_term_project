@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/">
+        <Route path="/" exact>
           <Home />
         </Route>
       </Switch>

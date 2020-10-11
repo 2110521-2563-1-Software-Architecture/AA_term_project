@@ -35,6 +35,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    writeToDisk: true
+    writeToDisk: true,
+    historyApiFallback: true
   }
 }
