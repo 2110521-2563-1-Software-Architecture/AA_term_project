@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './pages/home';
-import Navbar from './pages/Navbar'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (

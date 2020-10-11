@@ -3,10 +3,10 @@ import GuestLoginForm from "./GuestLoginForm";
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
 
-import "../style.css";
+import "../styles.css";
 
 const Navbar = () => {
-  const [state, setState] = useState("skip");
+  const [state, setState] = useState("guest");
 
   const selectState = (st) => {
     switch (st) {
