@@ -1,5 +1,5 @@
 import React from "react";
-//import history from "../history";
+import history from "../history";
 //import Util from "../api/Util";
 import Logo from '../../assets/logo.png'
 
@@ -34,7 +34,7 @@ class RegisterCard extends React.Component {
           </div>
           <form
             className="needs-validation"
-            onSubmit={(event) => this.onSubmit(event)}
+            onSubmit={/*(event) => this.onSubmit(event)*/(event) => history.push("/")}
           >
 
             <div className="row">
@@ -92,6 +92,7 @@ class RegisterCard extends React.Component {
       </div>
     );
   }
+
  /*onSubmit = async (event) => {
     //event.preventDefault();
     history.push("/login");

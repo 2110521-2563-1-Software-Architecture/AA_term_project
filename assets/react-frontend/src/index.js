@@ -10,7 +10,7 @@ import {
 import Navbar from './components/Navbar'
 import ShortenLinkPage from './pages/shorten-link-page';
 import SkipPage from './pages/skip-page';
-import RegisterCard from './pages/register-page';
+import RegisterPage from './pages/register-page';
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
           <SkipPage />
         </Route>
         <Route path="/register" exact>
-          <RegisterCard />
+          <RegisterPage />
         </Route>
       </Switch>
     </Router>
