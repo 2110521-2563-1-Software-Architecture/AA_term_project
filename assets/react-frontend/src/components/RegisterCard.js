@@ -14,7 +14,6 @@ class RegisterCard extends React.Component {
 
   render() {
     return (
-    <div className="decorate" align="center" style={{ paddingTop: 70 }}>
       <div className="Card " style={{ width: 750 }}>
         <div className="Card " style={{ width: 750}}>
           <img src={Logo} style={{ width: 160}}/>
@@ -31,6 +30,7 @@ class RegisterCard extends React.Component {
                 Register
               </h2>
             </div>
+            <br />
           </div>
           <form
             className="needs-validation"
@@ -90,7 +90,6 @@ class RegisterCard extends React.Component {
           <br />
         </div>
       </div>
-    </div>
     );
   }
  /*onSubmit = async (event) => {
