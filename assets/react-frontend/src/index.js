@@ -8,6 +8,8 @@ import {
 
 import Home from './pages/home';
 import Navbar from './components/Navbar'
+import ShortenLinkPage from './pages/shorten-link-page';
+import SkipPage from './pages/skip-page';
 
 const App = () => {
   return (
@@ -15,7 +17,10 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          <Home />
+          <ShortenLinkPage />
+        </Route>
+        <Route path="/ads" exact>
+          <SkipPage />
         </Route>
       </Switch>
     </Router>

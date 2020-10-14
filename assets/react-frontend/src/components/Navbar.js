@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GuestLoginForm from "./GuestLoginForm";
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
-
+import Logo from '../../assets/logo.png'
 import "../styles.css";
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="nav-background">
       <div className="nav-wrapper">
-        <h1> jj </h1> {/* This is logo */}
+        <img className="logo-img" src={Logo}/>
         {selectState(state)}
       </div>
     </div>
