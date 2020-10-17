@@ -45,7 +45,7 @@ const Navbar = () => {
       case "user":
         return <UserForm onSet={setState} />;
       case "sign-up":
-        return <h1>sign</h1>;
+        return <GuestLoginForm onSet={setState} />;
       case "skip":
         return <SkipForm onSet={setState} />;
       default:

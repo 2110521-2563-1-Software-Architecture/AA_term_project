@@ -63,9 +63,13 @@ class ShortenForm extends React.Component {
               <div className="col-md-2"></div>
             </div>
 
+<<<<<<< HEAD:frontend/react-frontend/src/components/ShortenForm.js
+            <div className="col-md-4" style={{display: "none"}}>
+=======
             <div>
             
             <div className="col-md-4">
+>>>>>>> add qr code to home:assets/react-frontend/src/components/ShortenForm.js
                 <div align="left" style={{ width: 300, fontFamily: "Courier New"}}>Domain</div>
                 <label className="text-dark">
                   <input
@@ -78,9 +82,14 @@ class ShortenForm extends React.Component {
                   />
                 </label>
               </div>
+<<<<<<< HEAD:frontend/react-frontend/src/components/ShortenForm.js
+              
+
+=======
               <br />
             
             </div>
+>>>>>>> add qr code to home:assets/react-frontend/src/components/ShortenForm.js
 
 
             <div className="row">
