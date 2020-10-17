@@ -1,5 +1,5 @@
 import React from 'react';
-import ShortenForm from '../components/shorten-form';
+import ShortenForm from '../components/ShortenForm';
 
 class ShortenLinkPage extends React.Component {
     render() {

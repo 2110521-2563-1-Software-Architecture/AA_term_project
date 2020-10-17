@@ -1,5 +1,5 @@
 import React from 'react';
-import Ads from '../components/ads';
+import Ads from '../components/Ads';
 
 class SkipPage extends React.Component {
     render() {
