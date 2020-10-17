@@ -48,7 +48,7 @@ const GuestLoginForm = (props) => {
       >
         sign in
       </h5>
-      <button onClick={() => props.onSet("skip")} className="sign-up-btn">
+      <button onClick={() => props.onSet("sign-up")} className="sign-up-btn">
         sign up
       </button>
     </div>

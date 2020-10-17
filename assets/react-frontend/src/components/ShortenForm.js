@@ -2,16 +2,20 @@ import React from "react";
 //import history from "../history";
 //import Util from "../api/Util";
 import Logo from '../../assets/logo.png'
-
-import "./shorten-form.css"
+import QRCode from "qrcode.react";
+import "./ShortenForm.css"
 class ShortenForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       webside: "",
       domain: "",
+      shorten_web:"www.google.com",
     };
   }
+  clearPage(){
+    this.setState({ webside: "", domain: "", shorten_web: ""})
+  };
 
   render() {
     return (
@@ -40,8 +44,9 @@ class ShortenForm extends React.Component {
 
             <div className="row">
               <div className="col-md-2"></div>
-              <div className="col-md-4">
-                <div align="left" style={{width:300, fontFamily: "Courier New"}}>www.</div>
+             
+              <div className="col-md-4" >
+                <div align="left" style={{width:300, fontFamily: "Courier New"}}>Website</div>
                 <label className="text-dark">
                   <input
                     type="text"
@@ -58,6 +63,8 @@ class ShortenForm extends React.Component {
               <div className="col-md-2"></div>
             </div>
 
+            <div>
+            
             <div className="col-md-4">
                 <div align="left" style={{ width: 300, fontFamily: "Courier New"}}>Domain</div>
                 <label className="text-dark">
@@ -72,16 +79,17 @@ class ShortenForm extends React.Component {
                 </label>
               </div>
               <br />
-
+            
+            </div>
 
 
             <div className="row">
               <div className="col-md-2">
                 <button
-                  type="submit"
                   id="submit"
                   className="btn btn-outline-dark"
                   style={{ fontFamily: "Courier New" }}
+                  onClick={()=>this.onClickGenerate()}
                 >
                   Generate URL
                 </button>
@@ -90,7 +98,7 @@ class ShortenForm extends React.Component {
           </form>
           <br />
           <div className="output">
-            <input className="box2" value="www.aaa.com" id = "webside_output"/>
+            <input className="box2" value={this.state.shorten_web} id = "webside_output"/>
             <button
               className = "copy_btn"
               onClick={e => {
@@ -104,7 +112,8 @@ class ShortenForm extends React.Component {
               Copy
             </button>
             <div className="box_qr">
-            <img className="qr_img" src={Logo} id ="qr_img"/>
+              {this.state.shorten_web?<QRCode size ="200" value={this.state.shorten_web}/>
+              : <img className="qr_img" src={Logo} id ="qr_img"/> }
             </div>
           </div>
         </div>
@@ -114,24 +123,34 @@ class ShortenForm extends React.Component {
     );
   }
 
-
- /*generateQR = async (event) => {
-    //event.preventDefault();
-    history.push("/login");
-     let data = await Util.generateQR(
-      this.state.webside,
-      this.state.domain,
-    );
-    qr_src = data.qrCode
-    shorten_link = data.shortenLink
-    console.log(data);
-    if (data.errmsg) {
-      window.alert(data.errmsg);
-    } else {
-      //set shorten_link to value on id webside_output
-      //set qr_src to src on id qr_img
-    }
-  };*/
+  
+  onClickGenerate() {
+    // let data = await Util.generateShortenLink(
+    //   this.state.webside,
+    //   this.state.domain,
+    // );
+     event.preventDefault();
+     console.log("test");
+    // console.log(thos.state.webside)
+    // console.log(data)
+    // if(data == null){
+    //   console.log("error")
+    // }
+    // shorten_link = data.shortenLink
+    // console.log(data);
+    // if (data.errmsg) {
+    //   window.alert(data.errmsg);
+    // } else {
+    
+      this.setState({shorten_web : "www.google.com"});
+    // }
+  };
+  async componentDidMount() {
+    this.clearPage();
+  }
+ 
 }
+
+
 
 export default ShortenForm;
