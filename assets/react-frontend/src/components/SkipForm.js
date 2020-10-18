@@ -1,6 +1,21 @@
 import React, { useState } from "react";
+import styled from 'styled-components'
 
-import "../style.css";
+const SkipWrapper = styled.div`
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+
+  .btn {
+    width: 80px;
+    height: 36px;
+    margin-top: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FFD942;
+    border-radius: 5px;
+  }
+`
 
 const SkipForm = (props) => {
   const [count, setCount] = useState(5);
@@ -38,11 +53,11 @@ const SkipForm = (props) => {
   };
 
   return (
-    <div className="nav-wrapper">
-      <button onClick={() => getSkip()} className="sign-up-btn">
+    <SkipWrapper>
+      <button onClick={() => getSkip()} className="btn">
         {isSkip ? count : label}
       </button>
-    </div>
+    </SkipWrapper>
   );
 };
 
