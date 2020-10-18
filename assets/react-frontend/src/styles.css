@@ -4,21 +4,6 @@
   font-family: Roboto
 }
 
-.nav-background {
-  background-color: #2F4F4F;
-  height: 64px;
-}
-
-.nav-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 64px;
-  margin-left: 3rem;
-  margin-right: 1rem;
-}
-
 .nav-sign-form {
   display: flex;
   flex-direction: row;
