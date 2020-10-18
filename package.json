@@ -25,6 +25,7 @@
     "qrcode.react": "^1.0.0",
     "randomstring": "^1.1.5",
     "react": "^16.13.1",
+    "react-alice-carousel": "^2.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
   },

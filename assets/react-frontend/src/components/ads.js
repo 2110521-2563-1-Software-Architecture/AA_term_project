@@ -1,46 +1,82 @@
-import React from "react";
+import React,{Component}from "react";
 //import history from "../history";
 //import Util from "../api/Util";
+import AliceCarousel from 'react-alice-carousel';
 import Logo from '../../assets/logo.png'
+import Con from '../../assets/container.jpg'
+
 
 import "./Ads.css"
-import { Link } from "react-router-dom";
+const responsive = {
+  0: { items: 1 },
+  1024: { items: 2 },
+};
 class Ads extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
-      link1: "",
-      link2: "",
-      ads1_src:"",
-      ads2_src:"",
+      galleryItems : [],
     };
   }
 
+
   render() {
     return (
-    <div className="adv_container" style={{ paddingTop: 70 }}>
-      {this.state.ads1_src?
-      <div className="box_ads">
-            <a href={this.state.link1} ><img className="ads_img" src={this.state.ads1_src} /></a>
-
-      </div>:
-      <div/>
-      }
-      { 
-      this.state.ads2_src?
-      <div className="box_ads">
-        <a href={this.state.link2}><img className="ads_img" src={this.state.ads2_src} id ="ads2"/></a>
-      </div>:
-      <div/>
-    }
+      <div>
+      <AliceCarousel
+        items={this.state.galleryItems}
+        duration={100}
+        disableButtonsControls={true}
+        disableDotsControls={true}
+        disableSlideInfo={true}
+        autoPlay={true}
+        startIndex = {1}
+        responsive={responsive}
+        autoPlayInterval={1000}
+        paddingLeft = "100"
+        infinite = {true}
+       />
     </div>
     );
   }
 
-  componentDidMount(){
-    /*link = "https://"" */
-    this.setState({link1:"https://www.google.com",link2:"https://www.google.com",ads1_src:Logo,ads2_src:Logo}) 
-  }
+  
+
+  getData(){
+    // axios.get(`https://picsum.photos/v2/list?limit=6`, {})
+    // .then(res => {
+    //         const data = res.data
+    //       const img = data.map(m => 
+    //         <a href = "">
+    //         <img src={m.download_url} alt=""/>
+    //       )
+    //       this.setState({
+    //         galleryItems: img
+    //       })
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     })
+    const data = [{
+      download_url :Logo,
+      link: "https://www.facebook.com/"
+    },{
+      download_url :Con,
+      link: "https://www.facebook.com/"
+    }]
+    const img = data.map(m=>
+              <a href = {m.link}>
+              <img className="ads_img" src={m.download_url} alt=""/>
+              </a>
+    )
+    this.setState({
+              galleryItems: img
+            })
+    }
+
+   
+    componentDidMount() {
+      this.getData()
+    }
 
 }
 
