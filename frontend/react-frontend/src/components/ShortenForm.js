@@ -76,9 +76,8 @@ class ShortenForm extends React.Component {
                   />
                 </label>
               </div>
-              <br />
-            
-            </div>
+              
+
 
 
             <div className="row">
