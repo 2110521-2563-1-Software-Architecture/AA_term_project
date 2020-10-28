@@ -63,9 +63,7 @@ class ShortenForm extends React.Component {
               <div className="col-md-2"></div>
             </div>
 
-            <div>
-            
-            <div className="col-md-4">
+            <div className="col-md-4" style={{display: "none"}}>
                 <div align="left" style={{ width: 300, fontFamily: "Courier New"}}>Domain</div>
                 <label className="text-dark">
                   <input
