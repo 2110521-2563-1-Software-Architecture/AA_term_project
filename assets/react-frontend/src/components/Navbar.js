@@ -36,7 +36,7 @@ background-color: #2F4F4F;
 `
 
 const Navbar = () => {
-  const [state, setState] = useState("user");
+  const [state, setState] = useState("guest");
 
   const selectState = (st) => {
     switch (st) {
