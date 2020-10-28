@@ -63,7 +63,7 @@ class HistoryPage extends React.Component {
           </div>
             <div className="row">
                   {this.state.data.map(item => (
-                    <div>{item.url}{item.number}</div>
+                    <div style={{display:"flex", justifyContent:'space-evenly'}}><div>{item.url}</div><div>{item.number}</div></div>
                   ))}
             </div>
           <br />
