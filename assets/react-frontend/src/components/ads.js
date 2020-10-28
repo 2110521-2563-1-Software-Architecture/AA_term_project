@@ -1,4 +1,4 @@
-import React,{Component}from "react";
+import React, { Component } from "react";
 //import history from "../history";
 //import Util from "../api/Util";
 import AliceCarousel from 'react-alice-carousel';
@@ -6,7 +6,7 @@ import Logo from '../../assets/logo.png'
 import Con from '../../assets/container.jpg'
 
 
-import "./Ads.css"
+import "./ads.css"
 const responsive = {
   0: { items: 1 },
   1024: { items: 2 },
@@ -15,7 +15,7 @@ class Ads extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      galleryItems : [],
+      galleryItems: [],
     };
   }
 
@@ -23,26 +23,26 @@ class Ads extends React.Component {
   render() {
     return (
       <div>
-      <AliceCarousel
-        items={this.state.galleryItems}
-        duration={100}
-        disableButtonsControls={true}
-        disableDotsControls={true}
-        disableSlideInfo={true}
-        autoPlay={true}
-        startIndex = {1}
-        responsive={responsive}
-        autoPlayInterval={1000}
-        paddingLeft = "100"
-        infinite = {true}
-       />
-    </div>
+        <AliceCarousel
+          items={this.state.galleryItems}
+          duration={100}
+          disableButtonsControls={true}
+          disableDotsControls={true}
+          disableSlideInfo={true}
+          autoPlay={true}
+          startIndex={1}
+          responsive={responsive}
+          autoPlayInterval={1000}
+          paddingLeft="100"
+          infinite={true}
+        />
+      </div>
     );
   }
 
-  
 
-  getData(){
+
+  getData() {
     // axios.get(`https://picsum.photos/v2/list?limit=6`, {})
     // .then(res => {
     //         const data = res.data
@@ -57,26 +57,26 @@ class Ads extends React.Component {
     //         console.log(error)
     //     })
     const data = [{
-      download_url :Logo,
+      download_url: Logo,
       link: "https://www.facebook.com/"
-    },{
-      download_url :Con,
+    }, {
+      download_url: Con,
       link: "https://www.facebook.com/"
     }]
-    const img = data.map(m=>
-              <a href = {m.link}>
-              <img className="ads_img" src={m.download_url} alt=""/>
-              </a>
+    const img = data.map(m =>
+      <a href={m.link}>
+        <img className="ads_img" src={m.download_url} alt="" />
+      </a>
     )
     this.setState({
-              galleryItems: img
-            })
-    }
+      galleryItems: img
+    })
+  }
 
-   
-    componentDidMount() {
-      this.getData()
-    }
+
+  componentDidMount() {
+    this.getData()
+  }
 
 }
 
