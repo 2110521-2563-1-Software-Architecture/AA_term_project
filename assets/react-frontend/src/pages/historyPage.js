@@ -2,7 +2,7 @@ import React from "react";
 import Logo from '../../assets/logo.png'
 //import history from "../history";
 //import Util from "../api/Util";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class HistoryPage extends React.Component {
   constructor(props) {
     super(props);

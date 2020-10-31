@@ -2,7 +2,7 @@ import React from "react";
 import history from "../history";
 //import Util from "../api/Util";
 import Logo from '../../assets/logo.png'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class RegisterCard extends React.Component {
   constructor(props) {
     super(props);
