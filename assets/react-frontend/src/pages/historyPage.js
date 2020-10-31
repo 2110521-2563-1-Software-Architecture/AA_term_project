@@ -3,6 +3,7 @@ import Logo from '../../assets/logo.png'
 //import history from "../history";
 //import Util from "../api/Util";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 class HistoryPage extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +51,7 @@ class HistoryPage extends React.Component {
         </div>
         <div
           className="Card box"
-          style={{ width: 500, border: "thick solid black" }}
+          style={{ width: 600, border: "thick solid black" }}
         >
           <br />
           <div className="row">
@@ -61,10 +62,27 @@ class HistoryPage extends React.Component {
             </div>
             <br />
           </div>
-            <div className="row">
-                  {this.state.data.map(item => (
-                    <div style={{display:"flex", justifyContent:'space-evenly'}}><div>{item.url}</div><div>{item.number}</div></div>
-                  ))}
+            <div className="row" align="center">
+            <div className="col-md-12" align="center">
+              <table class="table table-bordered table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" style={{ fontFamily: "Courier New" }}>#</th>
+                        <th scope="col" style={{ fontFamily: "Courier New" }}>url</th>
+                        <th scope="col" style={{ fontFamily: "Courier New" }}>view</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.data.map(item => (
+                      <tr>
+                        <th scope="row" style={{ fontFamily: "Courier New" }}>1</th>
+                        <td style={{ fontFamily: "Courier New" }}>{item.url}</td>
+                        <td style={{ fontFamily: "Courier New" }}>{item.number}</td>
+                      </tr>
+                      ))}
+                  </tbody>
+                </table>
+                </div>    
             </div>
           <br />
         </div>
