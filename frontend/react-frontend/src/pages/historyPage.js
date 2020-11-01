@@ -43,12 +43,8 @@ class HistoryPage extends React.Component {
       return Emp;
     } else {
       return (
-        <div className="decorate" align="center" style={{ paddingTop: 70 }}>
+        <div className="decorate" align="center" style={{ paddingTop: 50 }}>
         <div className="Card " style={{ width: 750 }}>
-        <div className="Card " style={{ width: 750}}>
-          <img src={Logo} style={{ width: 160}}/>
-          <br />
-        </div>
         <div
           className="Card box"
           style={{ width: 600, border: "thick solid black" }}
