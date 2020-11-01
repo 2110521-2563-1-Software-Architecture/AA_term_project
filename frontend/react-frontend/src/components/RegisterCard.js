@@ -1,6 +1,7 @@
 import React from "react";
 import history from "../history";
 //import Util from "../api/Util";
+import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 class RegisterCard extends React.Component {
@@ -38,8 +39,7 @@ class RegisterCard extends React.Component {
           >
 
             <div className="row">
-              <div className="col-md-2"></div>
-              <div className="col-md-4">
+              <div className="col-md-12">
                 <div align="left" style={{ width: 250, fontFamily: "Courier New"}}>Username</div>
                 <label className="text-dark">
                   <input
@@ -54,7 +54,7 @@ class RegisterCard extends React.Component {
                 </label>
               </div>
               <br />
-              <div className="col-md-4">
+              <div className="col-md-12">
               <div align="left" style={{ width: 250, fontFamily: "Courier New"}} >Password</div>
                 <label className="text-dark">
                   <input
@@ -68,12 +68,11 @@ class RegisterCard extends React.Component {
                   />
                 </label>
               </div>
-              <div className="col-md-2"></div>
             </div>
 
             <div className="row">
-              <div className="col-md-5"></div>
-              <div className="col-md-2">
+              <div className="col-md-4"></div>
+              <div className="col-md-4">
                 <br />
                 <button
                   type="submit"
@@ -84,7 +83,7 @@ class RegisterCard extends React.Component {
                   sign up
                 </button>
               </div>
-              <div className="col-md-5"></div>
+              <div className="col-md-4"></div>
             </div>
           </form>
           <br />
