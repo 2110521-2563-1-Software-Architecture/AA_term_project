@@ -62,12 +62,12 @@ class HistoryPage extends React.Component {
             </div>
             <br />
           </div>
-            <div className="row" align="center">
-            <div className="col-md-12" align="center">
-              <table class="table table-bordered table-sm">
+            <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col" style={{ fontFamily: "Courier New" }}>#</th>
                         <th scope="col" style={{ fontFamily: "Courier New" }}>url</th>
                         <th scope="col" style={{ fontFamily: "Courier New" }}>view</th>
                       </tr>
@@ -75,7 +75,6 @@ class HistoryPage extends React.Component {
                     <tbody>
                     {this.state.data.map(item => (
                       <tr>
-                        <th scope="row" style={{ fontFamily: "Courier New" }}>1</th>
                         <td style={{ fontFamily: "Courier New" }}>{item.url}</td>
                         <td style={{ fontFamily: "Courier New" }}>{item.number}</td>
                       </tr>
@@ -84,6 +83,7 @@ class HistoryPage extends React.Component {
                 </table>
                 </div>    
             </div>
+            <div className="col-md-1"></div>
           <br />
         </div>
       </div>
