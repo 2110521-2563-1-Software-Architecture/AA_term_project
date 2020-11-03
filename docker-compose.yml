@@ -5,8 +5,6 @@ services:
     build: main_service
     image: "main"
     container_name: main
-    ports:
-      - 3000:3000
     networks:
       - backend
       - gateway
@@ -24,8 +22,6 @@ services:
     build: redirect_microservice
     image: "redirect"
     container_name: redirect
-    ports:
-      - 3001:3001
     networks:
       - backend
       - gateway
@@ -74,7 +70,7 @@ services:
     volumes:
       - ./frontend-static:/frontend-static
     ports:
-      - 8000:8000
+      - 80:8000
     networks: 
       - gateway
     depends_on:
