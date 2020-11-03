@@ -136,6 +136,8 @@ lib-cov
 
 frontend-static/*
 !frontend-static/__init__
+!frontend-static/ads1.jpg
+!frontend-static/ads2.jpg
 
 influxdb_data/*
 !influxdb_data/__init__

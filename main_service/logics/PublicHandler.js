@@ -74,6 +74,6 @@ module.exports = {
         }
     },
     getAdsUrl: async () => {
-        return { status: 200, payload: { images: ["http://localhost/1.jpg", "http://localhost/2.jpg"] } };
+        return { status: 200, payload: { images: ["/ads1.jpg", "/ads2.jpg"] } };
     },
 };
