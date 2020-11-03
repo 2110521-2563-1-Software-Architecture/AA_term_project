@@ -1,0 +1,67 @@
+{
+  "name": "aa-term-project",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AA Term Project",
+  "keywords": [],
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "influx": "^5.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.9",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "qrcode.react": "^1.0.0",
+    "random-base64-string": "^1.0.1",
+    "randomstring": "^1.1.5",
+    "react": "^16.13.1",
+    "react-alice-carousel": "^2.0.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "dotenv-webpack": "^3.0.0",
+    "eslint": "5.16.0",
+    "file-loader": "^6.1.0",
+    "grunt": "1.0.4",
+    "html-webpack-plugin": "^4.5.0",
+    "htmlhint": "0.11.0",
+    "lesshint": "6.3.6",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "start": "npm-run-all --parallel backend-dev frontend-dev",
+    "backend-dev": "nodemon index.js --config nodemon.json",
+    "frontend-dev": "webpack-dev-server --config webpack.config.js --hot --inline",
+    "build": "webpack --mode production",
+    "heroku-prebuild": "npm install --dev"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/poomrokc/aa-term-project.git"
+  },
+  "author": "poomrokc",
+  "license": "",
+  "engines": {
+    "node": "^12.18"
+  }
+}

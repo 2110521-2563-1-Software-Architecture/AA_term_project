@@ -132,7 +132,16 @@ lib-cov
 *.out
 *.pid
 
-.env
+*.env
 
-build/*
+frontend-static/*
+!frontend-static/__init__
+!frontend-static/ads1.jpg
+!frontend-static/ads2.jpg
+
+influxdb_data/*
+!influxdb_data/__init__
+
+mongodb_data/*
+!mongodb_data/__init__
 

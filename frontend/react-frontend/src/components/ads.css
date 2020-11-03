@@ -1,0 +1,11 @@
+@import "react-alice-carousel/lib/alice-carousel.css";
+
+
+.box_ads{
+  margin: auto;
+}
+
+.ads_img{
+  height:  500px;
+ 
+}
