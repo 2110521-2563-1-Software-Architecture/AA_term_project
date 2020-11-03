@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 var Util = require('../utils/util');
@@ -8,7 +7,6 @@ router.get('/whoami', async (req, res, next) => {
 	var result = await UserHandler.home(req.user.user);
 	return res.status(result.status).json(result.payload);
 });
-
 router.patch('/profile', async (req, res, next) => {
 	if (!Util.ensureKeys(req.body, ['name']))
 		return res.status(400).json({ msg: 'Missing Params "name"' });
