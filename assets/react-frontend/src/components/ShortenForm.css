@@ -1,4 +1,3 @@
-
 .copy_btn{
   padding: 5px;
   margin: 5px;
@@ -23,9 +22,9 @@
 
 .box_qr{
   display: flex;
-  width: 200px;
-  height: 200px;
-  padding: 10px;
+  width: 210px;
+  padding: 5px;
+  height: 210px;
   border: 1px solid gray;
   margin: 10px;
 }

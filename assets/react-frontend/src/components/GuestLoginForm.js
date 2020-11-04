@@ -26,7 +26,7 @@ const GuestFormWrapper = styled.div`
     .login-label {
       margin-top: 15px;
       font-size: 16px;
-      color: #FFD942;
+      color: #FE7F2D;
       cursor: pointer;
       margin-left: -20px;
     }
@@ -41,9 +41,11 @@ const GuestFormWrapper = styled.div`
       height: 36px;
       margin-top: 8px;
       font-size: 16px;
+      color:white;
       cursor: pointer;
-      background-color: #FFD942;
+      background-color: #FE7F2D;
       border-radius: 5px;
+      border: 2px solid black;
     }
   `
 
