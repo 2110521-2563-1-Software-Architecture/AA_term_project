@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom"
 import GuestLoginForm from "./GuestLoginForm";
 import UserForm from "./UserForm";
@@ -6,6 +6,7 @@ import SkipForm from "./SkipForm";
 import Logo from '../../assets/newlogo.png'
 import styled from "styled-components"
 import "../styles.css"
+import StateContext from "../utils/context/stateContext"
 
 const NavbarWrapper = styled.div`
 font-family: Roboto;
@@ -38,12 +39,14 @@ background-color: #2F4F4F;
 `
 
 const Navbar = () => {
-  const [state, setState] = useState("guest");
+
+  const { state, setState } = useContext(StateContext)
 
   const history = useHistory()
 
   const homePageRedirect = () => {
     history.push("/")
+    setState("guest")
   }
 
   const selectState = (st) => {

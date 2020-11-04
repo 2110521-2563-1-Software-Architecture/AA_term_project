@@ -1,6 +1,5 @@
 import React from "react";
 import history from "../history";
-//import Util from "../api/Util";
 import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +10,13 @@ class RegisterCard extends React.Component {
       userName: "",
       password: "",
     };
+
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  async onSubmit(e) {
+    e.preventDefault();
+    
   }
 
   render() {
