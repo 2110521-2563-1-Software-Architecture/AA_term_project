@@ -3,6 +3,7 @@ import GuestLoginForm from "./GuestLoginForm";
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
 import Logo from '../../assets/logo.png'
+import Newlogo from '../../assets/newlogo.png'
 import styled from "styled-components"
 import "../styles.css"
 
@@ -22,7 +23,7 @@ background-color: #2F4F4F;
 }
 
 .logo-img {
-  height: 40px;
+  height: 55px;
   font-family: sans-serif;
   margin-left: 10;
 }
@@ -56,7 +57,7 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
       <div className="element-wrapper">
-        <img className="logo-img" src={Logo}/>
+        <img className="logo-img" src={Newlogo}/>
         {selectState(state)}
       </div>
     </NavbarWrapper>
