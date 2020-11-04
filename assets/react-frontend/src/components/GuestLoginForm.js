@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
 import "../styles.css";
 
@@ -61,12 +62,19 @@ const GuestLoginForm = (props) => {
     setPassword("");
   };
 
-  const signIn = (email, pass) => {
+  const handleSignIn = (email, pass) => {
     if (email === "great" && pass === "123") {
       props.onSet("user");
     }
     clearValue();
   };
+
+  const history = useHistory()
+
+  const handleSignUp = () => {
+    history.push("/register")  
+    props.onSet("sign-up")
+  }
 
   return (
     <GuestFormWrapper>
@@ -92,13 +100,13 @@ const GuestLoginForm = (props) => {
       </div>
       <h5
         onClick={() => {
-          signIn(email, password);
+          handleSignIn(email, password);
         }}
         className="login-label"
       >
         sign in
       </h5>
-      <button onClick={() => props.onSet("skip")} className="btn">
+      <button onClick={() => handleSignUp()} className="btn">
         sign up
       </button>
     </GuestFormWrapper>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom"
 import GuestLoginForm from "./GuestLoginForm";
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
-import Logo from '../../assets/logo.png'
-import Newlogo from '../../assets/newlogo.png'
+import Logo from '../../assets/newlogo.png'
 import styled from "styled-components"
 import "../styles.css"
 
@@ -26,6 +26,7 @@ background-color: #2F4F4F;
   height: 55px;
   font-family: sans-serif;
   margin-left: 10;
+  cursor: pointer;
 }
 
 @media (max-width: 650px) {
@@ -39,6 +40,12 @@ background-color: #2F4F4F;
 const Navbar = () => {
   const [state, setState] = useState("guest");
 
+  const history = useHistory()
+
+  const homePageRedirect = () => {
+    history.push("/")
+  }
+
   const selectState = (st) => {
     switch (st) {
       case "guest":
@@ -46,7 +53,7 @@ const Navbar = () => {
       case "user":
         return <UserForm onSet={setState} />;
       case "sign-up":
-        return <GuestLoginForm onSet={setState} />;
+        return null;
       case "skip":
         return <SkipForm onSet={setState} />;
       default:
@@ -57,7 +64,7 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
       <div className="element-wrapper">
-        <img className="logo-img" src={Newlogo}/>
+        <img onClick={homePageRedirect} className="logo-img" src={Logo}/>
         {selectState(state)}
       </div>
     </NavbarWrapper>
