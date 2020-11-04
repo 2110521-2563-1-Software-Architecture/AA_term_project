@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
+import Axios from "axios"
+
+import UserContext from "../utils/context/userContext"
 import "../styles.css";
 
 const GuestFormWrapper = styled.div`
@@ -62,11 +65,31 @@ const GuestLoginForm = (props) => {
     setPassword("");
   };
 
-  const handleSignIn = (email, pass) => {
-    if (email === "great" && pass === "123") {
-      props.onSet("user");
+  const { setUserToken } = useContext(UserContext)
+
+  const handleSignIn = async (email, pass) => {
+    
+    try {
+
+      const userInfo = {
+        email,
+        password: pass
+      }
+  
+      const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/login", userInfo)
+      const { status, data: { token } } = res
+  
+      if (status === 200) {
+        setUserToken(token)
+        localStorage.setItem("token", token)
+        props.onSet("user");
+        history.push("/")
+      }
+
+      clearValue();
+    } catch (err) {
+      console.log(err.message)
     }
-    clearValue();
   };
 
   const history = useHistory()
@@ -83,7 +106,7 @@ const GuestLoginForm = (props) => {
           <h6 className="label">email</h6>
           <input
             className="input"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -99,9 +122,7 @@ const GuestLoginForm = (props) => {
         </div>
       </div>
       <h5
-        onClick={() => {
-          handleSignIn(email, password);
-        }}
+        onClick={() => handleSignIn(email, password)}
         className="login-label"
       >
         sign in
