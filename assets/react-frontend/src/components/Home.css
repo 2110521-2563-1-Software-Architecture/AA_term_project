@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+.headleft{
+    height: 600px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid black;
+}
+.headright{
+    height: 600px;
+    border: 1px solid black;
+}

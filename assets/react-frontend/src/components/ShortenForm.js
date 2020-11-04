@@ -3,7 +3,7 @@ import React from "react";
 //import Util from "../api/Util";
 import Logo from '../../assets/logo.png'
 import QRCode from "qrcode.react";
-import "./ShortenForm.css"
+import "./Home.css"
 
 class ShortenForm extends React.Component {
   constructor(props) {

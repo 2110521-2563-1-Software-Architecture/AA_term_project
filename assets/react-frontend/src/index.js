@@ -12,6 +12,7 @@ import ShortenLinkPage from './pages/shorten-link-page';
 import SkipPage from './pages/skip-page';
 import RegisterPage from './pages/register-page';
 import HistoryPage from './pages/historyPage';
+import HomePage from './pages/Homepage.js';
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <ShortenLinkPage />
+        </Route>
+        <Route path="/home" exact>
+          <HomePage />
         </Route>
         <Route path="/ads" exact>
           <SkipPage />
