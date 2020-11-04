@@ -18,14 +18,15 @@ const GuestFormWrapper = styled.div`
     }
 
     .label {
-      margin-bottom: .2rem;
-      font-size: 16px;
+      margin-bottom: 0.05rem;
+      font-size: 17px;
+      font-family: 'Times New Roman';
       color: white;
     }
 
     .login-label {
-      margin-top: 15px;
-      font-size: 16px;
+      margin-top: 24px;
+      font-size: 18px;
       color: #FE7F2D;
       cursor: pointer;
       margin-left: -20px;
@@ -33,7 +34,8 @@ const GuestFormWrapper = styled.div`
 
     .input {
       width: 120px;
-      height: 18px;
+      height: 21px;
+      padding-left: 3px;
     }
 
     .btn {
