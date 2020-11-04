@@ -1,22 +1,39 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from "axios"
+
 import history from "../history";
 import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import UserContext from "../utils/context/userContext"
 class RegisterCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
+      email: "",
       password: "",
     };
 
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  // componentDidMount() {
+  //   const { userToken, setUserToken } = this.context
+  //   console.log(userToken)
+  // }
+
   async onSubmit(e) {
     e.preventDefault();
     
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    console.log(newUser)
+    
+    // const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/register")
+    //history.push("/")
   }
 
   render() {
@@ -41,20 +58,20 @@ class RegisterCard extends React.Component {
           </div>
           <form
             className="needs-validation"
-            onSubmit={/*(event) => this.onSubmit(event)*/(event) => history.push("/")}
+            onSubmit={(e) => this.onSubmit(e)}
           >
 
             <div className="row">
               <div className="col-md-12">
-                <div align="left" style={{ width: 250, fontFamily: "Courier New"}}>Username</div>
+                <div align="left" style={{ width: 250, fontFamily: "Courier New"}}>Email</div>
                 <label className="text-dark">
                   <input
                     type="text"
                     style={{ width: 250 }}
-                    name="userName"
+                    name="email"
                     required
                     onChange={(e) => {
-                      this.setState({ userName: e.target.value });
+                      this.setState({ email: e.target.value });
                     }}
                   />
                 </label>
@@ -98,20 +115,8 @@ class RegisterCard extends React.Component {
     );
   }
 
- /*onSubmit = async (event) => {
-    //event.preventDefault();
-    history.push("/login");
-     let data = await Util.register(
-      this.state.userName,
-      this.state.password,
-    );
-    console.log(data);
-    if (data.errmsg) {
-      window.alert(data.errmsg);
-    } else {
-      history.push("/login");
-    }
-  };*/
 }
+
+RegisterCard.contextType = UserContext
 
 export default RegisterCard;

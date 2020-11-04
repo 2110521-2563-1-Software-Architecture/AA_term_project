@@ -7,6 +7,7 @@ import Logo from '../../assets/newlogo.png'
 import styled from "styled-components"
 import "../styles.css"
 import StateContext from "../utils/context/stateContext"
+import UserContext from "../utils/context/userContext"
 
 const NavbarWrapper = styled.div`
 font-family: Roboto;
@@ -41,12 +42,14 @@ background-color: #2F4F4F;
 const Navbar = () => {
 
   const { state, setState } = useContext(StateContext)
+  const { userToken } = useContext(UserContext)
 
   const history = useHistory()
 
   const homePageRedirect = () => {
     history.push("/")
-    setState("guest")
+    const st = userToken ? "user" : "guest"
+    setState(st)
   }
 
   const selectState = (st) => {

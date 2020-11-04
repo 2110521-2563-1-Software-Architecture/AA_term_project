@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom"
 import styled from "styled-components";
+
+import UserContext from "../utils/context/userContext"
 
 const UserWrapper = styled.div`
   display: flex;
@@ -27,11 +30,25 @@ const UserWrapper = styled.div`
 `
 
 const UserForm = (props) => {
+
+  const history = useHistory()
+
+  const { setUserToken } = useContext(UserContext)
+
+  const handleLogOut = () => {
+
+    setUserToken(undefined)
+    localStorage.setItem("token", '')
+
+    history.push('/')
+    props.onSet("guest")
+  }
+
   return (
     <UserWrapper>
       <h1>H</h1>
       <h6 className="label">Rattapong Whangthamrongwit</h6>
-      <button onClick={() => props.onSet("guest")} className="btn">
+      <button onClick={handleLogOut} className="btn">
         Log out
       </button>
     </UserWrapper>
