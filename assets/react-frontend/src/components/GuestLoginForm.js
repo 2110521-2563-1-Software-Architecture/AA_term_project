@@ -86,10 +86,10 @@ const GuestLoginForm = (props) => {
         history.push("/")
       }
 
-      clearValue();
     } catch (err) {
       console.log(err.message)
     }
+    clearValue();
   };
 
   const history = useHistory()

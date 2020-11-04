@@ -6,6 +6,7 @@ import history from "../history";
 import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
 import UserContext from "../utils/context/userContext"
+
 class RegisterCard extends React.Component {
   constructor(props) {
     super(props);
@@ -23,17 +24,22 @@ class RegisterCard extends React.Component {
   // }
 
   async onSubmit(e) {
-    e.preventDefault();
     
     const newUser = {
       email: this.state.email,
       password: this.state.password
     }
-
-    console.log(newUser)
     
-    // const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/register")
-    //history.push("/")
+    const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/register", newUser)
+    
+    const { status, data: { token } } = res
+    const { setUserToken } = this.context
+    
+    if (status === 200) {
+      setUserToken(token)
+      localStorage.setItem("token", token)
+    }
+    history.push("/")
   }
 
   render() {
