@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom"
 import styled from "styled-components";
+import Axios from "axios"
 
 import UserContext from "../utils/context/userContext"
 
@@ -12,8 +13,13 @@ const UserWrapper = styled.div`
   width: 500px;
   height: 39;
 
+  h1 {
+    margin-top: 14px;
+    color: white;
+  }
+
   .label {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 20px;
     color: white;
   }
@@ -24,8 +30,10 @@ const UserWrapper = styled.div`
     margin-top: 8px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #FFD942;
+    background-color: #FE7F2D;
     border-radius: 5px;
+    color: white;
+    border: 2px solid black;
   }
 `
 
@@ -33,7 +41,22 @@ const UserForm = (props) => {
 
   const history = useHistory()
 
-  const { setUserToken } = useContext(UserContext)
+  const { userToken, setUserToken } = useContext(UserContext)
+
+  useEffect(() => {
+    
+    const getUserInfo = async () => {
+
+      // const res = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
+      //   { headers: { token: userToken } }
+      // )
+
+      console.log(res)
+
+    }
+
+    getUserInfo()
+  }, [])
 
   const handleLogOut = () => {
 
