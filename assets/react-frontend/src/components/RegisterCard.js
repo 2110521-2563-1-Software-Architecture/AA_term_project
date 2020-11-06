@@ -1,48 +1,58 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
+import { useHistory } from "react-router-dom"
 
-import history from "../history";
 import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
 import UserContext from "../utils/context/userContext"
 
-class RegisterCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
+const RegisterCard = () => {
 
-    this.onSubmit = this.onSubmit.bind(this)
-  }
+  const history = useHistory()
 
-  // componentDidMount() {
-  //   const { userToken, setUserToken } = this.context
-  //   console.log(userToken)
-  // }
+  useEffect(() => {
+   
+    let status = localStorage.getItem("register-status")
+    if (status === null) {
+      localStorage.setItem("register-status", "")
+      status = ""
+    }
 
-  async onSubmit(e) {
+    if (status) {
+      history.push("/")
+    }
+
+    return () => {
+      localStorage.setItem("register-status", "")
+    }
+  }, [])
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { setUserToken } = useContext(UserContext)
+
+  const onSubmit = async (email, password) => {
     
     const newUser = {
-      email: this.state.email,
-      password: this.state.password
+      email,
+      password
     }
+
+    localStorage.setItem("register-status", "value")
     
-    const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/register", newUser)
-    
+    const res = await Axios
+                        .post("http://aa-shortener.poomrokc.services/api/public/register", newUser)  
     const { status, data: { token } } = res
-    const { setUserToken } = this.context
-    
+  
     if (status === 200) {
       setUserToken(token)
       localStorage.setItem("token", token)
     }
-    history.push("/")
+
   }
 
-  render() {
     return (
       <div className="Card " style={{ width: 750 }}>
         <div className="Card " style={{ width: 750}}>
@@ -64,7 +74,7 @@ class RegisterCard extends React.Component {
           </div>
           <form
             className="needs-validation"
-            onSubmit={(e) => this.onSubmit(e)}
+            onSubmit={() => onSubmit(email, password)}
           >
 
             <div className="row">
@@ -77,7 +87,7 @@ class RegisterCard extends React.Component {
                     name="email"
                     required
                     onChange={(e) => {
-                      this.setState({ email: e.target.value });
+                      setEmail(e.target.value);
                     }}
                   />
                 </label>
@@ -92,7 +102,7 @@ class RegisterCard extends React.Component {
                     name="password"
                     required
                     onChange={(e) => {
-                      this.setState({ password: e.target.value });
+                      setPassword(e.target.value);
                     }}
                   />
                 </label>
@@ -119,10 +129,7 @@ class RegisterCard extends React.Component {
         </div>
       </div>
     );
-  }
 
 }
-
-RegisterCard.contextType = UserContext
 
 export default RegisterCard;

@@ -51,8 +51,6 @@ const UserForm = (props) => {
       //   { headers: { token: userToken } }
       // )
 
-      console.log(res)
-
     }
 
     getUserInfo()
