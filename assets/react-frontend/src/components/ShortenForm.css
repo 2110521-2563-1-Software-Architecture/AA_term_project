@@ -34,7 +34,7 @@
   margin: auto;
 }
 
-@media (max-width: 815px) {
+@media (max-width: 820px) {
   .wrapper {
     z-index: 1;
   }
