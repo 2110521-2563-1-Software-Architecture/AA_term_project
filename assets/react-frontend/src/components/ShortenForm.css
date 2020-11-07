@@ -33,3 +33,9 @@
   width: 200px;
   margin: auto;
 }
+
+@media (max-width: 815px) {
+  .wrapper {
+    z-index: 1;
+  }
+}
