@@ -1,6 +1,4 @@
 import React from "react";
-//import history from "../history";
-//import Util from "../api/Util";
 import Logo from '../../assets/logo.png'
 import QRCode from "qrcode.react";
 import "./ShortenForm.css"

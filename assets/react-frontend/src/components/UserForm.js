@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 import styled from "styled-components";
 import Axios from "axios"
@@ -13,13 +13,9 @@ const UserWrapper = styled.div`
   width: 500px;
   height: 39;
 
-  h1 {
-    margin-top: 14px;
-    color: white;
-  }
-
   .label {
-    margin-top: 20px;
+    margin-top: 18px;
+    margin-left: 70px;
     font-size: 20px;
     color: white;
   }
@@ -35,6 +31,16 @@ const UserWrapper = styled.div`
     color: white;
     border: 2px solid black;
   }
+
+  @media (max-width: 700px) {
+    .label {
+      display: none;
+    }
+
+    .btn {
+      margin-left: 12rem;
+    }
+  }
 `
 
 const UserForm = (props) => {
@@ -42,15 +48,19 @@ const UserForm = (props) => {
   const history = useHistory()
 
   const { userToken, setUserToken } = useContext(UserContext)
+  const [name, setName] = useState("")
 
   useEffect(() => {
     
     const getUserInfo = async () => {
 
-      // const res = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
-      //   { headers: { token: userToken } }
-      // )
+      const jwtToken = `JWT ${userToken}`
+      
+      const { data: { user: { email } } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
+        { headers: { Authorization: jwtToken } }
+      )
 
+      setName(email)
     }
 
     getUserInfo()
@@ -67,8 +77,7 @@ const UserForm = (props) => {
 
   return (
     <UserWrapper>
-      <h1>H</h1>
-      <h6 className="label">Rattapong Whangthamrongwit</h6>
+      <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">
         Log out
       </button>
