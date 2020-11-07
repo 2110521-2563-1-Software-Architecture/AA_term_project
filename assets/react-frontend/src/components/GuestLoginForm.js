@@ -7,7 +7,6 @@ import UserContext from "../utils/context/userContext"
 import "../styles.css";
 
 const GuestFormWrapper = styled.div`
-    border: 2px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,7 +55,6 @@ const GuestFormWrapper = styled.div`
     }
 
     @media (max-width: 815px) {
-      display: none;
       position: fixed;
       background-color: #2F4F4F;
       flex-direction: column;
@@ -65,7 +63,11 @@ const GuestFormWrapper = styled.div`
       right: 0%;
       height: 100vh;
       width: 100%;
-
+      ${({ open }) => open && 
+        `clip-path: circle(100px at 90% -15%);
+        -webkit-clip-path: circle(100px at 90% -15%);`
+      }
+      transition: all 3s ease;
       .input-form {
         flex-direction: column;
       }
@@ -76,6 +78,7 @@ const Hambergur = styled.div`
   display: none;
   margin-right: 20px;
   cursor: pointer;
+  z-index: 3;
   
   .line {
     margin-top: 5px;
@@ -83,6 +86,7 @@ const Hambergur = styled.div`
     height: 3px;
     background: white
   }
+
 
   @media (max-width: 815px) {
     display: inline-block;
@@ -133,9 +137,17 @@ const GuestLoginForm = (props) => {
     props.onSet("sign-up")
   }
 
+  const openNav = () => {
+    
+    setIsOpen(!isOpen)
+
+  }
+
+  const [isOpen, setIsOpen] = useState(true)
+
   return (
     <>
-      <GuestFormWrapper>
+      <GuestFormWrapper open={isOpen}>
         <div className="input-form">
           <div>
             <h6 className="label">email</h6>
@@ -166,7 +178,7 @@ const GuestLoginForm = (props) => {
           sign up
         </button>
       </GuestFormWrapper>
-      <Hambergur>
+      <Hambergur id="hambergur" onClick={openNav}>
         <div className="line"></div>
         <div className="line"></div>
         <div className="line"></div>
