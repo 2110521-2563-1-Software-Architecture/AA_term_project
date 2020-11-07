@@ -12,7 +12,8 @@ const GuestFormWrapper = styled.div`
     align-items: center;
     justify-content: space-evenly;
     width: 500px;
-    height: 39;
+    height: 100%;
+    margin-right: 24px;
 
     .input-form {
       display: flex;
@@ -28,46 +29,47 @@ const GuestFormWrapper = styled.div`
       color: white;
     }
 
-    .login-label {
-      margin-top: 24px;
-      font-size: 18px;
-      color: #FE7F2D;
-      cursor: pointer;
-      margin-left: -20px;
-    }
-
     .input {
       width: 120px;
       height: 21px;
       padding-left: 3px;
     }
 
-    .btn {
-      width: 80px;
-      height: 36px;
-      margin-top: 8px;
-      font-size: 16px;
-      color:white;
-      cursor: pointer;
-      background-color: #FE7F2D;
-      border-radius: 5px;
-      border: 2px solid black;
+    .btn-wrapper {
+      
+      height: 100%;
+      display: flex;
+
+      .btn {
+        width: 80px;
+        border-radius: unset;
+        padding-top: 16px;
+        font-size: 16px;
+        color:white;
+        cursor: pointer;
+        background-color: #2F4F4F;
+
+        :hover {
+            background-color: #fe7f2d;
+        }
+      }
+
     }
 
-    @media (max-width: 815px) {
+    @media (max-width: 820px) {
       position: fixed;
       background-color: #2F4F4F;
       flex-direction: column;
       z-index: 2;
       top: 0%;
-      right: 0%;
+      right: -3.2%;
       height: 100vh;
-      width: 100%;
+      width: 110%;
       ${({ open }) => open && 
         `clip-path: circle(100px at 90% -15%);
         -webkit-clip-path: circle(100px at 90% -15%);`
       }
-      transition: all 3s ease;
+      transition: all 2s ease;
       .input-form {
         flex-direction: column;
       }
@@ -76,7 +78,7 @@ const GuestFormWrapper = styled.div`
 
 const Hambergur = styled.div`
   display: none;
-  margin-right: 20px;
+  margin-right: 24px;
   cursor: pointer;
   z-index: 3;
   
@@ -88,7 +90,7 @@ const Hambergur = styled.div`
   }
 
 
-  @media (max-width: 815px) {
+  @media (max-width: 820px) {
     display: inline-block;
   }
 `
@@ -169,6 +171,7 @@ const GuestLoginForm = (props) => {
           </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       </div>
       <h5
         onClick={() => handleSignIn(email, password)}
@@ -194,6 +197,12 @@ const GuestLoginForm = (props) => {
         <button onClick={() => handleSignUp()} className="btn">
           sign up
         </button>
+=======
+        <div className="btn-wrapper">
+          <button className="btn" onClick={() => handleSignIn(email, password)}>sign in</button>
+          <button className="btn" onClick={handleSignUp}>sign up</button>
+        </div>
+>>>>>>> change style for button in navbar
       </GuestFormWrapper>
       <Hambergur id="hambergur" onClick={openNav}>
         <div className="line"></div>
