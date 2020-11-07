@@ -135,6 +135,9 @@ const Hambergur = styled.div`
 
   @media (max-width: 820px) {
     display: inline-block;
+    position: fixed;
+    right: 3%;
+    top: 3%;
   }
 `
 
