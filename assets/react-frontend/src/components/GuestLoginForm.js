@@ -62,16 +62,59 @@ const GuestFormWrapper = styled.div`
       flex-direction: column;
       z-index: 2;
       top: 0%;
-      right: -3.2%;
+      right: -5%;
       height: 100vh;
       width: 110%;
-      ${({ open }) => open && 
-        `clip-path: circle(100px at 90% -15%);
-        -webkit-clip-path: circle(100px at 90% -15%);`
-      }
+      clip-path: ${props => props.open ? 'circle(100px at 90% -15%)' : 'circle(1200px at 90% -15%)'};
+      -webkit-clip-path: ${props => props.open ? 'circle(100px at 90% -15%)' : 'circle(1200px at 90% -15%)'};
       transition: all 2s ease;
+      
       .input-form {
         flex-direction: column;
+        margin-top: 10rem;
+        margin-bottom: 5rem;
+      
+        .input-element {
+          margin-top: 2rem;
+          opacity: 0;
+        }
+
+        .input-element-open {
+          transition: all 1s ease 0.8s;
+          opacity: 1;
+        }
+
+        .input-element-open2 {
+          transition: all 1s ease 1.2s;
+          opacity: 1;
+        }
+
+        .label {
+          margin-bottom: .5rem;
+          font-size: 24px;
+        }
+
+        .input {
+          height: 30px;
+          width: 100%;
+        }
+      }
+
+      .btn-wrapper {
+        flex-direction: column;
+        width: 100%;
+        opacity: 0;
+
+        .btn {
+          width: 100%;
+          margin-top: 1rem;
+          font-size: 24px;
+        }
+      }
+
+      .btn-wrapper-open {
+        transition: all 1s ease 1.7s;
+        opacity: 1
       }
     }
   `
@@ -140,8 +183,16 @@ const GuestLoginForm = (props) => {
   }
 
   const openNav = () => {
-    
     setIsOpen(!isOpen)
+
+    const input_ele = document.querySelectorAll(".input-element")
+    const btn_ele = document.querySelectorAll(".btn-wrapper")
+
+    input_ele[0].classList.toggle('input-element-open')
+    input_ele[1].classList.toggle('input-element-open2')
+
+    btn_ele[0].classList.toggle('btn-wrapper-open')
+    //btn_ele[1].classList.toggle('btn-element-open2')
 
   }
 
@@ -151,7 +202,7 @@ const GuestLoginForm = (props) => {
     <>
       <GuestFormWrapper open={isOpen}>
         <div className="input-form">
-          <div>
+          <div className="input-element">
             <h6 className="label">email</h6>
             <input
               className="input"
@@ -160,7 +211,7 @@ const GuestLoginForm = (props) => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
+          <div className="input-element">
             <h6 className="label">password</h6>
             <input
               className="input"
