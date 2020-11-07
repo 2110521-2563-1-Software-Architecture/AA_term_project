@@ -7,6 +7,7 @@ import UserContext from "../utils/context/userContext"
 import "../styles.css";
 
 const GuestFormWrapper = styled.div`
+    border: 2px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,7 +54,40 @@ const GuestFormWrapper = styled.div`
       border-radius: 5px;
       border: 2px solid black;
     }
+
+    @media (max-width: 815px) {
+      display: none;
+      position: fixed;
+      background-color: #2F4F4F;
+      flex-direction: column;
+      z-index: 2;
+      top: 0%;
+      right: 0%;
+      height: 100vh;
+      width: 100%;
+
+      .input-form {
+        flex-direction: column;
+      }
+    }
   `
+
+const Hambergur = styled.div`
+  display: none;
+  margin-right: 20px;
+  cursor: pointer;
+  
+  .line {
+    margin-top: 5px;
+    width: 30px;
+    height: 3px;
+    background: white
+  }
+
+  @media (max-width: 815px) {
+    display: inline-block;
+  }
+`
 
 const GuestLoginForm = (props) => {
 
@@ -100,26 +134,29 @@ const GuestLoginForm = (props) => {
   }
 
   return (
-    <GuestFormWrapper>
-      <div className="input-form">
-        <div>
-          <h6 className="label">email</h6>
-          <input
-            className="input"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+    <>
+      <GuestFormWrapper>
+        <div className="input-form">
+          <div>
+            <h6 className="label">email</h6>
+            <input
+              className="input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <h6 className="label">password</h6>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
         </div>
-        <div>
-          <h6 className="label">password</h6>
-          <input
-            className="input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+<<<<<<< HEAD
       </div>
       <h5
         onClick={() => handleSignIn(email, password)}
@@ -135,6 +172,24 @@ const GuestLoginForm = (props) => {
         sign up
       </button>
     </GuestFormWrapper>
+=======
+        <h5
+          onClick={() => handleSignIn(email, password)}
+          className="login-label"
+        >
+          sign in
+        </h5>
+        <button onClick={() => handleSignUp()} className="btn">
+          sign up
+        </button>
+      </GuestFormWrapper>
+      <Hambergur>
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </Hambergur>
+    </>
+>>>>>>> adjust responsive navbar
   );
 };
 

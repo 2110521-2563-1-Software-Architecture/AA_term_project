@@ -10,33 +10,27 @@ import StateContext from "../utils/context/stateContext"
 import UserContext from "../utils/context/userContext"
 
 const NavbarWrapper = styled.div`
-font-family: Roboto;
-height: 64px;
-background-color: #2F4F4F;
-
-.element-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  font-family: Roboto;
   height: 64px;
-  margin-left: 3rem;
-  margin-right: 1rem;
-}
+  background-color: #2F4F4F;
 
-.logo-img {
-  height: 55px;
-  font-family: sans-serif;
-  margin-left: 10;
-  cursor: pointer;
-}
-
-@media (max-width: 650px) {
-  height: 96px;
   .element-wrapper {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    margin-left: 3rem;
+    margin-right: 1rem;
   }
-}
+
+  .logo-img {
+    height: 55px;
+    font-family: sans-serif;
+    margin-left: 10;
+    cursor: pointer;
+  }
+
 `
 
 const Navbar = () => {

@@ -22,7 +22,7 @@ class ShortenForm extends React.Component {
   render() {
     if(this.state.isLogin){
       return(
-     <div>
+     <div className="wrapper">
        <div className="decorate" align="center" style={{ paddingTop: 70 }}>
       <div className="Card " style={{ width: 750 }}>
         <div
@@ -126,43 +126,22 @@ class ShortenForm extends React.Component {
       )
     }
     return (
-      <div className="decorate" align="center" style={{ paddingTop: 70 }}>
-      <div className="Card " style={{ width: 750 }}>
-        <div
-          className="Card box"
-          style={{ width: 500, border: "thick solid black" }}
-        >
-          <br />
-          <div className="row">
-            <div className="col-md-12 ">
-              <h2 className="card-title" style={{ fontFamily: "Courier New" }}>
-              Create shorten URL
-              </h2>
-            </div>
-          </div>
-          <form
-            className="needs-validation"
-            onSubmit={(event) => this.onSubmit(event)}
+      <div className="wrapper">
+        <div className="decorate" align="center" style={{ paddingTop: 70 }}>
+        <div className="Card " style={{ width: 750 }}>
+          <div
+            className="Card box"
+            style={{ width: 500, border: "thick solid black" }}
           >
-
+            <br />
             <div className="row">
-              <div className="col-md-2"></div>
-             
-              <div className="col-md-4" >
-                <div align="left" style={{width:300, fontFamily: "Courier New"}}>Website</div>
-                <label className="text-dark">
-                  <input
-                    type="text"
-                    className="box1"
-                    name="webside"
-                    required
-                    onChange={(e) => {
-                      this.setState({ webside: e.target.value });
-                    }}
-                  />
-                </label>
+              <div className="col-md-12 ">
+                <h2 className="card-title" style={{ fontFamily: "Courier New" }}>
+                Create shorten URL
+                </h2>
               </div>
             </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -211,31 +190,69 @@ class ShortenForm extends React.Component {
                 >
                   Generate
                 </button>
+=======
+            <form
+              className="needs-validation"
+              onSubmit={(event) => this.onSubmit(event)}
+            >
+
+              <div className="row">
+                <div className="col-md-2"></div>
+              
+                <div className="col-md-4" >
+                  <div align="left" style={{width:300, fontFamily: "Courier New"}}>Website</div>
+                  <label className="text-dark">
+                    <input
+                      type="text"
+                      className="box1"
+                      name="webside"
+                      required
+                      onChange={(e) => {
+                        this.setState({ webside: e.target.value });
+                      }}
+                    />
+                  </label>
+                </div>
+              </div>
+                
+              <div className="row">
+              <div className="col-md-4"></div>
+                <div className="col-sm-4">
+                  <button
+                    id="submit"
+                    className="btn btn-outline-dark"
+                    style={{ fontFamily: "Courier New" }}
+                    onClick={()=>this.onClickGenerate()}
+                  >
+                    Generate
+                  </button>
+                </div>
+              </div>
+            </form>
+            <br />
+            <div className="output">
+              <input className="box2" value={this.state.shorten_web} id = "webside_output"/>
+              <button
+                className = "btn btn-outline-dark copy_btn"
+                onClick={e => {
+                        e.preventDefault();
+                        var copyText = document.getElementById("webside_output");
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999)
+                        document.execCommand("copy");
+                      }
+                    }>
+                Copy
+              </button>
+              <div className="box_qr">
+                {this.state.shorten_web?<QRCode size ="200" value={this.state.shorten_web}/>
+                : <img className="qr_img" src={Logo} id ="qr_img"/> }
+>>>>>>> adjust responsive navbar
               </div>
             </div>
-          </form>
-          <br />
-          <div className="output">
-            <input className="box2" value={this.state.shorten_web} id = "webside_output"/>
-            <button
-              className = "btn btn-outline-dark copy_btn"
-              onClick={e => {
-                      e.preventDefault();
-                      var copyText = document.getElementById("webside_output");
-                      copyText.select();
-                      copyText.setSelectionRange(0, 99999)
-                      document.execCommand("copy");
-                    }
-                  }>
-              Copy
-            </button>
-            <div className="box_qr">
-              {this.state.shorten_web?<QRCode size ="200" value={this.state.shorten_web}/>
-              : <img className="qr_img" src={Logo} id ="qr_img"/> }
-            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
     );
