@@ -192,7 +192,6 @@ const GuestLoginForm = (props) => {
     input_ele[1].classList.toggle('input-element-open2')
 
     btn_ele[0].classList.toggle('btn-wrapper-open')
-    //btn_ele[1].classList.toggle('btn-element-open2')
 
   }
 
