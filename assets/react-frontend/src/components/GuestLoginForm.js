@@ -22,6 +22,14 @@ const GuestFormWrapper = styled.div`
       width: 60%;
     }
 
+    .error {
+      color: #fe7f2d;
+      position: fixed;
+      top: 75px;
+      font-size: 24px;
+      font-weight: bold
+    }
+
     .label {
       margin-bottom: 0.05rem;
       font-size: 17px;
@@ -201,6 +209,7 @@ const GuestLoginForm = (props) => {
     <>
       <GuestFormWrapper open={isOpen}>
         <div className="input-form">
+          <h6 className="error">*Email or password is incorrect</h6>
           <div className="input-element">
             <h6 className="label">email</h6>
             <input
