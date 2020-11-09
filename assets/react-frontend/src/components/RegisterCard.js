@@ -14,12 +14,17 @@ const RegisterCard = () => {
   useEffect(() => {
    
     let status = localStorage.getItem("register-status")
+    let token = localStorage.getItem("token")
     if (status === null) {
       localStorage.setItem("register-status", "")
       status = ""
     }
+    if (token === null) {
+      localStorage.setItem("token", "")
+      token = ""
+    }
 
-    if (status) {
+    if (status || token) {
       history.push("/")
     }
 
