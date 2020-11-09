@@ -1,9 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
 import Axios from "axios"
 
 import UserContext from "../utils/context/userContext"
+import PrevStateContext from "../utils/context/prevStateContext"
+import keyContext from "../utils/context/keyContext"
 import "../styles.css";
 
 const GuestFormWrapper = styled.div`
@@ -62,7 +64,7 @@ const GuestFormWrapper = styled.div`
     }
 
     .input-error {
-      border: 3px solid #fe7f2d;
+      border: 3px solid red;
     }
 
     .btn-wrapper {
@@ -182,6 +184,14 @@ const GuestLoginForm = (props) => {
   };
 
   const { setUserToken } = useContext(UserContext)
+  const { setPrevState } = useContext(PrevStateContext)
+  const { locationKeys } = useContext(keyContext)
+
+  useEffect(() => {
+      
+    setPrevState("guest")
+
+  }, [ locationKeys, ])
 
   const handleSignIn = async (email, pass) => {
 

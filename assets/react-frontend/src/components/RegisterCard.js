@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom"
 import '../components/RegisterCard.css'
 import Logo from '../../assets/logo.png'
 import UserContext from "../utils/context/userContext"
+import PrevStateContext from "../utils/context/prevStateContext"
+import keyContext from "../utils/context/keyContext"
 
 const RegisterCard = () => {
 
@@ -28,15 +30,19 @@ const RegisterCard = () => {
       history.push("/")
     }
 
+    setPrevState("sign-up")
+
     return () => {
       localStorage.setItem("register-status", "")
     }
-  }, [])
+  }, [ locationKeys, ])
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const { setUserToken } = useContext(UserContext)
+  const { setPrevState } = useContext(PrevStateContext)
+  const { locationKeys } = useContext(keyContext)
 
   const onSubmit = async (email, password) => {
     
