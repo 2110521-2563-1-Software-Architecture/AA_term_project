@@ -13,6 +13,7 @@ import RegisterPage from './pages/register-page';
 import HistoryPage from './pages/historyPage';
 import StateContext from "./utils/context/stateContext"
 import UserContext from "./utils/context/userContext"
+import HomePage from './pages/Homepage.js';
 
 const App = () => {
 
@@ -52,6 +53,9 @@ const App = () => {
             </Route>
             <Route path="/ads" exact>
               <SkipPage />
+            </Route>
+            <Route path="/home" exact>
+              <HomePage />
             </Route>
             <Route path="/register" exact>
               <RegisterPage />
