@@ -71,8 +71,8 @@
     text-align: center;
 }
 .qrcode{
-    width:200px;
-    height:auto;
+    width:200px !important;
+    height:auto !important;
 }
 .memberad{
     text-align: center;
