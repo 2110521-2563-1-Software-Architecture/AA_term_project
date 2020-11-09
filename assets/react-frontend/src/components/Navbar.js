@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 import GuestLoginForm from "./GuestLoginForm";
+import styled from "styled-components"
+
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
 import Logo from '../../assets/newlogo.png'
-import styled from "styled-components"
 import "../styles.css"
 import StateContext from "../utils/context/stateContext"
 import UserContext from "../utils/context/userContext"
+import PrevStateContext from "../utils/context/prevStateContext"
+import keyContext from "../utils/context/keyContext"
 
 const NavbarWrapper = styled.div`
   font-family: Roboto;
@@ -36,6 +39,7 @@ const NavbarWrapper = styled.div`
 const Navbar = () => {
 
   const { state, setState } = useContext(StateContext)
+  const { prevState, setPrevState } = useContext(PrevStateContext)
   const { userToken } = useContext(UserContext)
 
   const history = useHistory()
@@ -45,6 +49,26 @@ const Navbar = () => {
     const st = userToken ? "user" : "guest"
     setState(st)
   }
+
+  const { locationKeys, setLocationKeys } = useContext(keyContext)
+  
+  useEffect(() => {
+    return history.listen(location => {
+      if (history.action === 'PUSH') {
+        setLocationKeys([ location.key ])
+      }
+  
+      if (history.action === 'POP') {
+        if (locationKeys[1] === location.key) {
+          setLocationKeys(([ _, ...keys ]) => keys)
+          setState(prevState)
+        } else {
+          setLocationKeys((keys) => [ location.key, ...keys ])
+          setState(prevState)
+        }
+      }
+    })
+  }, [ locationKeys, ])
 
   const selectState = (st) => {
     switch (st) {
