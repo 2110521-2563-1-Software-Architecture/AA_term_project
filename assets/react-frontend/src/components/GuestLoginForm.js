@@ -61,6 +61,10 @@ const GuestFormWrapper = styled.div`
       padding-left: 3px;
     }
 
+    .input-error {
+      border: 3px solid #fe7f2d;
+    }
+
     .btn-wrapper {
       
       height: 100%;
@@ -180,28 +184,43 @@ const GuestLoginForm = (props) => {
   const { setUserToken } = useContext(UserContext)
 
   const handleSignIn = async (email, pass) => {
+
+    const input = document.querySelectorAll(".input")
     
     try {
 
-      const userInfo = {
-        email,
-        password: pass
+      if (!email || !password) {
+        if (!email) {
+          input[0].classList.add("input-error")
+        }
+        if (!password) {
+          input[1].classList.add("input-error")
+        }
       }
-  
-      const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/login", userInfo)
-      const { status, data: { token } } = res
-  
-      if (status === 200) {
-        setUserToken(token)
-        localStorage.setItem("token", token)
-        props.onSet("user");
-        history.push("/")
+
+      else {
+        const userInfo = {
+          email,
+          password: pass
+        }
+    
+        const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/login", userInfo)
+        const { status, data: { token } } = res
+    
+        if (status === 200) {
+          setUserToken(token)
+          localStorage.setItem("token", token)
+          props.onSet("user");
+          history.push("/")
+          clearValue();
+        }
       }
 
     } catch (err) {
       console.log(err.message)
+      input[0].classList.add("input-error")
+      input[1].classList.add("input-error")
     }
-    clearValue();
   };
 
   const history = useHistory()
@@ -226,6 +245,19 @@ const GuestLoginForm = (props) => {
 
   const [isOpen, setIsOpen] = useState(true)
 
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    const input = document.querySelectorAll(".input")
+    if (name === 'email') {
+      input[0].classList.remove("input-error")
+      setEmail(value)
+    } else if (name === 'password') {
+      input[1].classList.remove("input-error")
+      setPassword(value)
+    }
+
+  }
+
   return (
     <>
       <GuestFormWrapper open={isOpen}>
@@ -241,8 +273,9 @@ const GuestLoginForm = (props) => {
             <input
               className="input"
               type="email"
+              name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="input-element">
@@ -250,8 +283,9 @@ const GuestLoginForm = (props) => {
             <input
               className="input"
               type="password"
+              name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
         </div>

@@ -12,7 +12,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-rate-limit": "^5.1.3",
+<<<<<<< HEAD:main_service/package.json
     "influx": "^5.6.3",
+=======
+    "formik": "^2.2.3",
+>>>>>>> make form validation for laptop size navbar:package.json
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.9",
     "multer": "^1.4.2",
