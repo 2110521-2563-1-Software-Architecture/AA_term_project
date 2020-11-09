@@ -17,6 +17,7 @@ import HomePage from './pages/Homepage.js';
 const App = () => {
   return (
     <Router>
+<<<<<<< HEAD
       <Navbar />
       <Switch>
         <Route path="/" exact>
@@ -35,6 +36,28 @@ const App = () => {
           <HistoryPage />
         </Route>
       </Switch>
+=======
+      <StateContext.Provider value={{ state, setState }}>
+        <UserContext.Provider value={{ userToken, setUserToken }}>
+          <Navbar />
+          {userToken ? <h1>Login</h1> : null}
+          <Switch>
+            <Route path="/ads" exact>
+              <SkipPage />
+            </Route>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/register" exact>
+              <RegisterPage />
+            </Route>
+            <Route path="/history" exact>
+              <HistoryPage />
+            </Route>
+          </Switch>
+        </UserContext.Provider>
+      </StateContext.Provider>
+>>>>>>> fix home route
     </Router>
   );
 };
