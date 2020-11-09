@@ -25,29 +25,7 @@ const GuestFormWrapper = styled.div`
     }
 
     .error {
-      display: none; // remove this
-      color: #fe7f2d;
-      position: fixed;
-      top: 75px;
-      width: 500px;
-      height: 50px;
-      border-radius: 5px;
-      background-color: #fe7f2d;
-
-      h6 {
-        color: black;
-      }
-
-      button {
-        background-color: unset;
-        border: none;
-        outline: none;
-        font-size: 30px;
-        transform: translateY(-50%);
-        margin-left: 30rem;
-        margin-top: -8rem;
-        font-weight: bold;
-      }
+      display: none;
     }
 
     .label {
@@ -100,6 +78,32 @@ const GuestFormWrapper = styled.div`
       clip-path: ${props => props.open ? 'circle(100px at 90% -15%)' : 'circle(1200px at 90% -15%)'};
       -webkit-clip-path: ${props => props.open ? 'circle(100px at 90% -15%)' : 'circle(1200px at 90% -15%)'};
       transition: all 2s ease;
+
+      .error {
+        color: #fe7f2d;
+        cursor: pointer;
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #fe7f2d;
+
+        h6 {
+          color: white;
+          font-family: sans-serif;
+          font-size: 26px;
+          font-weight: bold;
+          padding-top: 5px;
+          text-align: center
+        }
+      }
+
+      .error-open {
+        display: inline-block;
+      }
+
+      .error-close {
+        display: none;
+      }
       
       .input-form {
         flex-direction: column;
@@ -193,13 +197,21 @@ const GuestLoginForm = (props) => {
 
   }, [ locationKeys, ])
 
+  const [errorMessages, setErrorMessages] = useState("")
+
   const handleSignIn = async (email, pass) => {
 
     const input = document.querySelectorAll(".input")
+    const css = document.querySelector(".error")
     
     try {
 
       if (!email || !password) {
+        
+        css.classList.remove("error-close")
+        css.classList.add("error-open")
+        setErrorMessages("Please enter all required fields")
+
         if (!email) {
           input[0].classList.add("input-error")
         }
@@ -227,9 +239,11 @@ const GuestLoginForm = (props) => {
       }
 
     } catch (err) {
-      console.log(err.message)
       input[0].classList.add("input-error")
       input[1].classList.add("input-error")
+      css.classList.remove('error-close')
+      css.classList.add("error-open")
+      setErrorMessages("Invalid email or credential")
     }
   };
 
@@ -268,15 +282,19 @@ const GuestLoginForm = (props) => {
 
   }
 
+  const handleShowError = () => {
+    const css = document.querySelector(".error")
+
+    css.classList.add("error-close")
+    css.classList.remove('error-open')
+  }
+
   return (
     <>
       <GuestFormWrapper open={isOpen}>
         <div className="input-form">
-          <div className="error">
-            <h6>aa</h6>
-            <button>
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div className="error" onClick={handleShowError}>
+            <h6>{errorMessages}</h6>
           </div>
           <div className="input-element">
             <h6 className="label">email</h6>
