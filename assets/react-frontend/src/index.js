@@ -48,13 +48,10 @@ const App = () => {
           <Navbar />
           {userToken ? <h1>Login</h1> : null}
           <Switch>
-            <Route path="/" exact>
-              <ShortenLinkPage />
-            </Route>
             <Route path="/ads" exact>
               <SkipPage />
             </Route>
-            <Route path="/home" exact>
+            <Route path="/" exact>
               <HomePage />
             </Route>
             <Route path="/register" exact>
