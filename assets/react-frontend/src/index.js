@@ -12,8 +12,6 @@ import RegisterPage from './pages/register-page';
 import HistoryPage from './pages/historyPage';
 import StateContext from "./utils/context/stateContext"
 import UserContext from "./utils/context/userContext"
-import PrevStateContext from "./utils/context/prevStateContext"
-import keyContext from "./utils/context/keyContext"
 import HomePage from './pages/Homepage.js';
 
 const App = () => {
@@ -41,33 +39,27 @@ const App = () => {
 
   const [state, setState] = useState("guest")
   const [userToken, setUserToken] = useState(undefined)
-  const [prevState, setPrevState] = useState("")
-  const [ locationKeys, setLocationKeys ] = useState([])
 
   return (
     <Router>
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
-          <PrevStateContext.Provider value={{ prevState, setPrevState }}>
-            <keyContext.Provider value={{ locationKeys, setLocationKeys }}>
-              <Navbar />
-              {userToken ? <h1>Login</h1> : null}
-              <Switch>
-                <Route path="/ads" exact>
-                  <SkipPage />
-                </Route>
-                <Route path="/" exact>
-                  <HomePage />
-                </Route>
-                <Route path="/register" exact>
-                  <RegisterPage />
-                </Route>
-                <Route path="/history" exact>
-                  <HistoryPage />
-                </Route>
-              </Switch>
-            </keyContext.Provider>
-          </PrevStateContext.Provider>
+          <Navbar />
+          {userToken ? <h1>Login</h1> : null}
+          <Switch>
+            <Route path="/ads" exact>
+              <SkipPage />
+            </Route>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/register" exact>
+              <RegisterPage />
+            </Route>
+            <Route path="/history" exact>
+              <HistoryPage />
+            </Route>
+          </Switch>
         </UserContext.Provider>
       </StateContext.Provider>
     </Router>

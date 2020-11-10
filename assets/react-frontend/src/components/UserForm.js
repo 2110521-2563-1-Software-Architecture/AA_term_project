@@ -4,8 +4,6 @@ import styled from "styled-components";
 import Axios from "axios"
 
 import UserContext from "../utils/context/userContext"
-import PrevStateContext from "../utils/context/prevStateContext"
-import keyContext from "../utils/context/keyContext"
 
 const UserWrapper = styled.div`
   display: flex;
@@ -50,8 +48,6 @@ const UserForm = (props) => {
   const history = useHistory()
 
   const { userToken, setUserToken } = useContext(UserContext)
-  const { setPrevState } = useContext(PrevStateContext)
-  const { locationKeys } = useContext(keyContext)
   const [name, setName] = useState("")
 
   useEffect(() => {
@@ -67,11 +63,8 @@ const UserForm = (props) => {
       setName(email)
     }
 
-    console.log('re user')
-
     getUserInfo()
-    setPrevState("user")
-  }, [ locationKeys, ])
+  }, [])
 
   const handleLogOut = () => {
 
