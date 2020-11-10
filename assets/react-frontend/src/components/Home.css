@@ -5,6 +5,11 @@
 .headright{
     height: 500px;
 }
+.imghead{
+    margin-top:15%;
+    width: 100%;
+    height:auto;
+}
 .textad{
     font-family: 'Kanit', sans-serif;
     margin-top:15%;
