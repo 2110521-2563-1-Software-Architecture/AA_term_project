@@ -9,11 +9,11 @@ const Home = () => {
     const [generatedlink, setGenlink] = useState("");
     const [isLogin] = useState("")
     
-    function generatelink(){
+    const generatelink = () => {
       setGenlink(website);
     }
 
-    function copyLink(e){
+    const copyLink = (e) => {
       e.preventDefault();
       var copyText = document.getElementById("genlink");
       copyText.select();
@@ -44,10 +44,10 @@ const Home = () => {
           </div>
         </div>
         <div className="row shorttab">
-          <div className="col-sm-1 offset-sm-2 yourlink rmvpad">
+          <div className="col-sm-2 offset-sm-2 yourlink rmvpad">
             Shorten link
           </div>
-          <div className="col-sm-6 rmvpad">
+          <div className="col-sm-5 rmvpad">
             <input type="text" id="genlink" className="linkinput" placeholder="Generated link" value={generatedlink} readOnly/>
           </div>
           <div className="col-sm-1 rmvpad">
