@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Axios from "axios"
 
 import UserContext from "../utils/context/userContext"
+import User from "../../assets/user.png"
 
 const UserWrapper = styled.div`
   display: flex;
@@ -15,9 +16,13 @@ const UserWrapper = styled.div`
 
   .label {
     margin-top: 18px;
-    margin-left: 70px;
     font-size: 20px;
     color: white;
+  }
+
+  img {
+    width: 50px;
+    cursor: pointer
   }
 
   .btn {
@@ -33,13 +38,15 @@ const UserWrapper = styled.div`
   }
 
   @media (max-width: 700px) {
+
+    img {
+     
+    }
+
     .label {
       display: none;
     }
 
-    .btn {
-      margin-left: 12rem;
-    }
   }
 `
 
@@ -75,8 +82,13 @@ const UserForm = (props) => {
     props.onSet("guest")
   }
 
+  const viewProfile = () => {
+    history.push('/history')
+  }
+
   return (
     <UserWrapper>
+      <img onClick={viewProfile} src={User} />
       <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">
         Log out

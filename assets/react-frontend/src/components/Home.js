@@ -4,6 +4,7 @@ import Headpic from '../../assets/headpic.png';
 import Qrplace from '../../assets/qrplacehold.png'
 import QRCode from "qrcode.react";
 import "./Home.css";
+
 const Home = () => {
     const [website, setWebsite] = useState("");
     const [generatedlink, setGenlink] = useState("");
