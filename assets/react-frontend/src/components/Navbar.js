@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom"
+import React, { useContext, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom"
 import GuestLoginForm from "./GuestLoginForm";
 import styled from "styled-components"
 
@@ -9,8 +9,6 @@ import Logo from '../../assets/newlogo.png'
 import "../styles.css"
 import StateContext from "../utils/context/stateContext"
 import UserContext from "../utils/context/userContext"
-import PrevStateContext from "../utils/context/prevStateContext"
-import keyContext from "../utils/context/keyContext"
 
 const NavbarWrapper = styled.div`
   font-family: Roboto;
@@ -39,10 +37,10 @@ const NavbarWrapper = styled.div`
 const Navbar = () => {
 
   const { state, setState } = useContext(StateContext)
-  const { prevState, setPrevState } = useContext(PrevStateContext)
   const { userToken } = useContext(UserContext)
 
   const history = useHistory()
+  const { pathname } = useLocation()
 
   const homePageRedirect = () => {
     history.push("/")
@@ -50,25 +48,28 @@ const Navbar = () => {
     setState(st)
   }
 
-  const { locationKeys, setLocationKeys } = useContext(keyContext)
-  
+  const handleStateOnRedirect = () => {
+
+    if (userToken) {
+      setState("user")
+    } else {
+
+      switch (pathname) {
+        case '/':
+          setState("guest")
+          break
+        case '/register':
+          setState("sign-up")
+      }
+    }
+
+  }
+
   useEffect(() => {
-    return history.listen(location => {
-      if (history.action === 'PUSH') {
-        setLocationKeys([ location.key ])
-      }
-  
-      if (history.action === 'POP') {
-        if (locationKeys[1] === location.key) {
-          setLocationKeys(([ _, ...keys ]) => keys)
-          setState(prevState)
-        } else {
-          setLocationKeys((keys) => [ location.key, ...keys ])
-          setState(prevState)
-        }
-      }
-    })
-  }, [ locationKeys, ])
+
+    handleStateOnRedirect()
+
+  }, [pathname])
 
   const selectState = (st) => {
     switch (st) {
