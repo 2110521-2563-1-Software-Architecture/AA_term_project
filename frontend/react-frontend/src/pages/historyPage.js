@@ -1,34 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from "axios"
 
 const HistoryPage = () => {
 
-  const [data, setData] = useState([
-      {
-        url: "www.hello.ewwr.com",
-        number: "4"
-      },
-      {
-       url: "www.hello.erer.com",
-        number: "45"
-      },
-      {
-        url: "www.hello.dfss.com",
-        number: "16"
-      },
-      {
-       url: "www.hello.oio.com",
-       number: "420"
-      },
-      {
-       url: "www.hello.dfdf.com",
-       number: "50"
-      },
-      {
-       url: "www.hello.iopo.com",
-       number: "80"
+  const history = useHistory()
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+
+    if (!localStorage.getItem("token")) {
+      history.push('/')
+    }
+    else {
+
+      const getUrl = async () => {
+
+        const JwtToken = `JWT ${localStorage.getItem("token")}`
+
+        const { data: { urls } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/urls", { headers: { Authorization: JwtToken } })
+
+        setData(urls)
       }
-  ])
+  
+      getUrl()
+    }
+  }, [])
 
   return (
     <div>
@@ -62,8 +60,8 @@ const HistoryPage = () => {
                         <tbody>
                         {data.map(item => (
                           <tr>
-                            <td style={{ fontFamily: "Courier New" }}>{item.url}</td>
-                            <td style={{ fontFamily: "Courier New" }}>{item.number}</td>
+                            <td style={{ fontFamily: "Courier New" }}>{item.target_url}</td>
+                            <td style={{ fontFamily: "Courier New" }}>{item.visit_count}</td>
                           </tr>
                           ))}
                       </tbody>
@@ -79,6 +77,6 @@ const HistoryPage = () => {
       }
     </div>
   )
-    
 }
+
 export default HistoryPage;
