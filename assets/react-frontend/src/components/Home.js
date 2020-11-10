@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Logo from '../../assets/logo.png';
+import React, { useState } from "react";
+import Axios from "axios";
+
 import Headpic from '../../assets/headpic.png';
 import Qrplace from '../../assets/qrplacehold.png'
 import QRCode from "qrcode.react";
@@ -8,10 +9,26 @@ import "./Home.css";
 const Home = () => {
     const [website, setWebsite] = useState("");
     const [generatedlink, setGenlink] = useState("");
-    const [isLogin] = useState("")
     
-    const generatelink = () => {
+
+    const generatelink = async () => {
       setGenlink(website);
+
+      if (localStorage.getItem('token')) {
+        const JwtToken = `JWT ${localStorage.getItem('token')}`
+
+        const newURL = {
+          target_url: website,
+          name: "", // TODO 
+          domain: "", // TODO
+        }
+
+        const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
+
+        console.log(res)
+
+      }
+
     }
 
     const copyLink = (e) => {
@@ -41,7 +58,7 @@ const Home = () => {
             <input type="text" id="inputlink" className="linkinput" placeholder="Your link or Url"  onChange={(e) => {setWebsite(e.target.value)}}/>
           </div>
           <div className="col-sm-1 rmvpad">
-            <input type="button" className="shortbtn" value="Short it" onClick={() => generatelink()}/>
+            <input type="button" className="shortbtn" value="Short it" onClick={generatelink}/>
           </div>
         </div>
         <div className="row shorttab">
