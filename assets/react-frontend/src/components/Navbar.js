@@ -89,7 +89,9 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
       <div className="element-wrapper">
-        <img onClick={homePageRedirect} className="logo-img" src={Logo}/>
+        {state=='sign-up'? <img/>
+              : <img onClick={homePageRedirect} className="logo-img" src={Logo}/> }
+        
         {selectState(state)}
       </div>
     </NavbarWrapper>
