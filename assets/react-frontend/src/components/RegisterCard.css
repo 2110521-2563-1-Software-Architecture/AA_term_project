@@ -1,6 +1,59 @@
-.box {
-    border-color: black;
-    border-radius: 3cm;
-    border-style: solid;
-    border-width: thin;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
+.logoimg{
+  margin-top:-10px
+}
+.logostyle{
+  text-align: center;
+  width:400px;
+  height:auto;
+}
+.Card{
+  margin-top:25px;
+  width: 600px;
+  height: 500px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  text-align: left;
+}
+.register{
+  font-family: 'Kanit', sans-serif;
+  font-size: 25px;
+  margin-top: 30px;
+  text-align: center;
+}
+.regtitle{
+  font-family: 'Kanit', sans-serif;
+  margin-top: 20px;
+  margin-left:5%;
+  font-size:20px;
+}
+.reginput{
+  font-family: 'Kanit', sans-serif;
+  margin-left: 5%;
+  margin-top: 5px;
+}
+.reginputstyle{
+  height:50px;
+  width:95%;
+  border-radius: 10px;
+  padding:0px 10px;
+  border:1px solid black;
+}
+.errorpass{
+  color:red;
+  font-size: 18px;
+  display: none;
+}
+.regbtn{
+  text-align: center;
+  margin-top:30px;
+  width:200px;
+  height:50px;
+  background-color:#FE7F2D;
+  color:white;
+  font-family: 'Kanit',sans-serif;
+  font-size: 20px;
+  border-radius: 5px;
+  border:none;
+}
