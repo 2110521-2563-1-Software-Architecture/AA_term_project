@@ -7,6 +7,7 @@ import UserContext from "../utils/context/userContext"
 import User from "../../assets/user.png"
 
 const UserWrapper = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,6 +19,7 @@ const UserWrapper = styled.div`
     margin-top: 18px;
     font-size: 20px;
     color: white;
+    font-family: 'Kanit', sans-serif;
   }
 
   img {
@@ -26,7 +28,7 @@ const UserWrapper = styled.div`
   }
 
   .btn {
-    width: 80px;
+    width: 100px;
     height: 36px;
     margin-top: 8px;
     font-size: 16px;
@@ -35,6 +37,7 @@ const UserWrapper = styled.div`
     border-radius: 5px;
     color: white;
     border: 2px solid black;
+    font-family: 'Kanit', sans-serif;
   }
 
   @media (max-width: 700px) {
