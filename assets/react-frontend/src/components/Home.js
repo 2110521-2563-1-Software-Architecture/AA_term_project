@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/logo.png';
+import Headpic from '../../assets/headpic.png';
 import Qrplace from '../../assets/qrplacehold.png'
 import QRCode from "qrcode.react";
 import "./Home.css";
@@ -8,11 +9,11 @@ const Home = () => {
     const [generatedlink, setGenlink] = useState("");
     const [isLogin] = useState("")
     
-    function generatelink(){
+    const generatelink = () => {
       setGenlink(website);
     }
 
-    function copyLink(e){
+    const copyLink = (e) => {
       e.preventDefault();
       var copyText = document.getElementById("genlink");
       copyText.select();
@@ -25,6 +26,7 @@ const Home = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="headright col-sm-4 offset-sm-1">
+            <img className="imghead" src={Headpic}/>
           </div>
           <div className="headleft col-sm-6">
             <div className="textad">
@@ -42,10 +44,10 @@ const Home = () => {
           </div>
         </div>
         <div className="row shorttab">
-          <div className="col-sm-1 offset-sm-2 yourlink rmvpad">
+          <div className="col-sm-2 offset-sm-2 yourlink rmvpad">
             Shorten link
           </div>
-          <div className="col-sm-6 rmvpad">
+          <div className="col-sm-5 rmvpad">
             <input type="text" id="genlink" className="linkinput" placeholder="Generated link" value={generatedlink} readOnly/>
           </div>
           <div className="col-sm-1 rmvpad">
@@ -93,7 +95,7 @@ const Home = () => {
               </tr>
           </tbody>
           </table>
-          <input type="button" className="membtn" value="Register Now"/>
+          <a href="/register"><input type="button" className="membtn" value="Register Now"/></a>
           </div>
         </div>
       </div>

@@ -5,9 +5,14 @@
 .headright{
     height: 500px;
 }
+.imghead{
+    margin-top:15%;
+    width: 100%;
+    height:auto;
+}
 .textad{
     font-family: 'Kanit', sans-serif;
-    margin-top:15%;
+    margin-top:20%;
     font-size: 65px; 
     font-weight: 600;
     color:black;
@@ -59,6 +64,7 @@
     font-family: 'Kanit',sans-serif;
     font-size: 20px;
     color:white;
+    text-align: center;
 }
 .qrtab{
     text-align: center;
@@ -120,4 +126,12 @@ td{
     font-size: 20px;
     border-radius: 5px;
     border:none;
+}
+@media (max-width: 1200px) {
+    .imghead{
+        margin-top: 35%;
+    }
+    .textad{
+        margin-top:15%
+    }
 }
