@@ -7,6 +7,7 @@ import UserContext from "../utils/context/userContext"
 import "../styles.css";
 
 const GuestFormWrapper = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -29,7 +30,7 @@ const GuestFormWrapper = styled.div`
     .label {
       margin-bottom: 0.05rem;
       font-size: 17px;
-      font-family: 'Times New Roman';
+      font-family: 'Kanit', sans-serif;
       color: white;
     }
 
@@ -37,6 +38,7 @@ const GuestFormWrapper = styled.div`
       width: 120px;
       height: 21px;
       padding-left: 3px;
+      font-family: 'Kanit', sans-serif;
     }
 
     .input-error {
@@ -47,6 +49,7 @@ const GuestFormWrapper = styled.div`
       
       height: 100%;
       display: flex;
+      font-family: 'Kanit', sans-serif;
 
       .btn {
         width: 80px;
@@ -59,6 +62,7 @@ const GuestFormWrapper = styled.div`
 
         :hover {
             background-color: #fe7f2d;
+            text-decoration: underline;
         }
       }
 
@@ -286,7 +290,7 @@ const GuestLoginForm = (props) => {
             <h6>{errorMessages}</h6>
           </div>
           <div className="input-element">
-            <h6 className="label">email</h6>
+            <h6 className="label">Email</h6>
             <input
               className="input"
               type="email"
@@ -296,7 +300,7 @@ const GuestLoginForm = (props) => {
             />
           </div>
           <div className="input-element">
-            <h6 className="label">password</h6>
+            <h6 className="label">Password</h6>
             <input
               className="input"
               type="password"
@@ -307,8 +311,8 @@ const GuestLoginForm = (props) => {
           </div>
         </div>
         <div className="btn-wrapper">
-          <button className="btn" onClick={() => handleSignIn(email, password)}>sign in</button>
-          <button className="btn" onClick={handleSignUp}>sign up</button>
+          <button className="btn" onClick={() => handleSignIn(email, password)}>Login</button>
+          <button className="btn" onClick={handleSignUp}>Sign up</button>
         </div>
       </GuestFormWrapper>
       <Hambergur id="hambergur" onClick={openNav}>
