@@ -45,7 +45,6 @@ const App = () => {
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <Navbar />
-          {userToken ? <h1>Login</h1> : null}
           <Switch>
             <Route path="/ads" exact>
               <SkipPage />
