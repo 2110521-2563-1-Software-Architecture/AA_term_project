@@ -16,6 +16,12 @@ const Wrapper = styled.div`
 
 `
 
+const EmptyWrapper = styled.div`
+
+
+
+`
+
 const HistoryPage = () => {
 
   const history = useHistory()
@@ -47,7 +53,9 @@ const HistoryPage = () => {
         data ? 
           <Wrapper>{data.map((info, index) => <Card data={{info, index}} />)}</Wrapper>
         : 
-          <div>H</div>
+          <EmptyWrapper>
+            He
+          </EmptyWrapper>
       }
     </div>
   )
