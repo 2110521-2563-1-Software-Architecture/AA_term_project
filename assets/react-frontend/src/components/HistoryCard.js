@@ -94,6 +94,8 @@ const HistoryCard = props => {
             const JwtToken = `JWT ${localStorage.getItem('token')}`
             const res = await Axios.delete(`http://aa-shortener.poomrokc.services/api/user/urls/${hash}`, { headers: { Authorization: JwtToken } })
 
+            props.onSet(prev => !prev)
+
         } catch (error) {
             console.log(error)
         }

@@ -25,8 +25,6 @@ const Home = () => {
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
 
-        console.log(res)
-
       }
 
     }
