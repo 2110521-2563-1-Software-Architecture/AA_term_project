@@ -34,12 +34,11 @@ const Wrapper = styled.div`
   .foot {
       position: relative;
       right: 1px;
-      bottom: 2.6rem;
+      bottom: 70.3px; // increase here to let button goes up
       margin-top: 152px;
       border-top: none;
       width: 101%;
       height: 50px;
-      outline: hidden;
       border-bottom-left-radius: 1.5rem;
       border-bottom-right-radius: 1.5rem;
       cursor: pointer;
@@ -50,6 +49,18 @@ const Wrapper = styled.div`
       }
   }
 
+  animation: fadein ${props => props.fadeInDuration};
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
 `
 
 const HistoryCard = props => {
@@ -58,15 +69,21 @@ const HistoryCard = props => {
         console.log(props)
     }
 
-    const { target_url, visit_count, created, name = "Anonymous" } = props.data
+    const { index } = props.data
+    const { target_url, visit_count, created, domain } = props.data.info
+    let { name } = props.data.info
+    if (!name) {
+        name = "Anonymous"
+    }
 
     return (
-        <Wrapper>
+        <Wrapper fadeInDuration={`${index}s`}>
             <img src={logo} />
             <div className="data-wrap">
                 <h6>ID: {created}</h6>
                 <h6>URL: {target_url}</h6>
                 <h6>Name: {name}</h6>
+                <h6>Domain: {domain}</h6>
                 <h6>Visited Count: {visit_count}</h6>
             </div>
             <div className="foot" onClick={handle}>Del</div>

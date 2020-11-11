@@ -44,7 +44,7 @@ const HistoryPage = () => {
     <div>
       {
         data ? 
-          <Wrapper>{data.map(i => <Card data={i}>Hello</Card>)}</Wrapper>
+          <Wrapper>{data.map((info, index) => <Card data={{info, index}} />)}</Wrapper>
         : 
           <div>H</div>
       }
