@@ -41,6 +41,8 @@ module.exports = {
 	getMyUrls: async (user) => {
 		try {
 			var urls = await UrlModel.find({ creator: user._id }, { name: 1, hash: 1, created: 1, target_url: 1, domain: 1, _id: 0 }).sort({ created: -1 });
+			if (urls.length == 0)
+				return { status: 200, payload: { urls: [] } };
 			var hashes = urls.map((row) => `hash='${row.hash}'`);
 			var mapper = {};
 			rows = await influx.query(`
