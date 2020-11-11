@@ -64,6 +64,11 @@ const GuestFormWrapper = styled.div`
             background-color: #fe7f2d;
             text-decoration: underline;
         }
+
+        :focus {
+          box-shadow: none;
+          outline: none;
+        }
       }
 
     }
