@@ -39,7 +39,7 @@ const HistoryPage = () => {
   
       getUrl()
     }
-  }, [])
+  }, [data])
 
   return (
     <div>
