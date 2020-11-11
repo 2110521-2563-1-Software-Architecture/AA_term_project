@@ -61,6 +61,13 @@ const Wrapper = styled.div`
     to   { opacity: 1; }
   }
 
+  :hover {
+
+    position: relative;
+    top: -15px;
+
+  }
+
 `
 
 const HistoryCard = props => {
