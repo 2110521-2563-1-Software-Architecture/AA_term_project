@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Axios from "axios"
 
 import logo from "../../assets/newlogo.png"
 
@@ -72,12 +73,21 @@ const Wrapper = styled.div`
 
 const HistoryCard = props => {
 
-    const handle = () => {
-        console.log(props)
+    const handle = async () => {
+        
+        try {
+
+            const JwtToken = `JWT ${localStorage.getItem('token')}`
+            const res = await Axios.delete(`http://aa-shortener.poomrokc.services/api/user/urls/${hash}`, { headers: { Authorization: JwtToken } })
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     const { index } = props.data
-    const { target_url, visit_count, created, domain } = props.data.info
+    const { target_url, visit_count, created, domain, hash } = props.data.info
     let { name } = props.data.info
     if (!name) {
         name = "Anonymous"
