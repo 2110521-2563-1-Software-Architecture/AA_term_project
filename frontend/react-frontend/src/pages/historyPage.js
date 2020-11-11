@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   box-sizing: border-box;
+  margin-top: 5rem;
 
 `
 
