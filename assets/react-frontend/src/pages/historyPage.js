@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import styled from "styled-components"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
-import useForceUpdate from 'use-force-update';
 
 import Card from "../components/HistoryCard"
 import EmptyFile from "../../assets/empty-file.png"
@@ -70,7 +69,6 @@ const HistoryPage = () => {
           setData(urls)
         } catch (error) {
           console.log(error.message)
-          
         }
       }
   
