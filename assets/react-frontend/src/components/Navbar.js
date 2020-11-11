@@ -32,6 +32,12 @@ const NavbarWrapper = styled.div`
     cursor: pointer;
   }
 
+  @media (max-width: 820px) {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+  }
+
 `
 
 const Navbar = () => {

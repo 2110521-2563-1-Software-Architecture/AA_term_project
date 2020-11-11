@@ -73,18 +73,10 @@ const App = () => {
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <Navbar />
           <Switch>
-            <Route path="/ads" exact>
-              <SkipPage />
-            </Route>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
-            <Route path="/register" exact>
-              <RegisterPage />
-            </Route>
-            <Route path="/history" exact>
-              <HistoryPage />
-            </Route>
+            <Route path="/ads" exact component={SkipPage} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/register" exact component={RegisterPage} />
+            <Route path="/history" exact component={HistoryPage} />
           </Switch>
         </UserContext.Provider>
       </StateContext.Provider>
