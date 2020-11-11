@@ -8,10 +8,10 @@ const Wrapper = styled.div`
 
   border: 2px solid black;
   border-radius: 2rem;
-  min-width: 300px;
-  width: 300px;
+  min-width: 350px;
+  width: 350px;
   text-align: center;
-  height: 400px;
+  height: 450px;
   margin: 2rem;
   box-sizing: border-box;
 
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
       position: relative;
       left: -1px;
       top: -1px;
-      width: 300px;
+      width: 349px;
       height: 90px;
       background-color: #2F4F4F;
       border-top-left-radius: 1.5rem;
@@ -27,15 +27,29 @@ const Wrapper = styled.div`
       background-size: cover;
   }
 
-  .data-wrap {
+  .flex-wrap {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 1rem;
 
+    .flex-label {
+        font-weight: bold;
+    }
+
+    .flex-value {
+        margin-right: 10px;
+    }
+
+  }
+
+  .data-wrap {
       padding-top: 3rem;
   }
 
   .foot {
       position: relative;
       right: 1px;
-      bottom: 70.3px; // increase here to let button goes up
+      bottom: 28px; // increase here to let button goes up
       margin-top: 152px;
       border-top: none;
       width: 101%;
@@ -65,7 +79,7 @@ const Wrapper = styled.div`
   :hover {
 
     position: relative;
-    top: -15px;
+    top: -20px;
 
   }
 
@@ -97,11 +111,26 @@ const HistoryCard = props => {
         <Wrapper fadeInDuration={`${index}s`}>
             <img src={logo} />
             <div className="data-wrap">
-                <h6>ID: {created}</h6>
-                <h6>URL: {target_url}</h6>
-                <h6>Name: {name}</h6>
-                <h6>Domain: {domain}</h6>
-                <h6>Visited Count: {visit_count}</h6>
+                <div className="flex-wrap">
+                    <h6 className="flex-label">ID:</h6>
+                    <h6 className="flex-value">{created}</h6>
+                </div>
+                <div className="flex-wrap">
+                    <h6 className="flex-label">URL:</h6>
+                    <h6 className="flex-value">{target_url}</h6>
+                </div>
+                <div className="flex-wrap">
+                    <h6 className="flex-label">NAME:</h6>
+                    <h6 className="flex-value">{name}</h6>
+                </div>
+                <div className="flex-wrap">
+                    <h6 className="flex-label">DOMAIN:</h6>
+                    <h6 className="flex-value">{domain}</h6>
+                </div>
+                <div className="flex-wrap">
+                    <h6 className="flex-label">VISITED COUNT:</h6>
+                    <h6 className="flex-value">{visit_count}</h6>
+                </div>
             </div>
             <div className="foot" onClick={handle}>Del</div>
         </Wrapper>
