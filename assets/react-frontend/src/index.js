@@ -13,6 +13,7 @@ import HistoryPage from './pages/historyPage';
 import StateContext from "./utils/context/stateContext"
 import UserContext from "./utils/context/userContext"
 import HomePage from './pages/Homepage.js';
+import UserPage from './pages/userPage'
 
 const App = () => {
 
@@ -46,10 +47,11 @@ const App = () => {
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <Navbar />
           <Switch>
-            <Route path="/ads" exact component={SkipPage} />
             <Route path="/" exact component={HomePage} />
             <Route path="/register" exact component={RegisterPage} />
+            <Route path="/user" exact component={UserPage} />
             <Route path="/history" exact component={HistoryPage} />
+            <Route path="/ads" exact component={SkipPage} />
           </Switch>
         </UserContext.Provider>
       </StateContext.Provider>
