@@ -12,10 +12,10 @@ const Wrapper = styled.div`
     border-radius: 1rem;
     text-align: center;
     min-width: 600px;
-    height: 540px;
+    height: auto;
 
     img {
-        border: 2px solid black;
+        clip-path: circle(120px at 50% 50%);
         width: 270px;
         height: 267px;
     }
@@ -65,6 +65,7 @@ const Wrapper = styled.div`
         img {
             width: 200px;
             height: 200px;
+            clip-path: circle(95px at 50% 50%);
         }
 
         .information-wrapper {

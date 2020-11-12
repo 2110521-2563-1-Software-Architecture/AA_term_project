@@ -16,13 +16,13 @@ const ImageUploadWrapper = styled.label`
     .image {
         width: 270px;
         height: 267px;
-        border: 2px solid black
+        clip-path: circle(120px at 50% 50%);
     }
 
     .upload {
         width: 40px;
-        margin-top: -225px;
-        margin-left: -40px;
+        margin-top: -205px;
+        margin-left: -50px;
     }
 
     @media (max-width: 800px) {
@@ -30,6 +30,7 @@ const ImageUploadWrapper = styled.label`
         .image {
             width: 200px;
             height: 200px;
+            clip-path: circle(95px at 50% 50%);
         }
 
         .upload {
@@ -49,10 +50,11 @@ const Wrapper = styled.div`
     border-radius: 1rem;
     text-align: center;
     min-width: 600px;
-    height: 540px;
+    height: auto;
 
     .information-wrapper {
-        margin-top: 5rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
         display: flex;
         flex-direction: column;
     }
@@ -60,7 +62,7 @@ const Wrapper = styled.div`
     .btn-wrapper {
         display: flex;
         justify-content: space-evenly;
-        margin: 1rem 8rem 1rem 8rem;
+        margin: 1rem 8rem 1rem 9rem;
 
         button {
             width: 70px;
@@ -77,14 +79,11 @@ const Wrapper = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-right: 10rem;
         margin-bottom: 1rem;
 
         .element-label {
             font-weight: bold
-        }
-
-        .element-value {
-            margin-left: 0rem;
         }
 
     }
@@ -95,11 +94,20 @@ const Wrapper = styled.div`
 
         .information-wrapper {
             flex-direction: column;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .btn-wrapper {
-            margin: 1rem 4rem 0 4rem;
+            margin: -0.5rem 4rem 0 4rem;
+        }
+
+        .element-wrapper {
+            flex-direction: column;
+            text-align: left;
+
+            .element-input {
+                width: 332px;
+            }
         }
     }
 
@@ -147,7 +155,7 @@ const EditUserProfile = props => {
             <div className="information-wrapper">
                 <div className="element-wrapper">
                     <h5 className="element-label">New User Name:</h5>
-                    <input type="text" value={newName} onChange={changeName}/>
+                    <input className="element-input" type="text" value={newName} onChange={changeName}/>
                 </div>
             </div>
             <div className="btn-wrapper">
