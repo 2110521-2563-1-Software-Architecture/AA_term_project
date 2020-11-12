@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom"
 
 import UserPicture from "../../assets/user.png"
+
+const ImageUploadWrapper = styled.label`
+
+    cursor: pointer;
+
+    input[type="file"] {
+        display: none;
+    }
+
+    img {
+        width: 270px;
+        height: 267px;
+        border: 2px solid black
+    }
+
+`
 
 const Wrapper = styled.div`
 
@@ -14,12 +30,8 @@ const Wrapper = styled.div`
     min-width: 600px;
     height: 540px;
 
-    img {
-        border: 2px solid black
-    }
-
     .information-wrapper {
-        margin-top: 7rem;
+        margin-top: 5rem;
         display: flex;
         flex-direction: column;
     }
@@ -87,9 +99,19 @@ const EditUserProfile = props => {
         console.log('update')
     }
 
+    const imageRegEx = "image/*"
+    const [picture, setPicture] = useState(UserPicture)
+
+    const changeImage = (e) => {
+        setPicture(URL.createObjectURL(e.target.files[0]))
+    }
+    
     return (
         <Wrapper>
-            <img src={UserPicture} alt="Anonymous User Picture" />
+            <ImageUploadWrapper>
+                <img src={picture} alt="Anonymous User Picture" />
+                <input type="file" accept={imageRegEx} onChange={changeImage} />
+            </ImageUploadWrapper>
             <div className="information-wrapper">
                 <div className="element-wrapper">
                     <h5 className="element-label">New User Name:</h5>
