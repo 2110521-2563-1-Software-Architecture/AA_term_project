@@ -16,6 +16,9 @@ const MainWrapper = styled.div`
 const UserPage = () => {
 
     const history = useHistory()
+    const [isEdit, setIsEdit] = useState(false)
+    const [userInfo, setUserInfo] = useState({})
+    const [forceRender, setForceRender] = useState(false)
 
     useEffect(() => {
 
@@ -35,16 +38,13 @@ const UserPage = () => {
         }
 
         getUserInfo()
-    }, [])
-
-    const [isEdit, setIsEdit] = useState(false)
-    const [userInfo, setUserInfo] = useState({})
+    }, [forceRender])
 
     return (
         <MainWrapper>
             {
                 isEdit ?  
-                    <EditUserProfile onSet={setIsEdit} /> 
+                    <EditUserProfile onSet={setIsEdit} reRender={setForceRender} /> 
                     : 
                     <UserProfile onSet={setIsEdit} data={userInfo} />
             }
