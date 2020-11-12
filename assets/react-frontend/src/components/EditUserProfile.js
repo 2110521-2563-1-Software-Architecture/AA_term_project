@@ -86,6 +86,10 @@ const Wrapper = styled.div`
             font-weight: bold
         }
 
+        .element-input {
+            padding-left: .5rem;
+        }
+
     }
 
     @media (max-width: 800px) {
@@ -107,6 +111,7 @@ const Wrapper = styled.div`
 
             .element-input {
                 width: 332px;
+                padding-left: .5rem;
             }
         }
     }
