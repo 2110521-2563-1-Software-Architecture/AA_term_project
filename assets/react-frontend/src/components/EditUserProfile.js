@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Axios from 'axios'
+import { useFormik } from 'formik'
 
 import UserPicture from "../../assets/user.png"
 import UploadIcon from "../../assets/upload.png"
@@ -57,12 +58,18 @@ const Wrapper = styled.div`
         margin-bottom: 2rem;
         display: flex;
         flex-direction: column;
+
+        .error-label {
+            color: red;
+            text-align: left;
+            margin-top: 1rem;
+        }
     }
 
     .btn-wrapper {
         display: flex;
         justify-content: space-evenly;
-        margin: 1rem 8rem 1rem 9rem;
+        margin: 0 8rem 1rem 8rem;
 
         button {
             width: 70px;
@@ -79,26 +86,33 @@ const Wrapper = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-right: 10rem;
-        margin-bottom: 1rem;
+        margin-right: 1rem;
+        margin-bottom: .5rem;
 
         .element-label {
-            font-weight: bold
+            font-weight: bold;
+            margin-top: -1px;
         }
 
         .element-input {
             padding-left: .5rem;
+            width: 320px;
+            height: 27px;
         }
 
     }
 
     @media (max-width: 800px) {
         min-width: 400px;
-        height: 480px;
+        height: auto;
 
         .information-wrapper {
             flex-direction: column;
             margin-top: 4rem;
+
+            .error-label {
+                text-align: center;
+            }
         }
 
         .btn-wrapper {
@@ -120,6 +134,29 @@ const Wrapper = styled.div`
 
 const EditUserProfile = props => {
 
+    const formik = useFormik({
+        initialValues: {
+            newName: ""
+        },
+        validate: val => {
+            const errors = {}
+            if (!val.newName) {
+                errors.newName = "New name cannot be empty"
+            }
+            return errors
+        },
+        onSubmit: async () => {
+
+            const JwtToken = `JWT ${localStorage.getItem('token')}`
+            const data = {name: formik.values.newName}
+            const res = await Axios.patch("http://aa-shortener.poomrokc.services/api/user/profile"
+            , data, { headers: { Authorization: JwtToken } })
+    
+            forceRender()
+            goBack()
+        }
+    })
+
     const goBack = () => {
         props.onSet(false)
     }
@@ -135,21 +172,6 @@ const EditUserProfile = props => {
         setPicture(URL.createObjectURL(e.target.files[0]))
     }
 
-    const [newName, setNewName] = useState('')
-    const changeName = (e) => {
-        setNewName(e.target.value)
-    }
-
-    const update = async () => {
-
-        const JwtToken = `JWT ${localStorage.getItem('token')}`
-        const data = {name: newName}
-        const res = await Axios.patch("http://aa-shortener.poomrokc.services/api/user/profile", data, { headers: { Authorization: JwtToken } })
-
-        forceRender()
-        goBack()
-    }
-
     return (
         <Wrapper>
             <ImageUploadWrapper>
@@ -159,13 +181,24 @@ const EditUserProfile = props => {
             </ImageUploadWrapper>
             <div className="information-wrapper">
                 <div className="element-wrapper">
-                    <h5 className="element-label">New User Name:</h5>
-                    <input className="element-input" type="text" value={newName} onChange={changeName}/>
+                    <h4 className="element-label">New User Name:</h4>
+                    <input
+                        id="newName"
+                        name="newName"
+                        className="element-input" 
+                        type="text" 
+                        placeholder="New User Name"
+                        value={formik.values.newName} 
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                    />
                 </div>
+                {formik.errors.newName && formik.touched.newName  &&
+                    <h5 className="error-label">{formik.errors.newName}</h5>}
             </div>
             <div className="btn-wrapper">
                 <button onClick={goBack}>Go Back</button>
-                <button onClick={update}>Update</button>
+                <button type="submit" onClick={formik.handleSubmit}>Update</button>
             </div>
         </Wrapper>
     )
