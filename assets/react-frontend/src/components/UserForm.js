@@ -85,13 +85,13 @@ const UserForm = (props) => {
     props.onSet("guest")
   }
 
-  const viewProfile = () => {
-    history.push('/history')
+  const goToRedirectPage = () => {
+    history.push('/redirect')
   }
 
   return (
     <UserWrapper>
-      <img onClick={viewProfile} src={User} />
+      <img onClick={goToRedirectPage} src={User} />
       <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">
         Log out

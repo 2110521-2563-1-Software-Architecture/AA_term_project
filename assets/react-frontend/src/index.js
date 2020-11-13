@@ -7,13 +7,14 @@ import {
 } from 'react-router-dom';
 
 import Navbar from './components/Navbar'
-import SkipPage from './pages/skip-page';
-import RegisterPage from './pages/register-page';
-import HistoryPage from './pages/historyPage';
+import SkipPage from './pages/skip-page'
+import RegisterPage from './pages/register-page'
+import HistoryPage from './pages/historyPage'
 import StateContext from "./utils/context/stateContext"
 import UserContext from "./utils/context/userContext"
-import HomePage from './pages/Homepage.js';
+import HomePage from './pages/Homepage'
 import UserPage from './pages/userPage'
+import RedirectPage from "./pages/redirect-page"
 
 const App = () => {
 
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/" exact component={HomePage} />
             <Route path="/register" exact component={RegisterPage} />
             <Route path="/user" exact component={UserPage} />
+            <Route path="/redirect" exact component={RedirectPage} />
             <Route path="/history" exact component={HistoryPage} />
             <Route path="/ads" exact component={SkipPage} />
           </Switch>
