@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { useHistory } from "react-router-dom"
 
 import ProfileRedirectCard from '../components/ProfileRedirectCard'
 import HistoryRedirectCard from '../components/HistoryRedirectCard'
@@ -14,6 +15,8 @@ const Wrapper = styled.div`
 `
 
 const RedirectPage = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {history.push('/')}
