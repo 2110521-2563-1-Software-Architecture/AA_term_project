@@ -127,6 +127,69 @@ td{
     border-radius: 5px;
     border:none;
 }
+.greenbg{
+    background-color:#2F4F4F;
+    min-height: 680px;
+}
+.memtitle{
+    font-family: 'Kanit', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-top:35px;
+    margin-bottom: 20px;
+    color:white;
+}
+.memshorttab{
+    font-family: 'Kanit', sans-serif;
+    margin-top:40px;
+    font-size:20px;
+    color:white;
+    line-height: 50px;
+}
+.memlinkinput{
+    margin-bottom: 30px;
+    height:50px;
+    width:100%;
+    border-radius: 5px;
+    font-family: 'Kanit', sans-serif;
+    padding:0px 10px;
+}
+.shortbtndiv{
+    text-align: center;
+}
+.shortbtnmem{
+    margin-top:120px;
+    margin-bottom:80px;
+    width:50%;
+    height:50px;
+    background-color:#FE7F2D;
+    color:white;
+    font-family: 'Kanit',sans-serif;
+    font-size: 20px;
+    border-radius: 2px;
+    border:none;
+}
+.genlinktab{
+    text-align: center;
+    margin-top: 40px;
+}
+.genlinkmem{
+    height:50px;
+    width:80%;
+    border-radius: 5px;
+    font-family: 'Kanit', sans-serif;
+    padding:0px 10px;
+}
+.copybtn{
+    width:20%;
+    height:50px;
+    background-color:#FE7F2D;
+    color:white;
+    font-family: 'Kanit',sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border:none;
+}
 @media (max-width: 1200px) {
     .imghead{
         margin-top: 35%;
