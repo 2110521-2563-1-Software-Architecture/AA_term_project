@@ -24,6 +24,7 @@ import HistoryPage from './pages/historyPage'
 >>>>>>> initial redirect page
 import StateContext from "./utils/context/stateContext"
 import UserContext from "./utils/context/userContext"
+import LoginContext from "./utils/context/loginContext"
 import HomePage from './pages/Homepage'
 import UserPage from './pages/userPage'
 import RedirectPage from "./pages/redirect-page"
@@ -53,6 +54,7 @@ const App = () => {
 
   const [state, setState] = useState("guest")
   const [userToken, setUserToken] = useState(undefined)
+  const [loginRender, setLoginRender] = useState(false)
 
 >>>>>>> fix bug browser go back, still in fixing
   return (
@@ -79,15 +81,17 @@ const App = () => {
 =======
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
+          <LoginContext.Provider value={{ loginRender, setLoginRender }}>
           <Navbar />
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/register" exact component={RegisterPage} />
-            <Route path="/user" exact component={UserPage} />
-            <Route path="/redirect" exact component={RedirectPage} />
-            <Route path="/history" exact component={HistoryPage} />
-            <Route path="/ads" exact component={SkipPage} />
-          </Switch>
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/register" exact component={RegisterPage} />
+              <Route path="/user" exact component={UserPage} />
+              <Route path="/redirect" exact component={RedirectPage} />
+              <Route path="/history" exact component={HistoryPage} />
+              <Route path="/ads" exact component={SkipPage} />
+            </Switch>
+          </LoginContext.Provider>
         </UserContext.Provider>
       </StateContext.Provider>
 >>>>>>> fix home route

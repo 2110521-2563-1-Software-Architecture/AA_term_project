@@ -10,7 +10,27 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 5rem 15rem 0 15rem;
+    margin: 3rem 20rem 0 20rem;
+    
+    .container-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .element-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .element-wrapper.element-left {
+        margin-right: 20rem;
+
+    }
+
+    .element-wrapper.element-right {
+        margin-left: 20rem;
+    }
 
 `
 
@@ -24,8 +44,14 @@ const RedirectPage = () => {
 
     return (
         <Wrapper>
-            <ProfileRedirectCard />
-            <HistoryRedirectCard />
+            <div className="container-wrapper">
+                <div className="element-wrapper element-left">
+                    <ProfileRedirectCard />
+                </div>
+                <div className="element-wrapper element-right">
+                    <HistoryRedirectCard />
+                </div>
+            </div>
         </Wrapper>
     )
 }
