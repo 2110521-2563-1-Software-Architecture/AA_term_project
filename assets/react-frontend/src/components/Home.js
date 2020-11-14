@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 
+import LoginContext from "../utils/context/loginContext"
 import Headpic from '../../assets/headpic.png';
 import Qrplace from '../../assets/qrplacehold.png'
 import QRCode from "qrcode.react";
@@ -13,12 +14,16 @@ const Home = () => {
     const [customoption, setCustom] = useState("");
     const [customname,setCustomname] = useState("");
     const [linkname,setLinkname] = useState("");
-  
+
+    const { loginRender } = useContext(LoginContext)
+
     useEffect(() =>{
       if(localStorage.getItem('token')){
         setIsLogin(true);
+      } else {
+        setIsLogin(false)
       }
-    }, [])
+    }, [loginRender, localStorage.getItem('token')])
 
     const generatelink = async () => {
       setGenlink(website);
@@ -28,11 +33,20 @@ const Home = () => {
 
         const newURL = {
           target_url: website,
-          name: linkname, // TODO 
-          domain: customname, // TODO
+          name: linkname, 
+          domain: customname,
         }
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
+
+        let { data: { hash, domain } } = res
+
+        if (!domain) {
+          domain = 'poomrock'
+        }
+
+        const generatedLink = `www.${domain}/${hash}`
+        setGenlink(generatedLink)
 
       }
 

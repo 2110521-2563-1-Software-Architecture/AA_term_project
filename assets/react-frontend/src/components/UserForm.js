@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom"
 import styled from "styled-components";
 import Axios from "axios"
 
+import LoginContext from "../utils/context/loginContext"
 import UserContext from "../utils/context/userContext"
 import User from "../../assets/user.png"
 
@@ -58,6 +59,7 @@ const UserForm = (props) => {
   const history = useHistory()
 
   const { userToken, setUserToken } = useContext(UserContext)
+  const { setLoginRender } = useContext(LoginContext)
   const [name, setName] = useState("")
 
   useEffect(() => {
@@ -83,6 +85,7 @@ const UserForm = (props) => {
 
     history.push('/')
     props.onSet("guest")
+    setLoginRender(prevState => !prevState)
   }
 
   const goToRedirectPage = () => {
