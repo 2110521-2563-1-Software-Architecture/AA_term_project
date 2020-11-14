@@ -6,6 +6,7 @@ import styled from "styled-components"
 import UserForm from "./UserForm";
 import SkipForm from "./SkipForm";
 import Logo from '../../assets/newlogo.png'
+import LogoPro from '../../assets/newlogo_pro.png'
 import "../styles.css"
 import StateContext from "../utils/context/stateContext"
 import UserContext from "../utils/context/userContext"
@@ -90,7 +91,7 @@ const Navbar = () => {
     <NavbarWrapper>
       <div className="element-wrapper">
         {state=='sign-up'? <img/>
-              : <img onClick={homePageRedirect} className="logo-img" src={Logo}/> }
+              : state=='user'?<img onClick={homePageRedirect} className="logo-img" src={LogoPro}/>:<img onClick={homePageRedirect} className="logo-img" src={Logo}/> }
         
         {selectState(state)}
       </div>
