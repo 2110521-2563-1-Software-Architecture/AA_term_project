@@ -10,7 +10,10 @@ const Home = () => {
     const [website, setWebsite] = useState("");
     const [generatedlink, setGenlink] = useState("");
     const [isLogin, setIsLogin] = useState(false);
-
+    const [customoption, setCustom] = useState("");
+    const [customname,setCustomname] = useState("");
+    const [linkname,setLinkname] = useState("");
+  
     useEffect(() =>{
       if(localStorage.getItem('token')){
         setIsLogin(true);
@@ -25,8 +28,8 @@ const Home = () => {
 
         const newURL = {
           target_url: website,
-          name: "", // TODO 
-          domain: "", // TODO
+          name: linkname, // TODO 
+          domain: customname, // TODO
         }
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
@@ -125,8 +128,74 @@ const Home = () => {
     }
     else{
       return(
-        <div className="container-fluid">
-          
+        <div className="container-fluid greenbg">
+          <div className="row">
+            <div className="col-sm-8 offset-sm-2">
+              <div className="memtitle">
+                Generate auto/custom url shorten link
+              </div>
+            </div>
+          </div>
+          <div className="row memshorttab">
+            <div className="col-sm-4 offset-sm-1 qrtab">
+              <div className="qrbox">
+                {generatedlink?<QRCode className="qrcode" id="qrcode" value={generatedlink}/>
+                : <img className="qrcode" id="qrcode" src={Qrplace}/> }
+              </div>
+              <div className="genlinktab">
+                <input type="text" id="genlink" className="genlinkmem" placeholder="Generated link" value={generatedlink} readOnly/>
+              </div>
+              <div className="genlinktab">
+                <input type="button" className="copybtn" value="Copy" onClick={(e) => {copyLink(e)}}/>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="row">
+                <div className="col-sm-2 offset-sm-1">
+                  Option
+                </div>
+                <div className="col-sm-9">
+                  <select id="customoption" className="memlinkinput" onChange={(e) => setCustom(e.target.value)}>
+                    <option value="auto">Auto</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-2 offset-sm-1">
+                  Link
+                </div>
+                <div className="col-sm-9">
+                  <input type="text" id="inputlink" className="memlinkinput" placeholder="Your link or Url"  onChange={(e) => {setWebsite(e.target.value)}}/>
+                </div>
+              </div>
+                {
+                  customoption=="custom" ?
+                  <div className="row">
+                    <div className="col-sm-3 offset-sm-1">
+                      URL name
+                    </div>
+                    <div className="col-sm-8">
+                      <input type="text" id="customname" className="memlinkinput" placeholder="Custom domain ex. mylink"  onChange={(e) => {setCustomname(e.target.value)}}/>
+                    </div>
+                  </div>
+                  :null
+                }
+              <div className="row">
+                <div className="col-sm-3 offset-sm-1">
+                  Name(optional)
+                </div>
+                <div className="col-sm-8">
+                  <input type="text" id="linkname" className="memlinkinput" placeholder="Link name (For yourself only)"  onChange={(e) => {setLinkname(e.target.value)}}/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-8 offset-sm-2 shortbtndiv">
+                  <input type="button" className="shortbtnmem" value="Generate Link" onClick={generatelink}/>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }
