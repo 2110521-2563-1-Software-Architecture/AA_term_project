@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
 import Headpic from '../../assets/headpic.png';
@@ -9,7 +9,13 @@ import "./Home.css";
 const Home = () => {
     const [website, setWebsite] = useState("");
     const [generatedlink, setGenlink] = useState("");
-    
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() =>{
+      if(localStorage.getItem('token')){
+        setIsLogin(true);
+      }
+    }, [])
 
     const generatelink = async () => {
       setGenlink(website);
@@ -37,7 +43,7 @@ const Home = () => {
       document.execCommand("copy");
       alert("Copy link to clipboard!")
     }
-
+    if(!isLogin){
     return (
       <div className="container-fluid">
         <div className="row">
@@ -116,6 +122,14 @@ const Home = () => {
         </div>
       </div>
     )
+    }
+    else{
+      return(
+        <div className="container-fluid">
+          
+        </div>
+      )
+    }
      
 }
     
