@@ -33,8 +33,13 @@ const Home = () => {
 
         const newURL = {
           target_url: website,
+<<<<<<< HEAD
           name: linkname, 
           domain: customname,
+=======
+          name: linkname, // TODO 
+          domain: 'aa-shortener.poomrokc.services/'+customname, // TODO
+>>>>>>> change wording
         }
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
@@ -123,7 +128,7 @@ const Home = () => {
                 <td>✅</td>
               </tr>
               <tr>
-                <td className="benefit">Customize domain for your link</td>
+                <td className="benefit">Customize alias for your link</td>
                 <td>-</td>
                 <td>✅</td>
               </tr>
@@ -146,7 +151,7 @@ const Home = () => {
           <div className="row">
             <div className="col-sm-8 offset-sm-2">
               <div className="memtitle">
-                Generate auto/custom url shorten link
+                Generate auto/custom alias shorten link
               </div>
             </div>
           </div>
@@ -190,7 +195,7 @@ const Home = () => {
                       URL name
                     </div>
                     <div className="col-sm-8">
-                      <input type="text" id="customname" className="memlinkinput" placeholder="Custom domain ex. mylink"  onChange={(e) => {setCustomname(e.target.value)}}/>
+                      <input type="text" id="customname" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomname(e.target.value)}}/>
                     </div>
                   </div>
                   :null
