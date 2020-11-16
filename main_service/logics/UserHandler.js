@@ -6,7 +6,7 @@ const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitT
 
 module.exports = {
 	home: async (user) => {
-		return { status: 200, payload: { user: { "email": user.email, "name": user.name } } };
+		return { status: 200, payload: { user: { "email": user.email, "name": user.name, "image": '/profile_picture/' + user._id.toString() + '.jpg' } } };
 	},
 	updateProfile: async (user, params) => {
 		try {

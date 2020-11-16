@@ -30,7 +30,7 @@ router.post('/urls', async (req, res, next) => {
 	if (!Util.ensureKeys(req.body, ['target_url']))
 		return res.status(400).json({ msg: 'Missing Params "target_url"' });
 	passport.authenticate('jwt-user', { session: false }, async (err, user) => {
-		var result = await PublicHandler.createURL(user.user, Util.subsetUnchecked(req.body, ['name', 'target_url', 'domain']));
+		var result = await PublicHandler.createURL(user.user, Util.subsetUnchecked(req.body, ['name', 'target_url', 'domain', 'customHash']));
 		return res.status(result.status).json(result.payload);
 	})(req, res, next);
 });

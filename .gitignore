@@ -145,3 +145,8 @@ influxdb_data/*
 mongodb_data/*
 !mongodb_data/__init__
 
+main_service/tmp/*
+main_service/profile_picture/*
+
+profile_picture/*
+!profile_picture/__init__

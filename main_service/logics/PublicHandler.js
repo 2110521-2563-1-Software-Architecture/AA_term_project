@@ -26,13 +26,22 @@ module.exports = {
                     };
                 }
             }
+            if (params.customHash) {
+                var count = await UrlModel.countDocuments({ hash: params.customHash });
+                if (count > 0)
+                    return {
+                        status: 400, payload: { msg: "The hash " + params.customHash + " is already taken :(" }
+                    };
+            }
             var user_id = null;
             if (user)
                 user_id = user._id;
             var url = null;
             while (true) {
                 var hash = randomString(8);
-                var count = await UrlModel.countDocuments({ hash })
+                if (params.customHash)
+                    hash = params.customHash;
+                var count = await UrlModel.countDocuments({ hash });
                 if (count == 0) {
                     url = await UrlModel.create({
                         name: params.name,
