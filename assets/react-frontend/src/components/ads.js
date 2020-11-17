@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-//import history from "../history";
+import history from "../history";
 //import Util from "../api/Util";
-import AliceCarousel from 'react-alice-carousel';
-import Logo from '../../assets/logo.png'
-import Con from '../../assets/container.jpg'
+import { withRouter } from "react-router";
+import Axios from "axios";
+import AliceCarousel from "react-alice-carousel";
+import Logo from "../../assets/logo.png";
+import Con from "../../assets/container.jpg";
 
-
-import "./ads.css"
+import "./ads.css";
 const responsive = {
   0: { items: 1 },
   1024: { items: 2 },
@@ -18,7 +19,6 @@ class Ads extends React.Component {
       galleryItems: [],
     };
   }
-
 
   render() {
     return (
@@ -40,13 +40,11 @@ class Ads extends React.Component {
     );
   }
 
-
-
-  getData() {
+  async getData() {
     // axios.get(`https://picsum.photos/v2/list?limit=6`, {})
     // .then(res => {
     //         const data = res.data
-    //       const img = data.map(m => 
+    //       const img = data.map(m =>
     //         <a href = "">
     //         <img src={m.download_url} alt=""/>
     //       )
@@ -56,28 +54,31 @@ class Ads extends React.Component {
     //     }).catch((error) => {
     //         console.log(error)
     //     })
-    const data = [{
-      download_url: Logo,
-      link: "https://www.facebook.com/"
-    }, {
-      download_url: Con,
-      link: "https://www.facebook.com/"
-    }]
-    const img = data.map(m =>
+    let result = null;
+    try {
+      result = await Axios.get(
+        `http://aa-shortener.poomrokc.services/api/public/urls/${this.props.match.params.hash}/redirect`
+      );
+    } catch (err) {
+      history.push("/");
+    }
+    let { target_url, ad } = result.data;
+    this.setState({ target_url, ad });
+    const data = [];
+    data.push({ download_url: `http://aa-shortener.poomrokc.services${ad}` });
+    const img = data.map((m) => (
       <a href={m.link}>
         <img className="ads_img" src={m.download_url} alt="" />
       </a>
-    )
+    ));
     this.setState({
-      galleryItems: img
-    })
+      galleryItems: img,
+    });
   }
-
 
   componentDidMount() {
-    this.getData()
+    this.getData();
   }
-
 }
 
-export default Ads;
+export default withRouter(Ads);
