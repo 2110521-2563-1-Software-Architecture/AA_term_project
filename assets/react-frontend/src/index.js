@@ -9,6 +9,7 @@ import HistoryPage from "./pages/historyPage";
 import StateContext from "./utils/context/stateContext";
 import UserContext from "./utils/context/userContext";
 import LoginContext from "./utils/context/loginContext";
+import ProfilePictureContext from "./utils/context/profilePictureContext"
 import HomePage from "./pages/Homepage";
 import UserPage from "./pages/userPage";
 import RedirectPage from "./pages/redirect-page";
@@ -45,15 +46,17 @@ const App = () => {
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <LoginContext.Provider value={{ loginRender, setLoginRender }}>
-            <Navbar />
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/register" exact component={RegisterPage} />
-              <Route path="/user" exact component={UserPage} />
-              <Route path="/redirect" exact component={RedirectPage} />
-              <Route path="/history" exact component={HistoryPage} />
-              <Route path="/:hash" exact component={SkipPage} />
-            </Switch>
+            <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
+              <Navbar />
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/register" exact component={RegisterPage} />
+                <Route path="/user" exact component={UserPage} />
+                <Route path="/redirect" exact component={RedirectPage} />
+                <Route path="/history" exact component={HistoryPage} />
+                <Route path="/:hash" exact component={SkipPage} />
+              </Switch>
+            </ProfilePictureContext.Provider>
           </LoginContext.Provider>
         </UserContext.Provider>
       </StateContext.Provider>

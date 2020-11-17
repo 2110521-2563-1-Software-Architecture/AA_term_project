@@ -78,6 +78,7 @@ class Ads extends React.Component {
 
   componentDidMount() {
     this.getData();
+    console.log(this.props)
   }
 }
 

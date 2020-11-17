@@ -52,7 +52,6 @@ const Navbar = () => {
   const handleStateOnRedirect = () => {
 
     if (userToken) {
-      console.log('aa', pathname)
       switch (pathname) {
         case '/':
           setState("user")
@@ -69,10 +68,6 @@ const Navbar = () => {
         case '/ads':
           setState('skip')
           break
-        default:
-          console.log('aaaa')
-          setState("skip")
-          history.push('/ads')
       }
     } else {
 
@@ -83,9 +78,6 @@ const Navbar = () => {
         case '/register':
           setState("sign-up")
           break
-        default:
-          setState("skip")
-          history.push('/ads')
       }
     }
 
