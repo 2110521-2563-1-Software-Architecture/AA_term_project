@@ -67,6 +67,7 @@ const App = () => {
   }, []);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [state, setState] = useState("guest")
   const [userToken, setUserToken] = useState(undefined)
   const [loginRender, setLoginRender] = useState(false)
@@ -79,6 +80,15 @@ const App = () => {
   const [userToken, setUserToken] = useState(undefined);
   const [loginRender, setLoginRender] = useState(false);
 >>>>>>> add get link
+=======
+  const [state, setState] = useState("guest");
+  const [userToken, setUserToken] = useState(undefined);
+  const [loginRender, setLoginRender] = useState(false);
+  const [profilePicture, setProfilePicture] = useState({
+    payload: "",
+    reRender: false,
+  });
+>>>>>>> merge front
 
 >>>>>>> fix bug browser go back, still in fixing
   return (
@@ -107,6 +117,7 @@ const App = () => {
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <LoginContext.Provider value={{ loginRender, setLoginRender }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
               <Navbar />
               <Switch>
@@ -119,6 +130,8 @@ const App = () => {
               </Switch>
             </ProfilePictureContext.Provider>
 =======
+=======
+>>>>>>> merge front
             <Navbar />
             <Switch>
               <Route path="/" exact component={HomePage} />
@@ -128,7 +141,10 @@ const App = () => {
               <Route path="/history" exact component={HistoryPage} />
               <Route path="/:hash" exact component={SkipPage} />
             </Switch>
+<<<<<<< HEAD
 >>>>>>> add get link
+=======
+>>>>>>> merge front
           </LoginContext.Provider>
         </UserContext.Provider>
       </StateContext.Provider>
