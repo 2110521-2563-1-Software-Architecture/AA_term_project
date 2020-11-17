@@ -129,7 +129,8 @@ td{
 }
 .greenbg{
     background-color:#2F4F4F;
-    min-height: 680px;
+    max-height: 730px;
+    margin-bottom: -40px;
 }
 .memtitle{
     font-family: 'Kanit', sans-serif;

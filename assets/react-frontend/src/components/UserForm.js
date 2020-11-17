@@ -60,6 +60,7 @@ const UserForm = (props) => {
   const { userToken, setUserToken } = useContext(UserContext)
   const { setLoginRender } = useContext(LoginContext)
   const { profilePicture, setProfilePicture } = useContext(ProfilePictureContext)
+  const [hasPicture, setHasPicture] = useState(true)
   const [name, setName] = useState("")
 
   useEffect(() => {
@@ -74,17 +75,18 @@ const UserForm = (props) => {
           { headers: { Authorization: jwtToken } }
         )
 
+        setName(email)
+
         const imgURL = `http://aa-shortener.poomrokc.services${image}`
         
+        const { config: { url } } = await Axios.get(imgURL)
         setProfilePicture(prevState => ({
           ...prevState,
-          payload: imgURL
+          payload: url
         }))
-
-        setName(email)
-      } catch (error) {
-        console.log('ee')
         
+      } catch (error) {
+        setHasPicture(false)
       } 
     }
     getUserInfo()
@@ -107,9 +109,8 @@ const UserForm = (props) => {
   return (
     <UserWrapper>
       <img 
-        key={Date.now()}
         onClick={goToRedirectPage} 
-        src={profilePicture.payload} 
+        src={hasPicture ? profilePicture.payload : User} 
       />
       <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">

@@ -165,6 +165,7 @@ const EditUserProfile = props => {
                         ...prev,
                         reRender: !prev.reRender
                     }))
+                    refresh()
                 }    
             }
 
@@ -172,6 +173,10 @@ const EditUserProfile = props => {
             goBack()
         }
     })
+
+    const refresh = () => {
+        window.location.reload()
+    }
 
     const goBack = () => {
         props.onSet(false)

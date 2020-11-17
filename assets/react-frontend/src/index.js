@@ -42,6 +42,7 @@ import HistoryPage from "./pages/historyPage";
 import StateContext from "./utils/context/stateContext";
 import UserContext from "./utils/context/userContext";
 import LoginContext from "./utils/context/loginContext";
+import ProfilePictureContext from "./utils/context/profilePictureContext"
 import HomePage from "./pages/Homepage";
 import UserPage from "./pages/userPage";
 import RedirectPage from "./pages/redirect-page";
@@ -118,6 +119,9 @@ const App = () => {
           <LoginContext.Provider value={{ loginRender, setLoginRender }}>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> finish all logic for profile picture
             <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
               <Navbar />
               <Switch>
@@ -126,6 +130,7 @@ const App = () => {
                 <Route path="/user" exact component={UserPage} />
                 <Route path="/redirect" exact component={RedirectPage} />
                 <Route path="/history" exact component={HistoryPage} />
+<<<<<<< HEAD
                 <Route path="/ads" exact component={SkipPage} />
               </Switch>
             </ProfilePictureContext.Provider>
@@ -145,6 +150,11 @@ const App = () => {
 >>>>>>> add get link
 =======
 >>>>>>> merge front
+=======
+                <Route path="/:hash" exact component={SkipPage} />
+              </Switch>
+            </ProfilePictureContext.Provider>
+>>>>>>> finish all logic for profile picture
           </LoginContext.Provider>
         </UserContext.Provider>
       </StateContext.Provider>
