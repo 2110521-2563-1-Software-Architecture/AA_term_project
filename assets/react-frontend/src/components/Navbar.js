@@ -9,7 +9,7 @@ import Logo from '../../assets/newlogo.png'
 import LogoPro from '../../assets/newlogo_pro.png'
 import "../styles.css"
 import StateContext from "../utils/context/stateContext"
-import UserContext from "../utils/context/userContext"
+
 
 const NavbarWrapper = styled.div`
   font-family: Roboto;
@@ -38,7 +38,7 @@ const NavbarWrapper = styled.div`
 const Navbar = () => {
 
   const { state, setState } = useContext(StateContext)
-  const { userToken } = useContext(UserContext)
+  const userToken = localStorage.getItem('token')
 
   const history = useHistory()
   const { pathname } = useLocation()
@@ -52,7 +52,28 @@ const Navbar = () => {
   const handleStateOnRedirect = () => {
 
     if (userToken) {
-      setState("user")
+      console.log('aa', pathname)
+      switch (pathname) {
+        case '/':
+          setState("user")
+          break
+        case '/register':
+          setState("user")
+          break
+        case '/redirect':
+          setState("user")
+          break
+        case '/history':
+          setState("user")
+          break
+        case '/ads':
+          setState('skip')
+          break
+        default:
+          console.log('aaaa')
+          setState("skip")
+          history.push('/ads')
+      }
     } else {
 
       switch (pathname) {
