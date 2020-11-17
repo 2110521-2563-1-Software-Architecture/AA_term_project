@@ -46,7 +46,7 @@ const UserPage = () => {
                 isEdit ?  
                     <EditUserProfile onSet={setIsEdit} reRender={setForceRender} /> 
                     : 
-                    <UserProfile onSet={setIsEdit} data={userInfo} />
+                    <UserProfile onSet={setIsEdit} data={userInfo} reRender={forceRender} />
             }
         </MainWrapper>
     )

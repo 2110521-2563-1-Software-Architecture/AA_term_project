@@ -61,6 +61,10 @@ const Navbar = () => {
           break
         case '/register':
           setState("sign-up")
+          break
+        default:
+          setState("skip")
+          history.push('/ads')
       }
     }
 
