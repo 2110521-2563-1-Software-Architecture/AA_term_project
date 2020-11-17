@@ -27,7 +27,8 @@ const UserWrapper = styled.div`
   img {
     width: 55px;
     cursor: pointer;
-    clip-path: circle(25px at center)
+    clip-path: circle(25px at center);
+    image-rendering: auto;
   }
 
   .btn {
@@ -65,28 +66,34 @@ const UserForm = (props) => {
     
     const getUserInfo = async () => {
 
-      const jwtToken = `JWT ${userToken}`
-      
-      const { data: { user: { email, image } } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
-        { headers: { Authorization: jwtToken } }
-      )
+      try {
 
-      const imgURL = `http://aa-shortener.poomrokc.services${image}`
+        const jwtToken = `JWT ${userToken}`
       
-      localStorage.setItem("profile-pic", imgURL)
-      
-      setProfilePicture(localStorage.getItem("profile-pic"))
-      setName(email)
+        const { data: { user: { email, image } } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
+          { headers: { Authorization: jwtToken } }
+        )
+
+        const imgURL = `http://aa-shortener.poomrokc.services${image}`
+        
+        setProfilePicture(prevState => ({
+          ...prevState,
+          payload: imgURL
+        }))
+
+        setName(email)
+      } catch (error) {
+        console.log('ee')
+        
+      } 
     }
-
     getUserInfo()
-  }, [localStorage.getItem("isPictureSet")])
+  }, [profilePicture.reRender])
 
   const handleLogOut = () => {
 
     setUserToken(undefined)
     localStorage.setItem("token", '')
-    localStorage.setItem("profile-pic", "")
 
     history.push('/')
     props.onSet("guest")
@@ -95,14 +102,14 @@ const UserForm = (props) => {
 
   const goToRedirectPage = () => {
     history.push('/redirect')
-    console.log(profilePicture)
   }
 
   return (
     <UserWrapper>
       <img 
+        key={Date.now()}
         onClick={goToRedirectPage} 
-        src={localStorage.getItem("isPictureSet") ? profilePicture  : User} 
+        src={profilePicture.payload} 
       />
       <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">

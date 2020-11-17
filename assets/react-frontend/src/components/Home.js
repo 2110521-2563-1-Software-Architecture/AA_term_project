@@ -34,21 +34,23 @@ const Home = () => {
         const newURL = {
           target_url: website,
 <<<<<<< HEAD
+<<<<<<< HEAD
           name: linkname, 
           domain: customname,
 =======
           name: linkname, // TODO 
           domain: 'aa-shortener.poomrokc.services/'+customname, // TODO
 >>>>>>> change wording
+=======
+          name: linkname,
+          customHash: "",
+          domain: "",
+>>>>>>> another route go to ads
         }
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
 
         let { data: { hash, domain } } = res
-
-        if (!domain) {
-          domain = 'poomrock'
-        }
 
         const generatedLink = `www.${domain}/${hash}`
         setGenlink(generatedLink)

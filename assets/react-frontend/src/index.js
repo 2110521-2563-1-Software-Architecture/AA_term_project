@@ -37,15 +37,9 @@ const App = () => {
     const checkLoginStatus = async () => {
 
       let token = localStorage.getItem("token")
-      let profilePicture = localStorage.getItem("profile-pic")
-      let profilePictureStatus = localStorage.getItem("isPictureSet")
-      if (token === null || profilePicture === null || profilePictureStatus === null) {
+      if (token === null) {
         localStorage.setItem("token", "")
-        localStorage.setItem("profile-pic", "")
-        localStorage.setItem("isPictureSet", "")
         token = ""
-        profilePicture = ""
-        profilePictureStatus = false
       }
 
       if (token) {
@@ -62,7 +56,10 @@ const App = () => {
   const [state, setState] = useState("guest")
   const [userToken, setUserToken] = useState(undefined)
   const [loginRender, setLoginRender] = useState(false)
-  const [profilePicture, setProfilePicture] = useState("")
+  const [profilePicture, setProfilePicture] = useState({
+    payload: "",
+    reRender: false
+  })
 
 >>>>>>> fix bug browser go back, still in fixing
   return (

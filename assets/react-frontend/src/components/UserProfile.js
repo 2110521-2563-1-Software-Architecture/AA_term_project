@@ -1,8 +1,8 @@
-import React from 'react'
+import React , { useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom"
 
-import UserPicture from "../../assets/user.png"
+import ProfilePictureContext from "../utils/context/profilePictureContext"
 
 const Wrapper = styled.div`
 
@@ -81,6 +81,10 @@ const Wrapper = styled.div`
 
 const UserProfile = props => {
 
+    useEffect(() => {
+
+    }, [props.forceRender])
+
     const goEdit = () => {
         props.onSet(true)
     }
@@ -88,6 +92,7 @@ const UserProfile = props => {
     const history = useHistory()
 
     const { email, name } = props.data
+    const { profilePicture } = React.useContext(ProfilePictureContext)
 
     const goHome = () => {
         history.push('/')
@@ -95,7 +100,7 @@ const UserProfile = props => {
 
     return (
         <Wrapper>
-            <img src={UserPicture} alt="Anonymous User Picture" />
+            <img key={Date.now()} src={profilePicture.payload} alt="Anonymous User Picture" />
             <div className="information-wrapper">
                 <div className="element-wrapper">
                     <h4 className="element-label">Email:</h4>

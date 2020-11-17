@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import Axios from 'axios'
 import { useFormik } from 'formik'
 
 import UserPicture from "../../assets/user.png"
 import UploadIcon from "../../assets/upload.png"
+import ProfilePictureContext from "../utils/context/profilePictureContext"
 
 const ImageUploadWrapper = styled.label`
 
@@ -160,8 +161,11 @@ const EditUserProfile = props => {
                 const { status } = await Axios.post("http://aa-shortener.poomrokc.services/api/user/profilePicture", newPicture, { headers: { Authorization: JwtToken } })
 
                 if (status === 200) {
-                    localStorage.setItem("isPictureSet", true)
-                }
+                    setProfilePicture(prev => ({
+                        ...prev,
+                        reRender: !prev.reRender
+                    }))
+                }    
             }
 
             forceRender()
@@ -181,13 +185,13 @@ const EditUserProfile = props => {
     const [picture, setPicture] = useState(UserPicture)
     const [isPictureSet, setIsPictureSet] = useState(false)
     const [file, setFile] = useState(null)
+    const { setProfilePicture } = useContext(ProfilePictureContext)
 
     const changeImage = (e) => {
         const { name, files, value } = e.target
         const img = name === "image" ? files[0] : value
         setFile(img)
         setPicture(URL.createObjectURL(img))
-        console.log(`=> ${URL.createObjectURL(img)}`)
         setIsPictureSet(true)
     }
 
