@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import Axios from 'axios'
 import { useFormik } from 'formik'
 
 import UserPicture from "../../assets/user.png"
 import UploadIcon from "../../assets/upload.png"
+import ProfilePictureContext from "../utils/context/profilePictureContext"
 
 const ImageUploadWrapper = styled.label`
 
@@ -149,9 +150,24 @@ const EditUserProfile = props => {
 
             const JwtToken = `JWT ${localStorage.getItem('token')}`
             const data = {name: formik.values.newName}
-            const res = await Axios.patch("http://aa-shortener.poomrokc.services/api/user/profile"
+            await Axios.patch("http://aa-shortener.poomrokc.services/api/user/profile"
             , data, { headers: { Authorization: JwtToken } })
-    
+            
+            if (isPictureSet) {
+                
+                const newPicture = new FormData()
+                newPicture.append("Image", file)
+
+                const { status } = await Axios.post("http://aa-shortener.poomrokc.services/api/user/profilePicture", newPicture, { headers: { Authorization: JwtToken } })
+
+                if (status === 200) {
+                    setProfilePicture(prev => ({
+                        ...prev,
+                        reRender: !prev.reRender
+                    }))
+                }    
+            }
+
             forceRender()
             goBack()
         }
@@ -167,9 +183,16 @@ const EditUserProfile = props => {
 
     const imageRegEx = "image/*"
     const [picture, setPicture] = useState(UserPicture)
+    const [isPictureSet, setIsPictureSet] = useState(false)
+    const [file, setFile] = useState(null)
+    const { setProfilePicture } = useContext(ProfilePictureContext)
 
     const changeImage = (e) => {
-        setPicture(URL.createObjectURL(e.target.files[0]))
+        const { name, files, value } = e.target
+        const img = name === "image" ? files[0] : value
+        setFile(img)
+        setPicture(URL.createObjectURL(img))
+        setIsPictureSet(true)
     }
 
     return (
@@ -177,7 +200,7 @@ const EditUserProfile = props => {
             <ImageUploadWrapper>
                 <img className="image" src={picture} alt="Anonymous User Picture" />
                 <img className="upload" src={UploadIcon} />
-                <input type="file" accept={imageRegEx} onChange={changeImage} />
+                <input name="image" type="file" accept={imageRegEx} onChange={changeImage} />
             </ImageUploadWrapper>
             <div className="information-wrapper">
                 <div className="element-wrapper">

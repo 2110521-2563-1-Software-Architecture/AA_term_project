@@ -5,6 +5,7 @@ import Axios from "axios"
 
 import LoginContext from "../utils/context/loginContext"
 import UserContext from "../utils/context/userContext"
+import ProfilePictureContext from "../utils/context/profilePictureContext"
 import User from "../../assets/user.png"
 
 const UserWrapper = styled.div`
@@ -24,8 +25,10 @@ const UserWrapper = styled.div`
   }
 
   img {
-    width: 50px;
-    cursor: pointer
+    width: 55px;
+    cursor: pointer;
+    clip-path: circle(25px at center);
+    image-rendering: auto;
   }
 
   .btn {
@@ -43,10 +46,6 @@ const UserWrapper = styled.div`
 
   @media (max-width: 700px) {
 
-    img {
-     
-    }
-
     .label {
       display: none;
     }
@@ -60,23 +59,36 @@ const UserForm = (props) => {
 
   const { userToken, setUserToken } = useContext(UserContext)
   const { setLoginRender } = useContext(LoginContext)
+  const { profilePicture, setProfilePicture } = useContext(ProfilePictureContext)
   const [name, setName] = useState("")
 
   useEffect(() => {
     
     const getUserInfo = async () => {
 
-      const jwtToken = `JWT ${userToken}`
+      try {
+
+        const jwtToken = `JWT ${userToken}`
       
-      const { data: { user: { email } } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
-        { headers: { Authorization: jwtToken } }
-      )
+        const { data: { user: { email, image } } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/whoami",
+          { headers: { Authorization: jwtToken } }
+        )
 
-      setName(email)
+        const imgURL = `http://aa-shortener.poomrokc.services${image}`
+        
+        setProfilePicture(prevState => ({
+          ...prevState,
+          payload: imgURL
+        }))
+
+        setName(email)
+      } catch (error) {
+        console.log('ee')
+        
+      } 
     }
-
     getUserInfo()
-  }, [])
+  }, [profilePicture.reRender])
 
   const handleLogOut = () => {
 
@@ -94,7 +106,11 @@ const UserForm = (props) => {
 
   return (
     <UserWrapper>
-      <img onClick={goToRedirectPage} src={User} />
+      <img 
+        key={Date.now()}
+        onClick={goToRedirectPage} 
+        src={profilePicture.payload} 
+      />
       <h6 className="label">{name}</h6>
       <button onClick={handleLogOut} className="btn">
         Log out

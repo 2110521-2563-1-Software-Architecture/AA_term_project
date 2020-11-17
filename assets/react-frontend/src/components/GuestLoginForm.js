@@ -92,7 +92,7 @@ const GuestFormWrapper = styled.div`
         width: 100%;
         height: 40px;
         border-radius: 5px;
-        background-color: #fe7f2d;
+        background-color: #fe7f2d
 
         h6 {
           color: white;

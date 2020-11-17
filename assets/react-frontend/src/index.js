@@ -32,15 +32,26 @@ const App = () => {
     checkLoginStatus();
   }, []);
 
+<<<<<<< HEAD
   const [state, setState] = useState("guest");
   const [userToken, setUserToken] = useState(undefined);
   const [loginRender, setLoginRender] = useState(false);
+=======
+  const [state, setState] = useState("guest")
+  const [userToken, setUserToken] = useState(undefined)
+  const [loginRender, setLoginRender] = useState(false)
+  const [profilePicture, setProfilePicture] = useState({
+    payload: "",
+    reRender: false
+  })
+>>>>>>> d84019b411b6e302409c0f15f121415057734bda
 
   return (
     <Router>
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <LoginContext.Provider value={{ loginRender, setLoginRender }}>
+<<<<<<< HEAD
             <Navbar />
             <Switch>
               <Route path="/" exact component={HomePage} />
@@ -50,6 +61,19 @@ const App = () => {
               <Route path="/history" exact component={HistoryPage} />
               <Route path="/:hash" exact component={SkipPage} />
             </Switch>
+=======
+            <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
+              <Navbar />
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/register" exact component={RegisterPage} />
+                <Route path="/user" exact component={UserPage} />
+                <Route path="/redirect" exact component={RedirectPage} />
+                <Route path="/history" exact component={HistoryPage} />
+                <Route path="/ads" exact component={SkipPage} />
+              </Switch>
+            </ProfilePictureContext.Provider>
+>>>>>>> d84019b411b6e302409c0f15f121415057734bda
           </LoginContext.Provider>
         </UserContext.Provider>
       </StateContext.Provider>
