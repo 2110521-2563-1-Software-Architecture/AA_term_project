@@ -103,7 +103,7 @@ const UserForm = (props) => {
   }
 
   const goToRedirectPage = () => {
-    history.push('/redirect')
+    history.push('/menu')
   }
 
   return (

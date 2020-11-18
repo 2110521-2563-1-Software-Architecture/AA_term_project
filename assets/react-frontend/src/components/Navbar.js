@@ -62,7 +62,10 @@ const Navbar = props => {
         case '/register':
           setState("user")
           break
-        case '/redirect':
+        case '/menu':
+          setState("user")
+          break
+        case '/profile':
           setState("user")
           break
         case '/history':
@@ -102,7 +105,7 @@ const Navbar = props => {
       case "guest":
         return <GuestLoginForm onSet={setState} />;
       case "user":
-        const fixBug = ["/", "/redirect", "/history", "/user"]
+        const fixBug = ["/", "/menu", "/history", "/profile"]
         if (!fixBug.includes(pathname)) {
           return <SkipForm onSet={setState} />
         }
