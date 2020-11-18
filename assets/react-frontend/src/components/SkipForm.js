@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom"
+import UrlContext from "../utils/context/urlContext"
 import styled from 'styled-components'
 
 const SkipWrapper = styled.div`
@@ -22,6 +24,9 @@ const SkipForm = (props) => {
   const [isSkip, setIsSkip] = useState(false);
   const [label, setLabel] = useState("skip");
   const [isClicked, setIsClicked] = useState(false);
+
+  const history = useHistory()
+  const { url_redirect } = useContext(UrlContext)
 
   const timer = () => {
     return new Promise((resolve, reject) => {
@@ -48,7 +53,8 @@ const SkipForm = (props) => {
       }
       clearCondition();
     } else if (label === "Done!") {
-      props.onSet("user");
+      //props.onSet("user");
+      window.location.href = url_redirect
     }
   };
 

@@ -35,7 +35,7 @@ const NavbarWrapper = styled.div`
 
 `
 
-const Navbar = () => {
+const Navbar = props => {
 
   const { state, setState } = useContext(StateContext)
   const userToken = localStorage.getItem('token')
@@ -51,7 +51,11 @@ const Navbar = () => {
 
   const handleStateOnRedirect = () => {
 
-    if (userToken) {
+    console.log(pathname)
+    console.log(userToken)
+
+    if (userToken !== "" ) {
+      console.log('user')
       switch (pathname) {
         case '/':
           setState("user")
@@ -70,13 +74,16 @@ const Navbar = () => {
           break
       }
     } else {
-
+      console.log('guest')
       switch (pathname) {
         case '/':
           setState("guest")
           break
         case '/register':
           setState("sign-up")
+          break
+        default:
+          setState("skip")
           break
       }
     }
