@@ -43,6 +43,7 @@ import StateContext from "./utils/context/stateContext";
 import UserContext from "./utils/context/userContext";
 import LoginContext from "./utils/context/loginContext";
 import ProfilePictureContext from "./utils/context/profilePictureContext"
+import UrlContext from "./utils/context/urlContext"
 import HomePage from "./pages/Homepage";
 import UserPage from "./pages/userPage";
 import RedirectPage from "./pages/redirect-page";
@@ -91,7 +92,12 @@ const App = () => {
   });
 >>>>>>> merge front
 
+<<<<<<< HEAD
 >>>>>>> fix bug browser go back, still in fixing
+=======
+  const [url_redirect, setUrl_redirect] = useState("")
+
+>>>>>>> finish url redirect
   return (
     <Router>
 <<<<<<< HEAD
@@ -123,6 +129,7 @@ const App = () => {
 =======
 >>>>>>> finish all logic for profile picture
             <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
+<<<<<<< HEAD
               <Navbar />
               <Switch>
                 <Route path="/" exact component={HomePage} />
@@ -153,6 +160,19 @@ const App = () => {
 =======
                 <Route path="/:hash" exact component={SkipPage} />
               </Switch>
+=======
+              <UrlContext.Provider value={{ url_redirect, setUrl_redirect }}>
+                <Navbar />
+                <Switch>
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/register" exact component={RegisterPage} />
+                  <Route path="/user" exact component={UserPage} />
+                  <Route path="/redirect" exact component={RedirectPage} />
+                  <Route path="/history" exact component={HistoryPage} />
+                  <Route path="/:hash" exact component={SkipPage} />
+                </Switch>
+              </UrlContext.Provider>
+>>>>>>> finish url redirect
             </ProfilePictureContext.Provider>
 >>>>>>> finish all logic for profile picture
           </LoginContext.Provider>
