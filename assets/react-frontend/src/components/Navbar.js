@@ -51,8 +51,7 @@ const Navbar = props => {
 
   const handleStateOnRedirect = () => {
 
-    console.log(pathname)
-    console.log(userToken)
+    console.log('path => ',pathname)
 
     if (userToken !== "" ) {
       console.log('user')
@@ -69,7 +68,8 @@ const Navbar = props => {
         case '/history':
           setState("user")
           break
-        case '/ads':
+        default:
+          console.log("aaa")
           setState('skip')
           break
       }
@@ -97,6 +97,7 @@ const Navbar = props => {
   }, [pathname])
 
   const selectState = (st) => {
+    console.log("select state choose => ",st)
     switch (st) {
       case "guest":
         return <GuestLoginForm onSet={setState} />;
