@@ -28,29 +28,11 @@ const FlipCardWrap = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
-        backface-visibility: hidden;
-        border-radius: 2rem;
-        color: black;
-
-        img {
-            width: 250px;
-            height: 320px;
-            border-radius: 2rem;
-            border: 5px solid black;
-        }
-    }
-
-    
-    .back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
         background-color: pink;
         border: 5px solid black;
+        backface-visibility: hidden;
         border-radius: 2rem;
         color: black;
-        transform: rotateY(180deg);
 
         h6 {
             font-size: 24px;
@@ -60,6 +42,25 @@ const FlipCardWrap = styled.div`
             margin-top: 3rem;
             padding: 0 2rem;
         }
+    }
+
+    
+    .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 2rem;
+        color: black;
+        transform: rotateY(180deg);
+
+        img {
+            width: 250px;
+            height: 320px;
+            border-radius: 2rem;
+            border: 5px solid black;
+        }
+
     }
 
 `
@@ -74,10 +75,10 @@ const ProfileRedirectCard = () => {
 
             <div className="card">
                 <div className="front">
-                    <img src={User} />
+                    <h6>Go to User Profile Page</h6>
                 </div>
                 <div className="back">
-                    <h6>หิวแดกข้าว ห้าวแดกตีน</h6>
+                    <img src={User} />
                 </div>
             </div>
             

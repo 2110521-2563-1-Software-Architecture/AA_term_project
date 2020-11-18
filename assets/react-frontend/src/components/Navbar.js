@@ -51,10 +51,7 @@ const Navbar = props => {
 
   const handleStateOnRedirect = () => {
 
-    console.log('path => ',pathname)
-
     if (userToken !== "" ) {
-      console.log('user')
       switch (pathname) {
         case '/':
           setState("user")
@@ -97,12 +94,10 @@ const Navbar = props => {
   useEffect(() => {
 
     handleStateOnRedirect()
-    console.log('redirect')
 
   }, [pathname])
 
   const selectState = (st) => {
-    console.log("select state choose => ",st)
     switch (st) {
       case "guest":
         return <GuestLoginForm onSet={setState} />;
