@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom"
+import React, { useState, useContext, useEffect } from "react";
 import UrlContext from "../utils/context/urlContext"
 import styled from 'styled-components'
 
@@ -13,19 +12,17 @@ const SkipWrapper = styled.div`
     height: 36px;
     margin-top: 8px;
     font-size: 16px;
-    cursor: pointer;
+    cursor: ${props => props.skip ? 'pointer' : 'cursor'};
     background-color: #FFD942;
     border-radius: 5px;
   }
 `
 
-const SkipForm = (props) => {
+const SkipForm = () => {
   const [count, setCount] = useState(5);
-  const [isSkip, setIsSkip] = useState(false);
-  const [label, setLabel] = useState("skip");
-  const [isClicked, setIsClicked] = useState(false);
+  const [canSkip, setCanSkip] = useState(false);
+  const [label, setLabel] = useState("");
 
-  const history = useHistory()
   const { url_redirect } = useContext(UrlContext)
 
   const timer = () => {
@@ -38,30 +35,30 @@ const SkipForm = (props) => {
   };
 
   const clearCondition = () => {
-    setIsSkip(false);
+    setCanSkip(true);
     setCount(5);
-    setLabel("Done!");
-    setIsClicked(false);
+    setLabel("Skip");
   };
 
-  const getSkip = async () => {
-    if (!isClicked && label === "skip") {
-      setIsClicked(true);
-      setIsSkip(true);
+  useEffect(() => {
+    const sleep = async () => {
       for (let i = 0; i < 5; i++) {
         await timer();
       }
       clearCondition();
-    } else if (label === "Done!") {
-      //props.onSet("user");
-      window.location.href = url_redirect
     }
+    
+    sleep()
+  }, [])
+
+  const getSkip = async () => {
+    window.location.href = url_redirect
   };
 
   return (
-    <SkipWrapper>
-      <button onClick={() => getSkip()} className="btn">
-        {isSkip ? count : label}
+    <SkipWrapper skip={canSkip}>
+      <button disabled={!canSkip} onClick={() => getSkip()} className="btn">
+        {canSkip ? label : count}
       </button>
     </SkipWrapper>
   );
