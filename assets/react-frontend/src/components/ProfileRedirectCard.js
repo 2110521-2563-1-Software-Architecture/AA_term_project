@@ -67,7 +67,7 @@ const FlipCardWrap = styled.div`
 const ProfileRedirectCard = () => {
 
     const history = useHistory()
-    const goToProfilePage = () => {history.push('/user')}
+    const goToProfilePage = () => {history.push('/profile')}
 
     return (
         <FlipCardWrap onClick={goToProfilePage}>

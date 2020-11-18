@@ -166,8 +166,8 @@ const App = () => {
                 <Switch>
                   <Route path="/" exact component={HomePage} />
                   <Route path="/register" exact component={RegisterPage} />
-                  <Route path="/user" exact component={UserPage} />
-                  <Route path="/redirect" exact component={RedirectPage} />
+                  <Route path="/profile" exact component={UserPage} />
+                  <Route path="/menu" exact component={RedirectPage} />
                   <Route path="/history" exact component={HistoryPage} />
                   <Route path="/:hash" exact component={SkipPage} />
                 </Switch>
