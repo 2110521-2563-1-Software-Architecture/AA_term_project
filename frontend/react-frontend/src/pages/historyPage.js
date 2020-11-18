@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   justify-content: center;
   box-sizing: border-box;
   margin-top: 5rem;
+  
 
 `
 

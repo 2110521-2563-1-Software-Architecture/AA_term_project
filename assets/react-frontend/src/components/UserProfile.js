@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import ProfilePictureContext from "../utils/context/profilePictureContext"
 
 const Wrapper = styled.div`
-
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
     border: 2px solid black;
     margin: 6rem 30rem 0 30rem;
     padding: 2rem 2rem;
@@ -30,12 +30,17 @@ const Wrapper = styled.div`
         display: flex;
         justify-content: space-evenly;
         margin: 1rem 8rem 1rem 8rem;
-
+       
         button {
-            width: 70px;
+            width: 150px;
             padding: .2rem;
             border-radius: 5px;
-
+            height:50px;
+            font-family: 'Kanit', sans-serif;
+            background-color: #fe7f2d;
+            color:white;
+            font-size:20px;
+            border:none;
             :hover {
                 background-color: #fe7f2d
             }
@@ -49,10 +54,12 @@ const Wrapper = styled.div`
         margin-bottom: 1rem;
 
         .element-label {
+            font-family: 'Kanit', sans-serif;
             font-weight: bold
         }
 
         .element-value {
+            font-family: 'Kanit', sans-serif;
             margin-left: 0rem;
         }
 
@@ -107,12 +114,11 @@ const UserProfile = props => {
                     <h4 className="element-value">{email}</h4>
                 </div>
                 <div className="element-wrapper">
-                    <h4 className="element-label">User Name:</h4>
+                    <h4 className="element-label">Username:</h4>
                     <h4 className="element-value">{name}</h4>
                 </div>
             </div>
             <div className="btn-wrapper">
-                <button onClick={goHome}>Home</button>
                 <button onClick={goEdit}>Edit</button>
             </div>
         </Wrapper>

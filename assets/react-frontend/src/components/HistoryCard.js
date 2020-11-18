@@ -5,7 +5,7 @@ import Axios from "axios"
 import logo from "../../assets/newlogo.png"
 
 const Wrapper = styled.div`
-
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
   border: 2px solid black;
   border-radius: 2rem;
   min-width: 350px;
@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   height: 450px;
   margin: 2rem;
   box-sizing: border-box;
+  background-color: #f1f1f1;
 
   img {
       position: relative;
@@ -31,12 +32,14 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: space-between;
       margin: 0 1rem;
-
+    
     .flex-label {
+        font-family:'Kanit',sans-serif;  
         font-weight: bold;
     }
 
     .flex-value {
+        font-family:'Kanit',sans-serif;  
         margin-right: 10px;
     }
 
@@ -54,13 +57,17 @@ const Wrapper = styled.div`
       border-top: none;
       width: 101%;
       height: 50px;
+      line-height:30px;
       border-bottom-left-radius: 1.5rem;
       border-bottom-right-radius: 1.5rem;
+      font-family:'Kanit',sans-serif;  
       cursor: pointer;
 
       :hover {
-          background-color: #fe7f2d;
-          border: 2px solid black
+          visibility:visible;
+          background-color: red;
+          border: 2px solid black;
+          color: white;
       }
   }
 
@@ -130,11 +137,11 @@ const HistoryCard = props => {
                     <h6 className="flex-value">{domain}</h6>
                 </div>
                 <div className="flex-wrap">
-                    <h6 className="flex-label">VISITED COUNT:</h6>
+                    <h6 className="flex-label">VISITED:</h6>
                     <h6 className="flex-value">{visit_count}</h6>
                 </div>
             </div>
-            <div className="foot" onClick={handle}>Del</div>
+            <div className="foot" onClick={handle}>Delete</div>
         </Wrapper>
     )
 }
