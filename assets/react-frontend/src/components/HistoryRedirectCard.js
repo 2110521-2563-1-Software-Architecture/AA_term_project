@@ -17,7 +17,7 @@ const FlipCardWrap = styled.div`
         height: 100%;
         transform-style: preserve-3d;
         border-radius: 2rem;
-        transition: all 1s ease;
+        transition: all 1.5s ease;
 
         :hover {
             transform: rotateY(180deg)
@@ -28,29 +28,11 @@ const FlipCardWrap = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
-        backface-visibility: hidden;
-        border-radius: 2rem;
-        color: black;
-
-        img {
-            width: 250px;
-            height: 320px;
-            border-radius: 2rem;
-            border: 5px solid black;
-        }
-    }
-
-    
-    .back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
         background-color: pink;
         border: 5px solid black;
+        backface-visibility: hidden;
         border-radius: 2rem;
         color: black;
-        transform: rotateY(180deg);
 
         h6 {
             font-size: 24px;
@@ -60,6 +42,25 @@ const FlipCardWrap = styled.div`
             margin-top: 3rem;
             padding: 0 2rem;
         }
+    }
+
+    
+    .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 2rem;
+        color: black;
+        transform: rotateY(180deg);
+
+        img {
+            width: 250px;
+            height: 320px;
+            border-radius: 2rem;
+            border: 5px solid black;
+        }
+
     }
 
 `
@@ -74,10 +75,10 @@ const HistoryRedirectCard = () => {
 
             <div className="card">
                 <div className="front">
-                    <img src={Spy} />
+                    <h6>Go to History page</h6>
                 </div>
                 <div className="back">
-                    <h6>This is back side</h6>
+                    <img src={Spy} />
                 </div>
             </div>
             
