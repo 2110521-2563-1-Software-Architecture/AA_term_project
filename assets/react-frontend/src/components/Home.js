@@ -14,6 +14,7 @@ const Home = () => {
     const [customoption, setCustom] = useState("");
     const [customname,setCustomname] = useState("");
     const [linkname,setLinkname] = useState("");
+    const [customhash, setCustomHash] = useState("");
 
     const { loginRender } = useContext(LoginContext)
 
@@ -43,9 +44,14 @@ const Home = () => {
 >>>>>>> change wording
 =======
           name: linkname,
+<<<<<<< HEAD
           customHash: "",
           domain: "",
 >>>>>>> another route go to ads
+=======
+          customHash: customhash,
+          domain: customname,
+>>>>>>> custom hash
         }
 
         const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
@@ -58,7 +64,32 @@ const Home = () => {
       }
 
     }
-
+    const customfunc = () => {
+      if(customoption==="url"){
+        return (
+        <div className="row">
+          <div className="col-sm-3 offset-sm-1">
+            URL name
+          </div>
+          <div className="col-sm-8">
+            <input type="text" id="customname" className="memlinkinput" placeholder="Custom your domain"  onChange={(e) => {setCustomname(e.target.value)}}/>
+          </div>
+        </div>
+        );
+      }
+      else if (customoption==="hash"){
+        return (
+          <div className="row">
+            <div className="col-sm-3 offset-sm-1">
+              Alias name
+            </div>
+            <div className="col-sm-8">
+              <input type="text" id="customhash" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomHash(e.target.value)}}/>
+            </div>
+          </div>
+        );
+      }
+    }
     const copyLink = (e) => {
       e.preventDefault();
       var copyText = document.getElementById("genlink");
@@ -130,7 +161,7 @@ const Home = () => {
                 <td>✅</td>
               </tr>
               <tr>
-                <td className="benefit">Customize alias for your link</td>
+                <td className="benefit">Customize url/alias for your link</td>
                 <td>-</td>
                 <td>✅</td>
               </tr>
@@ -153,7 +184,7 @@ const Home = () => {
           <div className="row">
             <div className="col-sm-8 offset-sm-2">
               <div className="memtitle">
-                Generate auto/custom alias shorten link
+                Generate auto/custom url or alias shorten link
               </div>
             </div>
           </div>
@@ -178,7 +209,8 @@ const Home = () => {
                 <div className="col-sm-9">
                   <select id="customoption" className="memlinkinput" onChange={(e) => setCustom(e.target.value)}>
                     <option value="auto">Auto</option>
-                    <option value="custom">Custom</option>
+                    <option value="url">Custom domain</option>
+                    <option value="hash">Custom Alias</option>
                   </select>
                 </div>
               </div>
@@ -198,6 +230,7 @@ const Home = () => {
                     </div>
                     <div className="col-sm-8">
                       <input type="text" id="customname" className="memlinkinput" placeholder="Custom your domain"  onChange={(e) => {setCustomname(e.target.value)}}/>
+<<<<<<< HEAD
                     </div>
                   </div>
                   : customoption==="hash" ?
@@ -209,6 +242,19 @@ const Home = () => {
                       <input type="text" id="customhash" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomHash(e.target.value)}}/>
                     </div>
                   </div>
+=======
+                    </div>
+                  </div>
+                  : customoption==="hash" ?
+                  <div className="row">
+                    <div className="col-sm-3 offset-sm-1">
+                      Alias name
+                    </div>
+                    <div className="col-sm-8">
+                      <input type="text" id="customhash" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomHash(e.target.value)}}/>
+                    </div>
+                  </div>
+>>>>>>> custom hash
                   : null
                 }
               <div className="row">
