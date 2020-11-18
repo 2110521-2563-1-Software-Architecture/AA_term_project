@@ -71,13 +71,14 @@ const Navbar = props => {
         case '/history':
           setState("user")
           break
+        case '/user':
+          setState("user")
+          break
         default:
-          console.log("aaa")
           setState('skip')
           break
       }
     } else {
-      console.log('guest')
       switch (pathname) {
         case '/':
           setState("guest")
@@ -96,6 +97,7 @@ const Navbar = props => {
   useEffect(() => {
 
     handleStateOnRedirect()
+    console.log('redirect')
 
   }, [pathname])
 
