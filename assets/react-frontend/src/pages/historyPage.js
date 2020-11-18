@@ -24,6 +24,7 @@ const EmptyWrapper = styled.div`
   
   h1 {
     margin-top: 5rem;
+    font-family: 'Kanit', sans-serif;
   }
 
   img {
@@ -33,12 +34,13 @@ const EmptyWrapper = styled.div`
 
   h2 {
     margin-top: 2rem;
+    font-family: 'Kanit', sans-serif;
   }
 
   span {
     cursor: pointer;
     color: blue;
-
+    font-family: 'Kanit', sans-serif;
     :hover {
       color: #fe7f2d;
       text-decoration: underline;
