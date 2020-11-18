@@ -181,16 +181,25 @@ const Home = () => {
                 </div>
               </div>
                 {
-                  customoption=="custom" ?
+                  customoption==="url" ?
                   <div className="row">
                     <div className="col-sm-3 offset-sm-1">
                       URL name
                     </div>
                     <div className="col-sm-8">
-                      <input type="text" id="customname" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomname(e.target.value)}}/>
+                      <input type="text" id="customname" className="memlinkinput" placeholder="Custom your domain"  onChange={(e) => {setCustomname(e.target.value)}}/>
                     </div>
                   </div>
-                  :null
+                  : customoption==="hash" ?
+                  <div className="row">
+                    <div className="col-sm-3 offset-sm-1">
+                      Alias name
+                    </div>
+                    <div className="col-sm-8">
+                      <input type="text" id="customhash" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomHash(e.target.value)}}/>
+                    </div>
+                  </div>
+                  : null
                 }
               <div className="row">
                 <div className="col-sm-3 offset-sm-1">

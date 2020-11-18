@@ -102,6 +102,10 @@ const Navbar = props => {
       case "guest":
         return <GuestLoginForm onSet={setState} />;
       case "user":
+        const fixBug = ["/", "/redirect", "/history", "/user"]
+        if (!fixBug.includes(pathname)) {
+          return <SkipForm onSet={setState} />
+        }
         return <UserForm onSet={setState} />;
       case "sign-up":
         return null;
