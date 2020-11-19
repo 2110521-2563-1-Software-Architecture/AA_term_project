@@ -83,6 +83,8 @@ const Navbar = props => {
         case '/register':
           setState("sign-up")
           break
+        case '/404':
+          setState('guest')
         default:
           setState("skip")
           break

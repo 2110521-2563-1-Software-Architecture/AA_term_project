@@ -64,32 +64,7 @@ const Home = () => {
       }
 
     }
-    const customfunc = () => {
-      if(customoption==="url"){
-        return (
-        <div className="row">
-          <div className="col-sm-3 offset-sm-1">
-            URL name
-          </div>
-          <div className="col-sm-8">
-            <input type="text" id="customname" className="memlinkinput" placeholder="Custom your domain"  onChange={(e) => {setCustomname(e.target.value)}}/>
-          </div>
-        </div>
-        );
-      }
-      else if (customoption==="hash"){
-        return (
-          <div className="row">
-            <div className="col-sm-3 offset-sm-1">
-              Alias name
-            </div>
-            <div className="col-sm-8">
-              <input type="text" id="customhash" className="memlinkinput" placeholder="Custom alias for your link ex. mylink"  onChange={(e) => {setCustomHash(e.target.value)}}/>
-            </div>
-          </div>
-        );
-      }
-    }
+    
     const copyLink = (e) => {
       e.preventDefault();
       var copyText = document.getElementById("genlink");
