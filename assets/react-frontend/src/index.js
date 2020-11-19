@@ -14,7 +14,6 @@ import UrlContext from "./utils/context/urlContext";
 import HomePage from "./pages/Homepage";
 import UserPage from "./pages/userPage";
 import RedirectPage from "./pages/redirect-page";
-import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   useEffect(() => {
@@ -61,7 +60,6 @@ const App = () => {
                   <Route path="/profile" exact component={UserPage} />
                   <Route path="/menu" exact component={RedirectPage} />
                   <Route path="/history" exact component={HistoryPage} />
-                  <Route path="/404" component={PageNotFound} />
                   <Route path="/:hash" exact component={SkipPage} />
                 </Switch>
               </UrlContext.Provider>
