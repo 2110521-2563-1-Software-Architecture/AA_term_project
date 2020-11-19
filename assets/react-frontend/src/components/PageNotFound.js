@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory, useParams, withRouter } from "react-router-dom";
-import UrlContext from "../utils/context/urlContext";
+import React from "react";
 
 import "./PageNotFound.css";
 

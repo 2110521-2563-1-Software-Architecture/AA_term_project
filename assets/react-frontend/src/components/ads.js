@@ -20,6 +20,7 @@ import UrlContext from "../utils/context/urlContext";
 >>>>>>> add page not found page
 import Axios from "axios";
 import AliceCarousel from "react-alice-carousel";
+import PageNotFound from "./PageNotFound";
 
 <<<<<<< HEAD
 
@@ -109,6 +110,7 @@ const Ads = () => {
   const [galleryItems, setGalleryItems] = useState([]);
   const [myUrl, setMyUrl] = useState("");
   const [myAds, setMyAds] = useState("");
+  const [pageFound, setPageFound] = useState(false);
   const { setUrl_redirect } = useContext(UrlContext);
 
   const { hash } = useParams();
@@ -132,6 +134,7 @@ const Ads = () => {
       setMyUrl(target_url);
       setUrl_redirect(target_url);
       setMyAds(ad);
+      setPageFound(true);
       const data = [];
       data.push({ download_url: `http://aa-shortener.poomrokc.services${ad}` });
       const img = data.map((m) => (
@@ -140,9 +143,7 @@ const Ads = () => {
         </a>
       ));
       setGalleryItems(img);
-    } catch (err) {
-      history.push("/404");
-    }
+    } catch (err) {}
   };
 
 <<<<<<< HEAD
@@ -156,6 +157,7 @@ const Ads = () => {
     getData();
   }, []);
 
+<<<<<<< HEAD
   return (
     <div>
       <AliceCarousel
@@ -177,6 +179,27 @@ const Ads = () => {
 >>>>>>> finish url redirect
 }
 =======
+=======
+  if (pageFound) {
+    return (
+      <div>
+        <AliceCarousel
+          items={galleryItems}
+          duration={100}
+          disableButtonsControls={true}
+          disableDotsControls={true}
+          disableSlideInfo={true}
+          autoPlay={true}
+          startIndex={1}
+          responsive={responsive}
+          autoPlayInterval={1000}
+          paddingLeft="100"
+          infinite={true}
+        />
+      </div>
+    );
+  } else return <PageNotFound />;
+>>>>>>> relogic for redirect 404 page
 };
 >>>>>>> add page not found page
 
