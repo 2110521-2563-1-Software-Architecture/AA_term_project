@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory, useParams, withRouter } from "react-router-dom"
-import UrlContext from "../utils/context/urlContext"
+import { useHistory, useParams, withRouter } from "react-router-dom";
+import UrlContext from "../utils/context/urlContext";
 import Axios from "axios";
 import AliceCarousel from "react-alice-carousel";
 
@@ -10,29 +10,27 @@ const responsive = {
   1024: { items: 2 },
 };
 const Ads = () => {
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [myUrl, setMyUrl] = useState("");
+  const [myAds, setMyAds] = useState("");
+  const { setUrl_redirect } = useContext(UrlContext);
 
-  const [galleryItems, setGalleryItems] = useState([])
-  const [myUrl, setMyUrl] = useState("")
-  const [myAds, setMyAds] = useState("")
-  const { setUrl_redirect } = useContext(UrlContext)
+  const { hash } = useParams();
 
-  const { hash } = useParams()
-
-  const history = useHistory()
+  const history = useHistory();
 
   const getData = async () => {
-    
     let result = null;
-    
+
     try {
       result = await Axios.get(
         `http://aa-shortener.poomrokc.services/api/public/urls/${hash}/redirect`
       );
       let { target_url, ad } = result.data;
-    
-      setMyUrl(target_url)
-      setUrl_redirect(target_url)
-      setMyAds(ad)
+
+      setMyUrl(target_url);
+      setUrl_redirect(target_url);
+      setMyAds(ad);
       const data = [];
       data.push({ download_url: `http://aa-shortener.poomrokc.services${ad}` });
       const img = data.map((m) => (
@@ -40,17 +38,15 @@ const Ads = () => {
           <img className="ads_img" src={m.download_url} alt="" />
         </a>
       ));
-      setGalleryItems(img)
+      setGalleryItems(img);
     } catch (err) {
-      history.push('/')
+      history.push("/404");
     }
-  }
+  };
 
   useEffect(() => {
-    
-    getData()
-
-  }, [])
+    getData();
+  }, []);
 
   return (
     <div>
@@ -69,6 +65,6 @@ const Ads = () => {
       />
     </div>
   );
-}
+};
 
 export default withRouter(Ads);

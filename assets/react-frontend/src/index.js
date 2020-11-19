@@ -9,11 +9,12 @@ import HistoryPage from "./pages/historyPage";
 import StateContext from "./utils/context/stateContext";
 import UserContext from "./utils/context/userContext";
 import LoginContext from "./utils/context/loginContext";
-import ProfilePictureContext from "./utils/context/profilePictureContext"
-import UrlContext from "./utils/context/urlContext"
+import ProfilePictureContext from "./utils/context/profilePictureContext";
+import UrlContext from "./utils/context/urlContext";
 import HomePage from "./pages/Homepage";
 import UserPage from "./pages/userPage";
 import RedirectPage from "./pages/redirect-page";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   useEffect(() => {
@@ -42,14 +43,16 @@ const App = () => {
     reRender: false,
   });
 
-  const [url_redirect, setUrl_redirect] = useState("")
+  const [url_redirect, setUrl_redirect] = useState("");
 
   return (
     <Router>
       <StateContext.Provider value={{ state, setState }}>
         <UserContext.Provider value={{ userToken, setUserToken }}>
           <LoginContext.Provider value={{ loginRender, setLoginRender }}>
-            <ProfilePictureContext.Provider value={{ profilePicture, setProfilePicture }}>
+            <ProfilePictureContext.Provider
+              value={{ profilePicture, setProfilePicture }}
+            >
               <UrlContext.Provider value={{ url_redirect, setUrl_redirect }}>
                 <Navbar />
                 <Switch>
@@ -58,6 +61,7 @@ const App = () => {
                   <Route path="/profile" exact component={UserPage} />
                   <Route path="/menu" exact component={RedirectPage} />
                   <Route path="/history" exact component={HistoryPage} />
+                  <Route path="/404" component={PageNotFound} />
                   <Route path="/:hash" exact component={SkipPage} />
                 </Switch>
               </UrlContext.Provider>
