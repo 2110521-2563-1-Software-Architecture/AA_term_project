@@ -10,9 +10,14 @@ import history from "../history";
 import { withRouter } from "react-router";
 =======
 import React, { useState, useEffect, useContext } from "react";
+<<<<<<< HEAD
 import { useHistory, useParams, withRouter } from "react-router-dom"
 import UrlContext from "../utils/context/urlContext"
 >>>>>>> finish url redirect
+=======
+import { useHistory, useParams, withRouter } from "react-router-dom";
+import UrlContext from "../utils/context/urlContext";
+>>>>>>> add page not found page
 import Axios from "axios";
 import AliceCarousel from "react-alice-carousel";
 
@@ -101,30 +106,32 @@ class Ads extends React.Component {
 =======
 =======
 const Ads = () => {
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [myUrl, setMyUrl] = useState("");
+  const [myAds, setMyAds] = useState("");
+  const { setUrl_redirect } = useContext(UrlContext);
 
-  const [galleryItems, setGalleryItems] = useState([])
-  const [myUrl, setMyUrl] = useState("")
-  const [myAds, setMyAds] = useState("")
-  const { setUrl_redirect } = useContext(UrlContext)
+  const { hash } = useParams();
 
-  const { hash } = useParams()
-
-  const history = useHistory()
+  const history = useHistory();
 
   const getData = async () => {
+<<<<<<< HEAD
     
 >>>>>>> finish url redirect
+=======
+>>>>>>> add page not found page
     let result = null;
-    
+
     try {
       result = await Axios.get(
         `http://aa-shortener.poomrokc.services/api/public/urls/${hash}/redirect`
       );
       let { target_url, ad } = result.data;
-    
-      setMyUrl(target_url)
-      setUrl_redirect(target_url)
-      setMyAds(ad)
+
+      setMyUrl(target_url);
+      setUrl_redirect(target_url);
+      setMyAds(ad);
       const data = [];
       data.push({ download_url: `http://aa-shortener.poomrokc.services${ad}` });
       const img = data.map((m) => (
@@ -132,11 +139,11 @@ const Ads = () => {
           <img className="ads_img" src={m.download_url} alt="" />
         </a>
       ));
-      setGalleryItems(img)
+      setGalleryItems(img);
     } catch (err) {
-      history.push('/')
+      history.push("/404");
     }
-  }
+  };
 
 <<<<<<< HEAD
   componentDidMount() {
@@ -146,10 +153,8 @@ const Ads = () => {
 >>>>>>> add get link
 =======
   useEffect(() => {
-    
-    getData()
-
-  }, [])
+    getData();
+  }, []);
 
   return (
     <div>
@@ -168,7 +173,11 @@ const Ads = () => {
       />
     </div>
   );
+<<<<<<< HEAD
 >>>>>>> finish url redirect
 }
+=======
+};
+>>>>>>> add page not found page
 
 export default withRouter(Ads);
