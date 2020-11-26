@@ -1,30 +1,59 @@
-import React, { Component } from "react";
-//import history from "../history";
-//import Util from "../api/Util";
-import AliceCarousel from 'react-alice-carousel';
-import Logo from '../../assets/logo.png'
-import Con from '../../assets/container.jpg'
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory, useParams, withRouter } from "react-router-dom";
+import UrlContext from "../utils/context/urlContext";
+import Axios from "axios";
+import AliceCarousel from "react-alice-carousel";
+import PageNotFound from "./PageNotFound";
 
-
-import "./ads.css"
+import "./ads.css";
 const responsive = {
   0: { items: 1 },
   1024: { items: 2 },
 };
-class Ads extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      galleryItems: [],
-    };
-  }
+const Ads = () => {
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [myUrl, setMyUrl] = useState("");
+  const [myAds, setMyAds] = useState("");
+  const [pageFound, setPageFound] = useState(false);
+  const { setUrl_redirect } = useContext(UrlContext);
 
+  const { hash } = useParams();
 
-  render() {
+  const history = useHistory();
+
+  const getData = async () => {
+    let result = null;
+
+    try {
+      result = await Axios.get(
+        `http://aa-shortener.poomrokc.services/api/public/urls/${hash}/redirect`
+      );
+      let { target_url, ad } = result.data;
+
+      setMyUrl(target_url);
+      setUrl_redirect(target_url);
+      setMyAds(ad);
+      setPageFound(true);
+      const data = [];
+      data.push({ download_url: `http://aa-shortener.poomrokc.services${ad}` });
+      const img = data.map((m) => (
+        <a href={m.link}>
+          <img className="ads_img" src={m.download_url} alt="" />
+        </a>
+      ));
+      setGalleryItems(img);
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (pageFound) {
     return (
       <div>
         <AliceCarousel
-          items={this.state.galleryItems}
+          items={galleryItems}
           duration={100}
           disableButtonsControls={true}
           disableDotsControls={true}
@@ -38,46 +67,7 @@ class Ads extends React.Component {
         />
       </div>
     );
-  }
+  } else return <PageNotFound />;
+};
 
-
-
-  getData() {
-    // axios.get(`https://picsum.photos/v2/list?limit=6`, {})
-    // .then(res => {
-    //         const data = res.data
-    //       const img = data.map(m => 
-    //         <a href = "">
-    //         <img src={m.download_url} alt=""/>
-    //       )
-    //       this.setState({
-    //         galleryItems: img
-    //       })
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     })
-    const data = [{
-      download_url: Logo,
-      link: "https://www.facebook.com/"
-    }, {
-      download_url: Con,
-      link: "https://www.facebook.com/"
-    }]
-    const img = data.map(m =>
-      <a href={m.link}>
-        <img className="ads_img" src={m.download_url} alt="" />
-      </a>
-    )
-    this.setState({
-      galleryItems: img
-    })
-  }
-
-
-  componentDidMount() {
-    this.getData()
-  }
-
-}
-
-export default Ads;
+export default withRouter(Ads);
