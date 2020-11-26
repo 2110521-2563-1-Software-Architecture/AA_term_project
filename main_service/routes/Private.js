@@ -1,5 +1,8 @@
 const express = require('express');
+const multer = require('multer');
+const fs = require('fs');
 const router = express.Router();
+var upload = multer({ dest: './tmp/' });
 var Util = require('../utils/util');
 var UserHandler = require('../logics/UserHandler');
 
@@ -12,6 +15,17 @@ router.patch('/profile', async (req, res, next) => {
 		return res.status(400).json({ msg: 'Missing Params "name"' });
 	var result = await UserHandler.updateProfile(req.user.user, Util.subsetUnchecked(req.body, ['name']));
 	return res.status(result.status).json(result.payload);
+});
+
+router.post('/profilePicture', upload.single('Image'), async (req, res) => {
+	try {
+		var file = req.file;
+		await fs.promises.copyFile(file.path, './profile_picture/' + req.user.user._id.toString() + '.jpg');
+		await fs.promises.unlink(file.path);
+		res.status(200).json({ success: true });
+	} catch (err) {
+		res.status(400).json({ msg: 'File Error' });
+	}
 });
 
 router.delete('/urls/:urlHash', async (req, res, next) => {

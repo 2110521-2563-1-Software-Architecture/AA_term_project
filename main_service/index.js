@@ -24,6 +24,7 @@ mongoose.Promise = global.Promise;
 app.set('trust proxy', true);
 app.use(bodyParser.json())
 app.use(cors());
+app.use('/profile_picture', express.static('./profile_picture'))
 app.use('/api', routes);
 
 const influxnstart = async () => {

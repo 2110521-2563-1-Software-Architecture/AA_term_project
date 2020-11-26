@@ -6,7 +6,7 @@ const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitT
 
 module.exports = {
 	home: async (user) => {
-		return { status: 200, payload: { user: { "email": user.email, "name": user.name } } };
+		return { status: 200, payload: { user: { "email": user.email, "name": user.name, "image": '/profile_picture/' + user._id.toString() + '.jpg' } } };
 	},
 	updateProfile: async (user, params) => {
 		try {
@@ -41,6 +41,8 @@ module.exports = {
 	getMyUrls: async (user) => {
 		try {
 			var urls = await UrlModel.find({ creator: user._id }, { name: 1, hash: 1, created: 1, target_url: 1, domain: 1, _id: 0 }).sort({ created: -1 });
+			if (urls.length == 0)
+				return { status: 200, payload: { urls: [] } };
 			var hashes = urls.map((row) => `hash='${row.hash}'`);
 			var mapper = {};
 			rows = await influx.query(`
