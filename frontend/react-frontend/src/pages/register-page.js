@@ -3,7 +3,7 @@ import RegisterCard from '../components/RegisterCard';
 
 class RegisterPage extends React.Component {
     render() {
-        return <div className="decorate" align="center" style={{ backgroundColor:'#2F4F4F', minHeight:'727px', marginBottom: '-30px' }}>
+        return <div className="decorate" align="center" style={{ paddingTop: 70 }}>
         <div>
             <RegisterCard />
         </div></div>;

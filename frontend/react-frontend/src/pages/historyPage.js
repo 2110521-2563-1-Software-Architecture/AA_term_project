@@ -1,102 +1,93 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom"
-import styled from "styled-components"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Axios from "axios"
+import React from "react";
+import Logo from '../../assets/logo.png'
+//import history from "../history";
+//import Util from "../api/Util";
 
-import Card from "../components/HistoryCard"
-import EmptyFile from "../../assets/empty-file.png"
-
-const Wrapper = styled.div`
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  box-sizing: border-box;
-  margin-top: 5rem;
-  
-
-`
-
-const EmptyWrapper = styled.div`
-
-  text-align: center;
-  
-  h1 {
-    margin-top: 5rem;
-    font-family: 'Kanit', sans-serif;
+class HistoryPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+         data: [
+           {
+             url: "www.hello.ewwr.com",
+             number: "4"
+           },
+           {
+            url: "www.hello.erer.com",
+             number: "45"
+           },
+           {
+             url: "www.hello.dfss.com",
+             number: "16"
+           },
+           {
+            url: "www.hello.oio.com",
+            number: "420"
+           },
+           {
+            url: "www.hello.dfdf.com",
+            number: "50"
+           },
+           {
+            url: "www.hello.iopo.com",
+            number: "80"
+           }
+         ]
+    };
   }
 
-  img {
-    margin-top: 3rem;
-    width: 300px;
-  }
-
-  h2 {
-    margin-top: 2rem;
-    font-family: 'Kanit', sans-serif;
-  }
-
-  span {
-    cursor: pointer;
-    color: blue;
-    font-family: 'Kanit', sans-serif;
-    :hover {
-      color: #fe7f2d;
-      text-decoration: underline;
+  render() {
+    const Emp = <div></div>;
+    if (!this.state.data) {
+      return Emp;
+    } else {
+      return (
+        <div className="decorate" align="center" style={{ paddingTop: 70 }}>
+        <div className="Card " style={{ width: 750 }}>
+        <div className="Card " style={{ width: 750}}>
+          <img src={Logo} style={{ width: 160}}/>
+          <br />
+        </div>
+        <div
+          className="Card box"
+          style={{ width: 500, border: "thick solid black" }}
+        >
+          <br />
+          <div className="row">
+            <div className="col-md-12 ">
+              <h2 className="card-title" style={{ fontFamily: "Courier New" }}>
+                History
+              </h2>
+            </div>
+            <br />
+          </div>
+            <div className="row">
+                  {this.state.data.map(item => (
+                    <div>{item.url}{item.number}</div>
+                  ))}
+            </div>
+          <br />
+        </div>
+      </div>
+      </div>
+        
+      );
     }
   }
-
-`
-
-const HistoryPage = () => {
-
-  const history = useHistory()
-  const [data, setData] = useState([])
-  const [state, setState] = useState(false)
-
-  useEffect(() => {
-
-    if (!localStorage.getItem("token")) {
-      history.push('/')
+ /*onSubmit = async (event) => {
+    event.preventDefault();
+    history.push("/login");
+     let data = await Util.register(
+      this.state.userName,
+      this.state.password,
+    );
+    console.log(data);
+    if (data.errmsg) {
+      window.alert(data.errmsg);
+    } else {
+      history.push("/login");
     }
-    else {
-
-      const getUrl = async () => {
-
-        try {
-          const JwtToken = `JWT ${localStorage.getItem("token")}`
-
-          const { data: { urls } } = await Axios.get("http://aa-shortener.poomrokc.services/api/user/urls", { headers: { Authorization: JwtToken } })
-
-          setData(urls)
-        } catch (error) {
-          console.log(error.message)
-        }
-      }
-  
-      getUrl()
-    }
-  }, [state])
-
-  const goHome = () => {
-    history.push('/')
-  }
-
-  return (
-    <div>
-      {
-        (data.length !== 0) ? 
-          <Wrapper>{data.map((info, index) => <Card onSet={setState} data={{info, index}} />)}</Wrapper>
-        : 
-          <EmptyWrapper>
-            <h1>Oh! Your history is empty!</h1>
-            <img src={EmptyFile} />
-            <h2>Looking for some url? Go shorten it <span onClick={goHome}>Now!</span></h2>
-          </EmptyWrapper>
-      }
-    </div>
-  )
+  };*/
 }
 
 export default HistoryPage;
