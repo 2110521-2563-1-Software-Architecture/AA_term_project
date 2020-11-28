@@ -27,27 +27,20 @@ const Home = () => {
     }, [loginRender, localStorage.getItem('token')])
 
     const generatelink = async () => {
-      setGenlink(website);
-
-      if (localStorage.getItem('token')) {
-        const JwtToken = `JWT ${localStorage.getItem('token')}`
-
-        const newURL = {
-          target_url: website,
-          name: linkname,
-          customHash: customhash,
-          domain: customname,
-        }
-
-        const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
-
-        let { data: { hash, domain } } = res
-
-        const generatedLink = `www.${domain}/${hash}`
-        setGenlink(generatedLink)
-
+      const JwtToken = `JWT ${localStorage.getItem('token')}`
+      const newURL = {
+        target_url: website,
+        name: linkname,
+        customHash: customhash,
+        domain: customname,
       }
-
+      const res = await Axios.post("http://aa-shortener.poomrokc.services/api/public/urls/", newURL, { headers: { Authorization: JwtToken } })
+      let { data: { hash, domain } } = res
+      let generatedLink = `www.${domain}/${hash}`
+      if(domain==""){
+        generatedLink = `http://aa-shortener.poomrokc.services/${hash}`
+      }
+      setGenlink(generatedLink)
     }
     
     const copyLink = (e) => {
